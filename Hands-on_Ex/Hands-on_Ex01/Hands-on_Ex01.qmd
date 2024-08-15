@@ -3,18 +3,101 @@ title: "Hands-on Exercise 1"
 author: "Fan Syong Yue"
 ---
 
-Getting Started
+# Getting Started
 
-Install and launching R packages
+## Install and launching R packages
 
-The code chunk below uses p_load() of pacman package to check if tidyverse packages are installed in the computer. If they are, then they will be launched into R.
-
-```{r}
-pacman::p_load(tidyverse)
-```
-
-Importing the data
+The code chunk below uses p_load() of pacman package to check if tidyverse packages are installed in the computer. If they are, then they will be launched in R.
 
 ```{r}
-exam_data <- read.csv("data/Exam_data.csv")
+#| echo: false
+pacman::p_load(sf, tidyverse)
 ```
+
+# Importing the data
+
+We first import our Master Plan 2014 Subzone Boundary, Cycling Path and Preschool data
+
+```{r}
+mpsz = st_read(dsn="Hands-on_Ex/Hands-on_Ex01/data/geospatial",
+                layer="MP14_SUBZONE_WEB_PL")
+
+cyclingpath = st_read(dsn = "chap01/data/geospatial", 
+                         layer = "CyclingPathGazette")
+
+preschool = st_read("chap01/data/geospatial/PreSchoolsLocation.kml")
+```
+
+# Simple feature data frames
+
+We now want to look at some basic ways to explore the content of a simple data frame. We will be using the mpsz variable for this.
+
+We shall first look at basic information through the use of `st_geometry()`
+
+```{r}
+st_geometry(mpsz)
+```
+
+Next, we shall try out `glimpse()` to find out more about the associated attributes
+
+```{r}
+glimpse(mpsz)
+```
+
+Finally, to get the complete information of the feature object, we shall use `head()`
+
+```{r}
+head(mpsz, n=5)
+```
+
+# Plotting the geospatial data
+
+We shall first try plotting it in the simplest way possible using `plot()`
+
+```{r}
+plot(mpsz)
+```
+
+If we want to look at only the geometry, we can combine this with `st_geometry()`
+
+```{r}
+plot(st_geometry(mpsz))
+```
+
+We can also plot the area using only a specific attribute \`\`{r} plot(mpsz\["PLN_AREA_N"\]) \`\`\`
+
+# Using Projection
+
+We now want to ensure that both our mpsz and preschool variables are using the same coordinate system.
+When looking at `mpsz` using `st_crs()`
+```{r}
+st_crs(mpsz)
+```
+We can see that the data is projected as svy21 which should have a EPSG code of 3414. However, the end of print indicates an EPSG of 9001.
+
+To fix this, we shall assign a new variable with the correct EPSG.
+ ```{r}
+ mpsz3414 <- st_set_crs(mpsz, 3414)
+ ```
+When checking it now
+```{r}
+st_crs(mpsz3414)
+```
+We can see the correct 3414 EPSG code
+
+## Converting our Preschool Data
+We want to first check the coordinate system of our preschool data
+```{r}
+st_geometry(preschool)
+```
+We can see that it uses the WGS84 system. We want to project this data into the syv21 system that our `mpsz3414` variable uses.
+```{r}
+preschool3414 <- st_transform(preschool, 
+                              crs = 3414)
+```
+We can now check if it is using the new system
+```{r}
+st_geometry(preschool3414)
+```
+
+# Aspatial Data
