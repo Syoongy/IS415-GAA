@@ -1,0 +1,65 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "IS415-GAA",
+    "section": "",
+    "text": "Welcome to IS415 Geospatial Analytics and Applications. You will find my work done for this course"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html",
+    "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html",
+    "title": "Hands-on Exercise 1",
+    "section": "",
+    "text": "The code chunk below uses p_load() of pacman package to check if tidyverse packages are installed in the computer. If they are, then they will be launched in R."
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#install-and-launching-r-packages",
+    "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#install-and-launching-r-packages",
+    "title": "Hands-on Exercise 1",
+    "section": "",
+    "text": "The code chunk below uses p_load() of pacman package to check if tidyverse packages are installed in the computer. If they are, then they will be launched in R."
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#converting-our-preschool-data",
+    "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#converting-our-preschool-data",
+    "title": "Hands-on Exercise 1",
+    "section": "Converting our Preschool Data",
+    "text": "Converting our Preschool Data\nWe want to first check the coordinate system of our preschool data\n\nst_geometry(preschool)\n\nGeometry set for 2290 features \nGeometry type: POINT\nDimension:     XYZ\nBounding box:  xmin: 103.6878 ymin: 1.247759 xmax: 103.9897 ymax: 1.462134\nz_range:       zmin: 0 zmax: 0\nGeodetic CRS:  WGS 84\nFirst 5 geometries:\n\n\nPOINT Z (103.8072 1.299333 0)\n\n\nPOINT Z (103.826 1.312839 0)\n\n\nPOINT Z (103.8409 1.348843 0)\n\n\nPOINT Z (103.8048 1.435024 0)\n\n\nPOINT Z (103.839 1.33315 0)\n\n\nWe can see that it uses the WGS84 system. We want to project this data into the syv21 system that our mpsz3414 variable uses.\n\npreschool3414 &lt;- st_transform(preschool, \n                              crs = 3414)\n\nWe can now check if it is using the new system\n\nst_geometry(preschool3414)\n\nGeometry set for 2290 features \nGeometry type: POINT\nDimension:     XYZ\nBounding box:  xmin: 11810.03 ymin: 25596.33 xmax: 45404.24 ymax: 49300.88\nz_range:       zmin: 0 zmax: 0\nProjected CRS: SVY21 / Singapore TM\nFirst 5 geometries:\n\n\nPOINT Z (25089.46 31299.16 0)\n\n\nPOINT Z (27189.07 32792.54 0)\n\n\nPOINT Z (28844.56 36773.76 0)\n\n\nPOINT Z (24821.92 46303.16 0)\n\n\nPOINT Z (28637.82 35038.49 0)"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#importing-our-data",
+    "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#importing-our-data",
+    "title": "Hands-on Exercise 1",
+    "section": "Importing our data",
+    "text": "Importing our data\nWe first want to import our aspatial listing data from AirBNB\n\nlistings &lt;- read_csv(\"data/aspatial/listings.csv\")\n\nRows: 3540 Columns: 18\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr   (6): name, host_name, neighbourhood_group, neighbourhood, room_type, l...\ndbl  (11): id, host_id, latitude, longitude, price, minimum_nights, number_o...\ndate  (1): last_review\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\nWe can now view the data using list()\n\nlist(listings)\n\n[[1]]\n# A tibble: 3,540 × 18\n       id name      host_id host_name neighbourhood_group neighbourhood latitude\n    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;               &lt;chr&gt;            &lt;dbl&gt;\n 1  71609 Ensuite …  367042 Belinda   East Region         Tampines          1.35\n 2  71896 B&B  Roo…  367042 Belinda   East Region         Tampines          1.35\n 3  71903 Room 2-n…  367042 Belinda   East Region         Tampines          1.35\n 4 275343 10min wa… 1439258 Kay       Central Region      Bukit Merah       1.29\n 5 275344 15 mins … 1439258 Kay       Central Region      Bukit Merah       1.29\n 6 289234 Booking …  367042 Belinda   East Region         Tampines          1.34\n 7 294281 5 mins w… 1521514 Elizabeth Central Region      Newton            1.31\n 8 324945 Comforta… 1439258 Kay       Central Region      Bukit Merah       1.29\n 9 330095 Relaxing… 1439258 Kay       Central Region      Bukit Merah       1.29\n10 344803 Budget s…  367042 Belinda   East Region         Tampines          1.35\n# ℹ 3,530 more rows\n# ℹ 11 more variables: longitude &lt;dbl&gt;, room_type &lt;chr&gt;, price &lt;dbl&gt;,\n#   minimum_nights &lt;dbl&gt;, number_of_reviews &lt;dbl&gt;, last_review &lt;date&gt;,\n#   reviews_per_month &lt;dbl&gt;, calculated_host_listings_count &lt;dbl&gt;,\n#   availability_365 &lt;dbl&gt;, number_of_reviews_ltm &lt;dbl&gt;, license &lt;chr&gt;\n\n\nWe assume the data uses the wgs84 Geographic Coordinate System"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#data-frame-for-our-aspatial-data",
+    "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#data-frame-for-our-aspatial-data",
+    "title": "Hands-on Exercise 1",
+    "section": "Data frame for our aspatial data",
+    "text": "Data frame for our aspatial data\nWe now want to convert the listing data into the svy21 system that we have previously used.\n\nlistings_sf &lt;- st_as_sf(listings, \n                       coords = c(\"longitude\", \"latitude\"),\n                       crs=4326) %&gt;%\n  st_transform(crs = 3414)\n\nAnd when viewing the data now\n\nglimpse(listings_sf)\n\nRows: 3,540\nColumns: 17\n$ id                             &lt;dbl&gt; 71609, 71896, 71903, 275343, 275344, 28…\n$ name                           &lt;chr&gt; \"Ensuite Room (Room 1 & 2) near EXPO\", …\n$ host_id                        &lt;dbl&gt; 367042, 367042, 367042, 1439258, 143925…\n$ host_name                      &lt;chr&gt; \"Belinda\", \"Belinda\", \"Belinda\", \"Kay\",…\n$ neighbourhood_group            &lt;chr&gt; \"East Region\", \"East Region\", \"East Reg…\n$ neighbourhood                  &lt;chr&gt; \"Tampines\", \"Tampines\", \"Tampines\", \"Bu…\n$ room_type                      &lt;chr&gt; \"Private room\", \"Private room\", \"Privat…\n$ price                          &lt;dbl&gt; NA, 80, 80, 50, 50, NA, 85, 65, 45, 54,…\n$ minimum_nights                 &lt;dbl&gt; 92, 92, 92, 180, 180, 92, 92, 180, 180,…\n$ number_of_reviews              &lt;dbl&gt; 19, 24, 46, 20, 16, 12, 131, 17, 5, 60,…\n$ last_review                    &lt;date&gt; 2020-01-17, 2019-10-13, 2020-01-09, 20…\n$ reviews_per_month              &lt;dbl&gt; 0.12, 0.15, 0.29, 0.15, 0.11, 0.08, 0.8…\n$ calculated_host_listings_count &lt;dbl&gt; 6, 6, 6, 49, 49, 6, 7, 49, 49, 6, 7, 7,…\n$ availability_365               &lt;dbl&gt; 89, 148, 90, 62, 0, 88, 365, 0, 0, 365,…\n$ number_of_reviews_ltm          &lt;dbl&gt; 0, 0, 0, 0, 2, 0, 0, 1, 1, 1, 0, 0, 0, …\n$ license                        &lt;chr&gt; NA, NA, NA, \"S0399\", \"S0399\", NA, NA, \"…\n$ geometry                       &lt;POINT [m]&gt; POINT (41972.5 36390.05), POINT (…\n\n\nWe can see that geometry has been added while longitude and latitude have been dropped"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#buffering",
+    "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#buffering",
+    "title": "Hands-on Exercise 1",
+    "section": "Buffering",
+    "text": "Buffering\n\nScenario\nThe authority is planning to upgrade the exiting cycling path. To do so, they need to acquire 5 metres of reserved land on the both sides of the current cycling path. You are tasked to determine the extend of the land need to be acquired and their total area.\n\n\nSolution\nWe first want to use st_buffer() and compute 5-meter buffers around paths from our cycling data\n\nbuffer_cycling &lt;- st_buffer(cyclingpath,\n                              dist=5, nQuadSegs = 30)\n\nWe then want to calculate the area of the buffers\n\nbuffer_cycling$AREA &lt;- st_area(buffer_cycling)\n\nWe can then use sum() to derive the total land involved\n\nsum(buffer_cycling$AREA)\n\n2218855 [m^2]"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#point-in-polygon-count",
+    "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html#point-in-polygon-count",
+    "title": "Hands-on Exercise 1",
+    "section": "Point-in-polygon count",
+    "text": "Point-in-polygon count\n\nScenario\nA pre-school service group want to find out the numbers of pre-schools in each Planning Subzone. ### Solution We first want to find pre-schools located in each planning subzone using st_intersects() followed by length() to calculate the number of pre-schools within each planning subzone.\n\nmpsz3414$`PreSch Count`&lt;- lengths(st_intersects(mpsz3414, preschool3414))\n\nWe can then check the summarised statistics of the PreSch Count field using summary()\n\nsummary(mpsz3414$`PreSch Count`)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n   0.00    0.00    4.00    7.09   10.00   72.00 \n\n\nWe can then list the planning subzone with the most number of pre-schools using top_n()\n\ntop_n(mpsz3414, 1, `PreSch Count`)\n\nSimple feature collection with 1 feature and 16 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: 39655.33 ymin: 35966 xmax: 42940.57 ymax: 38622.37\nProjected CRS: SVY21 / Singapore TM\n  OBJECTID SUBZONE_NO     SUBZONE_N SUBZONE_C CA_IND PLN_AREA_N PLN_AREA_C\n1      189          2 TAMPINES EAST    TMSZ02      N   TAMPINES         TM\n     REGION_N REGION_C          INC_CRC FMEL_UPD_D   X_ADDR   Y_ADDR SHAPE_Leng\n1 EAST REGION       ER 21658EAAF84F4D8D 2014-12-05 41122.55 37392.39   10180.62\n  SHAPE_Area                       geometry PreSch Count\n1    4339824 MULTIPOLYGON (((42196.76 38...           72\n\n\n\n\nScenario\nWe now want to calculate the density of pre-school by planning subzone ### Solution We can use st_area() to derive the area of each planning subzone\n\nmpsz3414$Area &lt;- mpsz3414 %&gt;%\n  st_area()\n\nWe can now use mutate() to compute the density\n\nmpsz3414 &lt;- mpsz3414 %&gt;%\n  mutate(`PreSch Density` = `PreSch Count`/Area * 1000000)\n\nWe can now view a summary of the pre-school density data that we have derived.\n\nsummary(mpsz3414$`PreSch Density`)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  0.000   0.000   5.154   6.449  10.908  35.602"
+  }
+]
