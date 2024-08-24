@@ -297,7 +297,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mpsz <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="at">dsn =</span> <span class="st">"data/geospatial"</span>, <span class="at">layer =</span> <span class="st">"MP14_SUBZONE_WEB_PL"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `MP14_SUBZONE_WEB_PL' from data source 
-  `D:\Coding\is415\IS415-GAA\Hands-on_Ex\Hands-on_Ex02\data\geospatial' 
+  `/home/syoongy/Documents/code/SMU/is415/IS415-GAA/Hands-on_Ex/Hands-on_Ex02/data/geospatial' 
   using driver `ESRI Shapefile'
 Simple feature collection with 323 features and 15 fields
 Geometry type: MULTIPOLYGON
@@ -420,7 +420,11 @@ dbl (2): Pop, Time
 <section id="choropleth-mapping-geospatial-data-using-tmap" class="level1">
 <h1>Choropleth Mapping Geospatial Data Using <code>tmap</code></h1>
 <p>Choropleth mapping involves the symbolisation of enumeration units, such as countries, provinces, states, counties or census units, using area patterns or graduated colors.</p>
-<p>Two approaches can be used to prepare thematic map using <code>tmap</code>, they are: - Plotting quickly using <code>qtm()</code> - Plotting highly customisable thematic maps by using <code>tmap</code> elements</p>
+<p>Two approaches can be used to prepare thematic map using <code>tmap</code>, they are:</p>
+<ul>
+<li>Plotting quickly using <code>qtm()</code></li>
+<li>Plotting highly customisable thematic maps by using <code>tmap</code> elements</li>
+</ul>
 <section id="plotting-a-choropleth-map-using-qtm" class="level2">
 <h2 class="anchored" data-anchor-id="plotting-a-choropleth-map-using-qtm">Plotting a choropleth map using <code>qtm()</code></h2>
 <p>Using <code>qtm()</code> from the <code>tmap</code> package us the easiest and quickest way to draw a choropleth map. It provides a good and concise default vistualisation that covers a large number of cases.</p>
@@ -576,7 +580,7 @@ dbl (2): Pop, Time
 </div>
 <p>Using the above results as reference, we set the breakpoints at .6, .7, .8, and .9. With the addition of the min and max breakpoints, the <em>breaks</em> vector is c(0, 0.6, 0.7, 0.8, 0.9, 1).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(mpsz_pop2020) <span class="sc">+</span> <span class="fu">tm_fill</span>(<span class="st">"DEPENDENCY"</span>, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.60</span>, <span class="fl">0.70</span>, <span class="fl">0.80</span>, <span class="fl">0.90</span>, <span class="fl">1.00</span>, <span class="dv">19</span>)) <span class="sc">+</span> <span class="fu">tm_borders</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tm_shape</span>(mpsz_pop2020) <span class="sc">+</span> <span class="fu">tm_fill</span>(<span class="st">"DEPENDENCY"</span>, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.50</span>, <span class="fl">0.60</span>, <span class="fl">0.70</span>, <span class="fl">0.80</span>, <span class="fl">1.00</span>, <span class="dv">19</span>)) <span class="sc">+</span> <span class="fu">tm_borders</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -611,7 +615,7 @@ dbl (2): Pop, Time
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_fill</span>(<span class="st">"DEPENDENCY"</span>,</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">n =</span> <span class="dv">6</span>,</span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">style =</span> <span class="st">"quantile"</span>,</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">palette =</span> <span class="st">"-Greens"</span>) <span class="sc">+</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">palette =</span> <span class="st">"-Blues"</span>) <span class="sc">+</span></span>
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_borders</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
@@ -725,7 +729,12 @@ dbl (2): Pop, Time
 <section id="small-multiple-maps-a.k.a-facet-maps" class="level2">
 <h2 class="anchored" data-anchor-id="small-multiple-maps-a.k.a-facet-maps">Small Multiple Maps A.K.A Facet Maps</h2>
 <p>These maps are composed of many maps arrange side-by-side, and sometimes stacked vertically. Small multiple maps enable the visualisation of how spatial relationships change with respect to another variable, such as time.</p>
-<p>There are 3 ways using <code>tmap</code> that we can plot these maps: - assigning multiple values to at least one of the aesthetic arguments - defining a group-by variable in <code>tm_facets()</code> - creating multiple stand-alone maps with <code>tmap_arrange()</code></p>
+<p>There are 3 ways using <code>tmap</code> that we can plot these maps:</p>
+<ul>
+<li>assigning multiple values to at least one of the aesthetic arguments</li>
+<li>defining a group-by variable in <code>tm_facets()</code></li>
+<li>creating multiple stand-alone maps with <code>tmap_arrange()</code></li>
+</ul>
 <section id="using-multiple-values" class="level3">
 <h3 class="anchored" data-anchor-id="using-multiple-values">Using multiple values</h3>
 <p>In this example, small multiple choropleth maps are created by defining <code>ncols</code> in <code>tm_fill()</code></p>
