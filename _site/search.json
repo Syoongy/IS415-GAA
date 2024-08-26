@@ -56,6 +56,13 @@
     "text": "About this site\n\n1 + 1\n\n[1] 2"
   },
   {
+    "objectID": "In-class_Ex/In-class_Ex02/data/MPSZ-2019.html",
+    "href": "In-class_Ex/In-class_Ex02/data/MPSZ-2019.html",
+    "title": "IS415-GAA",
+    "section": "",
+    "text": "&lt;!DOCTYPE qgis PUBLIC ‘http://mrcc.com/qgis.dtd’ ‘SYSTEM’&gt;     dataset\n\n\n        0 0     false"
+  },
+  {
     "objectID": "In-class_Ex/In-class_Ex01/data/MPSZ-2019/MPSZ-2019.html",
     "href": "In-class_Ex/In-class_Ex01/data/MPSZ-2019/MPSZ-2019.html",
     "title": "IS415-GAA",
@@ -75,6 +82,34 @@
     "title": "IS415-GAA",
     "section": "Hands-on Exercises",
     "text": "Hands-on Exercises\n\n\n\n\n\n\n\n\n\n\nHands-on Exercise 1\n\n\n\n\n\n\n\n\n\n\n\nAug 15, 2024\n\n\nFan Syong Yue\n\n\n\n\n\n\n\n\n\n\n\n\nHands-on Exercise 2: Thematic Mapping and GeoVisualisation\n\n\n\n\n\n\n\n\n\n\n\nAug 24, 2024\n\n\nFan Syong Yue\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "In-class_Ex/In-class_Ex02/In-class_Ex02.html",
+    "href": "In-class_Ex/In-class_Ex02/In-class_Ex02.html",
+    "title": "In-class Exercise 2",
+    "section": "",
+    "text": "We want to use tidyverse and sf packages\n\npacman::p_load(tidyverse, sf)"
+  },
+  {
+    "objectID": "In-class_Ex/In-class_Ex02/In-class_Ex02.html#importing-the-data",
+    "href": "In-class_Ex/In-class_Ex02/In-class_Ex02.html#importing-the-data",
+    "title": "In-class Exercise 2",
+    "section": "Importing the data",
+    "text": "Importing the data\nWe want to first import the shp shapefile\n\nmpsz14_shp &lt;- st_read(dsn = \"data/\",\n                        layer = \"MP14_SUBZONE_WEB_PL\")\n\nReading layer `MP14_SUBZONE_WEB_PL' from data source \n  `/home/syoongy/Documents/code/SMU/is415/IS415-GAA/In-class_Ex/In-class_Ex02/data' \n  using driver `ESRI Shapefile'\nSimple feature collection with 323 features and 15 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: 2667.538 ymin: 15748.72 xmax: 56396.44 ymax: 50256.33\nProjected CRS: SVY21\n\n\nSince the original downladed KML file errors out, let’s create one using the SHP file\n\nst_write(mpsz14_shp,\n         \"data/MP14_SUBZONE_WEB_PL.kml\",\n         delete_dsn = TRUE)\n\nWe now want to import the kml file\n\nmpsz14_kml &lt;- st_read(\"data/MP14_SUBZONE_WEB_PL.kml\")\n\nReading layer `MP14_SUBZONE_WEB_PL' from data source \n  `/home/syoongy/Documents/code/SMU/is415/IS415-GAA/In-class_Ex/In-class_Ex02/data/MP14_SUBZONE_WEB_PL.kml' \n  using driver `KML'\nSimple feature collection with 323 features and 2 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: 103.6057 ymin: 1.158699 xmax: 104.0885 ymax: 1.470775\nGeodetic CRS:  WGS 84"
+  },
+  {
+    "objectID": "In-class_Ex/In-class_Ex02/In-class_Ex02.html#importing-the-data-1",
+    "href": "In-class_Ex/In-class_Ex02/In-class_Ex02.html#importing-the-data-1",
+    "title": "In-class Exercise 2",
+    "section": "Importing the data",
+    "text": "Importing the data\nWe want to first import the shp shapefile\n\nmpsz19_shp &lt;- st_read(dsn = \"data/\",\n        layer = \"MPSZ-2019\")\n\nReading layer `MPSZ-2019' from data source \n  `/home/syoongy/Documents/code/SMU/is415/IS415-GAA/In-class_Ex/In-class_Ex02/data' \n  using driver `ESRI Shapefile'\nSimple feature collection with 332 features and 6 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: 103.6057 ymin: 1.158699 xmax: 104.0885 ymax: 1.470775\nGeodetic CRS:  WGS 84\n\n\nWe now want to import the kml file\n\nmpsz19_kml &lt;- st_read(\"data/MasterPlan2019SubzoneBoundaryNoSeaKML.kml\")\n\nReading layer `URA_MP19_SUBZONE_NO_SEA_PL' from data source \n  `/home/syoongy/Documents/code/SMU/is415/IS415-GAA/In-class_Ex/In-class_Ex02/data/MasterPlan2019SubzoneBoundaryNoSeaKML.kml' \n  using driver `KML'\nSimple feature collection with 332 features and 2 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: 103.6057 ymin: 1.158699 xmax: 104.0885 ymax: 1.470775\nGeodetic CRS:  WGS 84"
+  },
+  {
+    "objectID": "In-class_Ex/In-class_Ex02/In-class_Ex02.html#data-processing",
+    "href": "In-class_Ex/In-class_Ex02/In-class_Ex02.html#data-processing",
+    "title": "In-class Exercise 2",
+    "section": "Data processing",
+    "text": "Data processing\nWe now want to process and split the data\n\npopdata2023 &lt;- popdata2023 %&gt;%\n  mutate(`YOUNG` = rowSums(.[3:6]) + rowSums(.[14])) %&gt;%\n  mutate(`ECONOMY ACTIVE` = rowSums(.[7:13])+rowSums(.[15])) %&gt;%\n  mutate(`AGED` = rowSums(.[16:21])) %&gt;%\n  mutate(`TOTAL` = rowSums(.[3:21])) %&gt;%\n  mutate(`DEPENDENCY` = (`YOUNG` + `AGED`)/`ECONOMY ACTIVE`) %&gt;%\n  select(`PA`, `SZ`, `YOUNG`, `ECONOMY ACTIVE`, `AGED`, `TOTAL`, `DEPENDENCY`)\n\nNow we can join popdata2023 and mpsz19_shp_3414\n\npopdata2023 &lt;- popdata2023 %&gt;%\n  mutate_at(.vars = vars(PA, SZ), \n          .funs = list(toupper))\n\n\nmpsz_pop2023 &lt;- left_join(mpsz19_shp_3414, popdata2023,\n                          by = c(\"SUBZONE_N\" = \"SZ\"))\nglimpse(mpsz_pop2023)\n\nRows: 332\nColumns: 13\n$ SUBZONE_N        &lt;chr&gt; \"MARINA EAST\", \"INSTITUTION HILL\", \"ROBERTSON QUAY\", …\n$ SUBZONE_C        &lt;chr&gt; \"MESZ01\", \"RVSZ05\", \"SRSZ01\", \"WISZ01\", \"MUSZ02\", \"MP…\n$ PLN_AREA_N       &lt;chr&gt; \"MARINA EAST\", \"RIVER VALLEY\", \"SINGAPORE RIVER\", \"WE…\n$ PLN_AREA_C       &lt;chr&gt; \"ME\", \"RV\", \"SR\", \"WI\", \"MU\", \"MP\", \"WI\", \"WI\", \"SI\",…\n$ REGION_N         &lt;chr&gt; \"CENTRAL REGION\", \"CENTRAL REGION\", \"CENTRAL REGION\",…\n$ REGION_C         &lt;chr&gt; \"CR\", \"CR\", \"CR\", \"WR\", \"CR\", \"CR\", \"WR\", \"WR\", \"CR\",…\n$ PA               &lt;chr&gt; \"MARINA EAST\", \"RIVER VALLEY\", \"SINGAPORE RIVER\", \"WE…\n$ YOUNG            &lt;dbl&gt; 0, 1050, 1050, 0, 30, 0, 0, 0, 0, 690, 0, 0, 0, 1240,…\n$ `ECONOMY ACTIVE` &lt;dbl&gt; 0, 2290, 2380, 0, 140, 0, 0, 0, 0, 1470, 0, 0, 0, 280…\n$ AGED             &lt;dbl&gt; 0, 370, 300, 0, 10, 0, 0, 0, 0, 230, 0, 0, 0, 590, 36…\n$ TOTAL            &lt;dbl&gt; 0, 3710, 3730, 0, 180, 0, 0, 0, 0, 2390, 0, 0, 0, 463…\n$ DEPENDENCY       &lt;dbl&gt; NaN, 0.6200873, 0.5672269, NaN, 0.2857143, NaN, NaN, …\n$ geometry         &lt;MULTIPOLYGON [m]&gt; MULTIPOLYGON (((33222.98 29..., MULTIPOL…\n\n\n\npop2023_mpsz &lt;- left_join(popdata2023, mpsz19_shp_3414,\n                          by = c(\"SZ\" = \"SUBZONE_N\"))\nglimpse(pop2023_mpsz)\n\nRows: 332\nColumns: 13\n$ PA               &lt;chr&gt; \"ANG MO KIO\", \"ANG MO KIO\", \"ANG MO KIO\", \"ANG MO KIO…\n$ SZ               &lt;chr&gt; \"ANG MO KIO TOWN CENTRE\", \"CHENG SAN\", \"CHONG BOON\", …\n$ YOUNG            &lt;dbl&gt; 1240, 5150, 4620, 4320, 1840, 3810, 1870, 3750, 0, 10…\n$ `ECONOMY ACTIVE` &lt;dbl&gt; 2830, 15600, 14120, 12400, 3670, 9600, 4320, 11090, 0…\n$ AGED             &lt;dbl&gt; 890, 6580, 7060, 5640, 1420, 4320, 1790, 5390, 0, 880…\n$ TOTAL            &lt;dbl&gt; 4960, 27330, 25800, 22360, 6930, 17730, 7980, 20230, …\n$ DEPENDENCY       &lt;dbl&gt; 0.7526502, 0.7519231, 0.8271955, 0.8032258, 0.8882834…\n$ SUBZONE_C        &lt;chr&gt; \"AMSZ01\", \"AMSZ02\", \"AMSZ03\", \"AMSZ06\", \"AMSZ07\", \"AM…\n$ PLN_AREA_N       &lt;chr&gt; \"ANG MO KIO\", \"ANG MO KIO\", \"ANG MO KIO\", \"ANG MO KIO…\n$ PLN_AREA_C       &lt;chr&gt; \"AM\", \"AM\", \"AM\", \"AM\", \"AM\", \"AM\", \"AM\", \"AM\", \"AM\",…\n$ REGION_N         &lt;chr&gt; \"NORTH-EAST REGION\", \"NORTH-EAST REGION\", \"NORTH-EAST…\n$ REGION_C         &lt;chr&gt; \"NER\", \"NER\", \"NER\", \"NER\", \"NER\", \"NER\", \"NER\", \"NER…\n$ geometry         &lt;MULTIPOLYGON [m]&gt; MULTIPOLYGON (((29692.8 389..., MULTIPOL…"
   },
   {
     "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html",

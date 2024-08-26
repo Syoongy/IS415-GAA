@@ -10,5 +10,6 @@ listing:
 Welcome to **IS415 Geospatial Analytics and Applications**. You will find my work done for this course.
 
 ## Hands-on Exercises
+
 ::: {#exercises}
 :::
