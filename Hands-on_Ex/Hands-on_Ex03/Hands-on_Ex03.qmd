@@ -1,0 +1,15 @@
+---
+title: "Hands-on Exercise 3: 1st & 2nd Order Spatial Point Patterns Analysis Methods"
+author: "Fan Syong Yue"
+date: 08/27/24
+date-modified: "last-modified"
+execute:
+  eval: true
+  echo: true
+  freeze: true
+---
+
+# 1st order
+Spatial Point Pattern Analysis is the evaluation of the pattern or distribution, of a set of points on a surface. The point can represent events such as crime, traffic accident and disease onset, or business services (coffee and fastfood outlets) or facilities such as childcare and eldercare.
+
+We will be using `spatstat` on this exercise to discover the spatial point processes of childecare centres in Singapore.
