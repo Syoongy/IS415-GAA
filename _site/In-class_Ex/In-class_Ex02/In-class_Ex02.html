@@ -156,6 +156,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../../In-class_Ex/In-class_Ex02/In-class_Ex02.html">
  <span class="dropdown-text">In-class Exercise 2</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../In-class_Ex/In-class_Ex03/In-class_Ex03.html">
+ <span class="dropdown-text">In-class Exercise 3</span></a>
+  </li>  
     </ul>
   </li>
 </ul>
@@ -192,7 +196,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#working-with-2019-master-plan-subzone-boundary-no-sea" id="toc-working-with-2019-master-plan-subzone-boundary-no-sea" class="nav-link" data-scroll-target="#working-with-2019-master-plan-subzone-boundary-no-sea">Working with 2019 Master Plan Subzone Boundary (No Sea)</a>
   <ul class="collapse">
   <li><a href="#importing-the-data-1" id="toc-importing-the-data-1" class="nav-link" data-scroll-target="#importing-the-data-1">Importing the data</a></li>
-  <li><a href="#comparing-the-data" id="toc-comparing-the-data" class="nav-link" data-scroll-target="#comparing-the-data">Comparing the data</a></li>
+  </ul></li>
+  <li><a href="#handling-coordinate-systems" id="toc-handling-coordinate-systems" class="nav-link" data-scroll-target="#handling-coordinate-systems">Handling Coordinate Systems</a></li>
+  <li><a href="#working-with-population-data" id="toc-working-with-population-data" class="nav-link" data-scroll-target="#working-with-population-data">Working with Population Data</a>
+  <ul class="collapse">
+  <li><a href="#data-processing" id="toc-data-processing" class="nav-link" data-scroll-target="#data-processing">Data processing</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -226,7 +234,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">August 30, 2024</p>
+      <p class="date-modified">September 2, 2024</p>
     </div>
   </div>
     
@@ -254,7 +262,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">layer =</span> <span class="st">"MP14_SUBZONE_WEB_PL"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `MP14_SUBZONE_WEB_PL' from data source 
-  `/home/syoongy/Documents/code/SMU/is415/IS415-GAA/In-class_Ex/In-class_ex02/data' 
+  `/home/syoongy/Documents/code/SMU/is415/IS415-GAA/In-class_Ex/In-class_Ex02/data' 
   using driver `ESRI Shapefile'
 Simple feature collection with 323 features and 15 fields
 Geometry type: MULTIPOLYGON
@@ -274,7 +282,7 @@ Projected CRS: SVY21</code></pre>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mpsz14_kml <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/MP14_SUBZONE_WEB_PL.kml"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `MP14_SUBZONE_WEB_PL' from data source 
-  `/home/syoongy/Documents/code/SMU/is415/IS415-GAA/In-class_Ex/In-class_ex02/data/MP14_SUBZONE_WEB_PL.kml' 
+  `/home/syoongy/Documents/code/SMU/is415/IS415-GAA/In-class_Ex/In-class_Ex02/data/MP14_SUBZONE_WEB_PL.kml' 
   using driver `KML'
 Simple feature collection with 323 features and 2 fields
 Geometry type: MULTIPOLYGON
@@ -295,7 +303,7 @@ Geodetic CRS:  WGS 84</code></pre>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">layer =</span> <span class="st">"MPSZ-2019"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `MPSZ-2019' from data source 
-  `/home/syoongy/Documents/code/SMU/is415/IS415-GAA/In-class_Ex/In-class_ex02/data' 
+  `/home/syoongy/Documents/code/SMU/is415/IS415-GAA/In-class_Ex/In-class_Ex02/data' 
   using driver `ESRI Shapefile'
 Simple feature collection with 332 features and 6 fields
 Geometry type: MULTIPOLYGON
@@ -309,7 +317,7 @@ Geodetic CRS:  WGS 84</code></pre>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mpsz19_kml <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/MasterPlan2019SubzoneBoundaryNoSeaKML.kml"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Reading layer `URA_MP19_SUBZONE_NO_SEA_PL' from data source 
-  `/home/syoongy/Documents/code/SMU/is415/IS415-GAA/In-class_Ex/In-class_ex02/data/MasterPlan2019SubzoneBoundaryNoSeaKML.kml' 
+  `/home/syoongy/Documents/code/SMU/is415/IS415-GAA/In-class_Ex/In-class_Ex02/data/MasterPlan2019SubzoneBoundaryNoSeaKML.kml' 
   using driver `KML'
 Simple feature collection with 332 features and 2 fields
 Geometry type: MULTIPOLYGON
@@ -319,8 +327,216 @@ Geodetic CRS:  WGS 84</code></pre>
 </div>
 </div>
 </section>
-<section id="comparing-the-data" class="level2">
-<h2 class="anchored" data-anchor-id="comparing-the-data">Comparing the data</h2>
+</section>
+<section id="handling-coordinate-systems" class="level1">
+<h1>Handling Coordinate Systems</h1>
+<p>We want to transform our <code>mpsz19_shp</code> variable to use the EGS 3414 coordinate system instead of its original WGS 84</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mpsz19_shp_3414 <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(mpsz19_shp, <span class="at">crs =</span> <span class="dv">3414</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(mpsz19_shp_3414)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Coordinate Reference System:
+  User input: EPSG:3414 
+  wkt:
+PROJCRS["SVY21 / Singapore TM",
+    BASEGEOGCRS["SVY21",
+        DATUM["SVY21",
+            ELLIPSOID["WGS 84",6378137,298.257223563,
+                LENGTHUNIT["metre",1]]],
+        PRIMEM["Greenwich",0,
+            ANGLEUNIT["degree",0.0174532925199433]],
+        ID["EPSG",4757]],
+    CONVERSION["Singapore Transverse Mercator",
+        METHOD["Transverse Mercator",
+            ID["EPSG",9807]],
+        PARAMETER["Latitude of natural origin",1.36666666666667,
+            ANGLEUNIT["degree",0.0174532925199433],
+            ID["EPSG",8801]],
+        PARAMETER["Longitude of natural origin",103.833333333333,
+            ANGLEUNIT["degree",0.0174532925199433],
+            ID["EPSG",8802]],
+        PARAMETER["Scale factor at natural origin",1,
+            SCALEUNIT["unity",1],
+            ID["EPSG",8805]],
+        PARAMETER["False easting",28001.642,
+            LENGTHUNIT["metre",1],
+            ID["EPSG",8806]],
+        PARAMETER["False northing",38744.572,
+            LENGTHUNIT["metre",1],
+            ID["EPSG",8807]]],
+    CS[Cartesian,2],
+        AXIS["northing (N)",north,
+            ORDER[1],
+            LENGTHUNIT["metre",1]],
+        AXIS["easting (E)",east,
+            ORDER[2],
+            LENGTHUNIT["metre",1]],
+    USAGE[
+        SCOPE["Cadastre, engineering survey, topographic mapping."],
+        AREA["Singapore - onshore and offshore."],
+        BBOX[1.13,103.59,1.47,104.07]],
+    ID["EPSG",3414]]</code></pre>
+</div>
+</div>
+<p>We now want to import and transform our Preschool data into the same EGS 3414 coordinate system</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>preschool_kml_3414 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/PreSchoolsLocation.kml"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_transform</span>(<span class="at">crs =</span> <span class="dv">3414</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `PRESCHOOLS_LOCATION' from data source 
+  `/home/syoongy/Documents/code/SMU/is415/IS415-GAA/In-class_Ex/In-class_Ex02/data/PreSchoolsLocation.kml' 
+  using driver `KML'
+Simple feature collection with 2290 features and 2 fields
+Geometry type: POINT
+Dimension:     XYZ
+Bounding box:  xmin: 103.6878 ymin: 1.247759 xmax: 103.9897 ymax: 1.462134
+z_range:       zmin: 0 zmax: 0
+Geodetic CRS:  WGS 84</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(preschool_kml_3414)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Coordinate Reference System:
+  User input: EPSG:3414 
+  wkt:
+PROJCRS["SVY21 / Singapore TM",
+    BASEGEOGCRS["SVY21",
+        DATUM["SVY21",
+            ELLIPSOID["WGS 84",6378137,298.257223563,
+                LENGTHUNIT["metre",1]]],
+        PRIMEM["Greenwich",0,
+            ANGLEUNIT["degree",0.0174532925199433]],
+        ID["EPSG",4757]],
+    CONVERSION["Singapore Transverse Mercator",
+        METHOD["Transverse Mercator",
+            ID["EPSG",9807]],
+        PARAMETER["Latitude of natural origin",1.36666666666667,
+            ANGLEUNIT["degree",0.0174532925199433],
+            ID["EPSG",8801]],
+        PARAMETER["Longitude of natural origin",103.833333333333,
+            ANGLEUNIT["degree",0.0174532925199433],
+            ID["EPSG",8802]],
+        PARAMETER["Scale factor at natural origin",1,
+            SCALEUNIT["unity",1],
+            ID["EPSG",8805]],
+        PARAMETER["False easting",28001.642,
+            LENGTHUNIT["metre",1],
+            ID["EPSG",8806]],
+        PARAMETER["False northing",38744.572,
+            LENGTHUNIT["metre",1],
+            ID["EPSG",8807]]],
+    CS[Cartesian,2],
+        AXIS["northing (N)",north,
+            ORDER[1],
+            LENGTHUNIT["metre",1]],
+        AXIS["easting (E)",east,
+            ORDER[2],
+            LENGTHUNIT["metre",1]],
+    USAGE[
+        SCOPE["Cadastre, engineering survey, topographic mapping."],
+        AREA["Singapore - onshore and offshore."],
+        BBOX[1.13,103.59,1.47,104.07]],
+    ID["EPSG",3414]]</code></pre>
+</div>
+</div>
+</section>
+<section id="working-with-population-data" class="level1">
+<h1>Working with Population Data</h1>
+<p>We first need to import the population data into a data frame</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>popdata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/respopagesextod2023.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 100928 Columns: 7
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (5): PA, SZ, AG, Sex, TOD
+dbl (2): Pop, Time
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<p>We now want to break the data down into their planning area, subzone and age group</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>popdata2023 <span class="ot">&lt;-</span> popdata <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(PA, SZ, AG) <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="st">`</span><span class="at">POP</span><span class="st">`</span><span class="ot">=</span><span class="fu">sum</span>(<span class="st">`</span><span class="at">Pop</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> AG, <span class="at">values_from =</span> POP)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'PA', 'SZ'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(popdata2023)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "PA"          "SZ"          "0_to_4"      "10_to_14"    "15_to_19"   
+ [6] "20_to_24"    "25_to_29"    "30_to_34"    "35_to_39"    "40_to_44"   
+[11] "45_to_49"    "50_to_54"    "55_to_59"    "5_to_9"      "60_to_64"   
+[16] "65_to_69"    "70_to_74"    "75_to_79"    "80_to_84"    "85_to_89"   
+[21] "90_and_Over"</code></pre>
+</div>
+</div>
+<section id="data-processing" class="level2">
+<h2 class="anchored" data-anchor-id="data-processing">Data processing</h2>
+<p>We now want to process and split the data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>popdata2023 <span class="ot">&lt;-</span> popdata2023 <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">YOUNG</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">rowSums</span>(.[<span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>]) <span class="sc">+</span> <span class="fu">rowSums</span>(.[<span class="dv">14</span>])) <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">ECONOMY ACTIVE</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">rowSums</span>(.[<span class="dv">7</span><span class="sc">:</span><span class="dv">13</span>])<span class="sc">+</span><span class="fu">rowSums</span>(.[<span class="dv">15</span>])) <span class="sc">%&gt;%</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">AGED</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">rowSums</span>(.[<span class="dv">16</span><span class="sc">:</span><span class="dv">21</span>])) <span class="sc">%&gt;%</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">TOTAL</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">rowSums</span>(.[<span class="dv">3</span><span class="sc">:</span><span class="dv">21</span>])) <span class="sc">%&gt;%</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">DEPENDENCY</span><span class="st">`</span> <span class="ot">=</span> (<span class="st">`</span><span class="at">YOUNG</span><span class="st">`</span> <span class="sc">+</span> <span class="st">`</span><span class="at">AGED</span><span class="st">`</span>)<span class="sc">/</span><span class="st">`</span><span class="at">ECONOMY ACTIVE</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">PA</span><span class="st">`</span>, <span class="st">`</span><span class="at">SZ</span><span class="st">`</span>, <span class="st">`</span><span class="at">YOUNG</span><span class="st">`</span>, <span class="st">`</span><span class="at">ECONOMY ACTIVE</span><span class="st">`</span>, <span class="st">`</span><span class="at">AGED</span><span class="st">`</span>, <span class="st">`</span><span class="at">TOTAL</span><span class="st">`</span>, <span class="st">`</span><span class="at">DEPENDENCY</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we can join <code>popdata2023</code> and <code>mpsz19_shp_3414</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>popdata2023 <span class="ot">&lt;-</span> popdata2023 <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="at">.vars =</span> <span class="fu">vars</span>(PA, SZ), </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">.funs =</span> <span class="fu">list</span>(toupper))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>mpsz_pop2023 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(mpsz19_shp_3414, popdata2023,</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"SUBZONE_N"</span> <span class="ot">=</span> <span class="st">"SZ"</span>))</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(mpsz_pop2023)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 332
+Columns: 13
+$ SUBZONE_N        &lt;chr&gt; "MARINA EAST", "INSTITUTION HILL", "ROBERTSON QUAY", …
+$ SUBZONE_C        &lt;chr&gt; "MESZ01", "RVSZ05", "SRSZ01", "WISZ01", "MUSZ02", "MP…
+$ PLN_AREA_N       &lt;chr&gt; "MARINA EAST", "RIVER VALLEY", "SINGAPORE RIVER", "WE…
+$ PLN_AREA_C       &lt;chr&gt; "ME", "RV", "SR", "WI", "MU", "MP", "WI", "WI", "SI",…
+$ REGION_N         &lt;chr&gt; "CENTRAL REGION", "CENTRAL REGION", "CENTRAL REGION",…
+$ REGION_C         &lt;chr&gt; "CR", "CR", "CR", "WR", "CR", "CR", "WR", "WR", "CR",…
+$ PA               &lt;chr&gt; "MARINA EAST", "RIVER VALLEY", "SINGAPORE RIVER", "WE…
+$ YOUNG            &lt;dbl&gt; 0, 1050, 1050, 0, 30, 0, 0, 0, 0, 690, 0, 0, 0, 1240,…
+$ `ECONOMY ACTIVE` &lt;dbl&gt; 0, 2290, 2380, 0, 140, 0, 0, 0, 0, 1470, 0, 0, 0, 280…
+$ AGED             &lt;dbl&gt; 0, 370, 300, 0, 10, 0, 0, 0, 0, 230, 0, 0, 0, 590, 36…
+$ TOTAL            &lt;dbl&gt; 0, 3710, 3730, 0, 180, 0, 0, 0, 0, 2390, 0, 0, 0, 463…
+$ DEPENDENCY       &lt;dbl&gt; NaN, 0.6200873, 0.5672269, NaN, 0.2857143, NaN, NaN, …
+$ geometry         &lt;MULTIPOLYGON [m]&gt; MULTIPOLYGON (((33222.98 29..., MULTIPOL…</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>pop2023_mpsz <span class="ot">&lt;-</span> <span class="fu">left_join</span>(popdata2023, mpsz19_shp_3414,</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"SZ"</span> <span class="ot">=</span> <span class="st">"SUBZONE_N"</span>))</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(pop2023_mpsz)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 332
+Columns: 13
+$ PA               &lt;chr&gt; "ANG MO KIO", "ANG MO KIO", "ANG MO KIO", "ANG MO KIO…
+$ SZ               &lt;chr&gt; "ANG MO KIO TOWN CENTRE", "CHENG SAN", "CHONG BOON", …
+$ YOUNG            &lt;dbl&gt; 1240, 5150, 4620, 4320, 1840, 3810, 1870, 3750, 0, 10…
+$ `ECONOMY ACTIVE` &lt;dbl&gt; 2830, 15600, 14120, 12400, 3670, 9600, 4320, 11090, 0…
+$ AGED             &lt;dbl&gt; 890, 6580, 7060, 5640, 1420, 4320, 1790, 5390, 0, 880…
+$ TOTAL            &lt;dbl&gt; 4960, 27330, 25800, 22360, 6930, 17730, 7980, 20230, …
+$ DEPENDENCY       &lt;dbl&gt; 0.7526502, 0.7519231, 0.8271955, 0.8032258, 0.8882834…
+$ SUBZONE_C        &lt;chr&gt; "AMSZ01", "AMSZ02", "AMSZ03", "AMSZ06", "AMSZ07", "AM…
+$ PLN_AREA_N       &lt;chr&gt; "ANG MO KIO", "ANG MO KIO", "ANG MO KIO", "ANG MO KIO…
+$ PLN_AREA_C       &lt;chr&gt; "AM", "AM", "AM", "AM", "AM", "AM", "AM", "AM", "AM",…
+$ REGION_N         &lt;chr&gt; "NORTH-EAST REGION", "NORTH-EAST REGION", "NORTH-EAST…
+$ REGION_C         &lt;chr&gt; "NER", "NER", "NER", "NER", "NER", "NER", "NER", "NER…
+$ geometry         &lt;MULTIPOLYGON [m]&gt; MULTIPOLYGON (((29692.8 389..., MULTIPOL…</code></pre>
+</div>
+</div>
 
 
 </section>

@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Fan Syong Yue">
+<meta name="dcterms.date" content="2024-08-26">
 
-<title>IS415-GAA</title>
+<title>IS415-GAA - In-class Exercise 3</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +22,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,67 +102,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-exercises .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-exercises'] = new List('listing-exercises', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -138,7 +114,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">IS415-GAA</span>
     </a>
   </div>
@@ -154,15 +130,15 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-hands-on-exercise">    
         <li>
-    <a class="dropdown-item" href="./Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html">
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html">
  <span class="dropdown-text">Hands-on Exercise 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html">
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html">
  <span class="dropdown-text">Hands-on Exercise 2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./Hands-on_Ex/Hands-on_Ex03/Hands-on_Ex03.html">
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex03/Hands-on_Ex03.html">
  <span class="dropdown-text">Hands-on Exercise 3</span></a>
   </li>  
     </ul>
@@ -173,15 +149,15 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-in-class-exercise">    
         <li>
-    <a class="dropdown-item" href="./In-class_Ex/In-class_Ex01/In-class_Ex01.html">
+    <a class="dropdown-item" href="../../In-class_Ex/In-class_Ex01/In-class_Ex01.html">
  <span class="dropdown-text">In-class Exercise 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./In-class_Ex/In-class_Ex02/In-class_Ex02.html">
+    <a class="dropdown-item" href="../../In-class_Ex/In-class_Ex02/In-class_Ex02.html">
  <span class="dropdown-text">In-class Exercise 2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./In-class_Ex/In-class_Ex03/In-class_Ex03.html">
+    <a class="dropdown-item" href="../../In-class_Ex/In-class_Ex03/In-class_Ex03.html">
  <span class="dropdown-text">In-class Exercise 3</span></a>
   </li>  
     </ul>
@@ -189,11 +165,11 @@ window.Quarto = {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -212,7 +188,11 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#hands-on-exercises" id="toc-hands-on-exercises" class="nav-link active" data-scroll-target="#hands-on-exercises">Hands-on Exercises</a></li>
+  <li><a href="#packages" id="toc-packages" class="nav-link active" data-scroll-target="#packages">Packages</a></li>
+  <li><a href="#data-wrangling" id="toc-data-wrangling" class="nav-link" data-scroll-target="#data-wrangling">Data Wrangling</a>
+  <ul class="collapse">
+  <li><a href="#working-with-st_union" id="toc-working-with-st_union" class="nav-link" data-scroll-target="#working-with-st_union">Working with <code>st_union()</code></a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -221,15 +201,33 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">IS415-GAA</h1>
+<h1 class="title">In-class Exercise 3</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Fan Syong Yue </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 26, 2024</p>
+    </div>
+  </div>
   
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">September 2, 2024</p>
+    </div>
+  </div>
     
   </div>
   
@@ -238,103 +236,122 @@ window.Quarto = {
 </header>
 
 
-<p>Welcome to <strong>IS415 Geospatial Analytics and Applications</strong>. You will find my work done for this course.</p>
-<section id="hands-on-exercises" class="level2">
-<h2 class="anchored" data-anchor-id="hands-on-exercises">Hands-on Exercises</h2>
-<div id="listing-exercises" class="quarto-listing quarto-listing-container-default">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1723651200000" data-listing-file-modified-sort="1724005471521" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1002">
-<div class="thumbnail">
-<p><a href="./Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html" class="no-external"></a></p><a href="./Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html" class="no-external">
-<p class="card-img-top"><img src="Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01_files/figure-html/unnamed-chunk-6-1.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html" class="no-external"></a></p>
+<section id="packages" class="level1">
+<h1>Packages</h1>
+<p>As <code>maptools</code> was removed from the CRAN repository, we can only install it through an archived link.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"maptools"</span>, <span class="at">repos =</span> <span class="st">"https://packagemanager.posit.co/cran/2023-10-13"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html" class="no-external">Hands-on Exercise 1</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html" class="no-external"></a>
+<p>We can now load the modules required</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tmap, sf, raster, spatstat, maptools, sp, tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Installing package into '/home/syoongy/R/x86_64-pc-linux-gnu-library/4.4'
+(as 'lib' is unspecified)</code></pre>
 </div>
-<div class="listing-description">
-<a href="./Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html" class="no-external">The code chunk below uses p_load() of pacman package to check if tidyverse packages are installed in the computer. If they are, then they will be launched in R.</a>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'maptools' is not available for this version of R
+
+A version of this package for your version of R might be available elsewhere,
+see the ideas at
+https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Installing-packages</code></pre>
 </div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: 'BiocManager' not available.  Could not check Bioconductor.
+
+Please use `install.packages('BiocManager')` and then retry.</code></pre>
 </div>
-<div class="metadata">
-<a href="./Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html" class="no-external">
-<div class="listing-date">
-Aug 15, 2024
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in p_install(package, character.only = TRUE, ...):</code></pre>
 </div>
-<div class="listing-author">
-Fan Syong Yue
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in library(package, lib.loc = lib.loc, character.only = TRUE,
+logical.return = TRUE, : there is no package called 'maptools'</code></pre>
 </div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1724428800000" data-listing-file-modified-sort="1724504943285" data-listing-date-modified-sort="1724504943000" data-listing-reading-time-sort="12" data-listing-word-count-sort="2302">
-<div class="thumbnail">
-<p><a href="./Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html" class="no-external"></a></p><a href="./Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html" class="no-external">
-<p class="card-img-top"><img src="Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02_files/figure-html/unnamed-chunk-9-1.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html" class="no-external">Hands-on Exercise 2: Thematic Mapping and GeoVisualisation</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html" class="no-external">Thematic mapping utilises map symbols to highlight geographic features that are not naturally visible. Examples include population, temperature and crime rate.</a>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in pacman::p_load(tmap, sf, raster, spatstat, maptools, sp, tidyverse): Failed to install/load:
+maptools</code></pre>
 </div>
 </div>
-<div class="metadata">
-<a href="./Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html" class="no-external">
-<div class="listing-date">
-Aug 24, 2024
-</div>
-<div class="listing-author">
-Fan Syong Yue
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1724688000000" data-listing-file-modified-sort="1725237278563" data-listing-date-modified-sort="1725237278000" data-listing-reading-time-sort="15" data-listing-word-count-sort="2982">
-<div class="thumbnail">
-<p><a href="./Hands-on_Ex/Hands-on_Ex03/Hands-on_Ex03.html" class="no-external"></a></p><a href="./Hands-on_Ex/Hands-on_Ex03/Hands-on_Ex03.html" class="no-external">
-<p class="card-img-top"><img src="Hands-on_Ex/Hands-on_Ex03/Hands-on_Ex03_files/figure-html/unnamed-chunk-6-1.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./Hands-on_Ex/Hands-on_Ex03/Hands-on_Ex03.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./Hands-on_Ex/Hands-on_Ex03/Hands-on_Ex03.html" class="no-external">Hands-on Exercise 3: 1st &amp; 2nd Order Spatial Point Patterns Analysis Methods</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./Hands-on_Ex/Hands-on_Ex03/Hands-on_Ex03.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./Hands-on_Ex/Hands-on_Ex03/Hands-on_Ex03.html" class="no-external">Spatial Point Pattern Analysis is the evaluation of the pattern or distribution, of a set of points on a surface. The point can represent events such as crime, traffic…</a>
+</section>
+<section id="data-wrangling" class="level1">
+<h1>Data Wrangling</h1>
+<p>we will be using the following datasets:</p>
+<ul>
+<li><a href="https://beta.data.gov.sg/datasets/d_d14da225fccf921049ab64238ff473d9/view">Master Plan 2014 Subzone Boundary Data</a></li>
+<li><a href="https://data.gov.sg/collections/2015/view">Childcare Services</a> (GeoJSON)</li>
+<li>CostalOutline from SLA</li>
+</ul>
+<p>We first use <code>st_read()</code> to import all our into variables <code>mpsz_sf</code>,<code>childcare_sf</code>, <code>sg_sf</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mpsz_sf <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="at">dsn =</span> <span class="st">"data"</span>, <span class="at">layer =</span> <span class="st">"MP14_SUBZONE_WEB_PL"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `MP14_SUBZONE_WEB_PL' from data source 
+  `/home/syoongy/Documents/code/SMU/is415/IS415-GAA/In-class_Ex/In-class_Ex03/data' 
+  using driver `ESRI Shapefile'
+Simple feature collection with 323 features and 15 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: 2667.538 ymin: 15748.72 xmax: 56396.44 ymax: 50256.33
+Projected CRS: SVY21</code></pre>
 </div>
 </div>
-<div class="metadata">
-<a href="./Hands-on_Ex/Hands-on_Ex03/Hands-on_Ex03.html" class="no-external">
-<div class="listing-date">
-Aug 27, 2024
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>childcare_sf <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"data/child-care-services-geojson.geojson"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_transform</span>( <span class="at">crs =</span> <span class="dv">3414</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `child-care-services-geojson' from data source 
+  `/home/syoongy/Documents/code/SMU/is415/IS415-GAA/In-class_Ex/In-class_Ex03/data/child-care-services-geojson.geojson' 
+  using driver `GeoJSON'
+Simple feature collection with 1545 features and 2 fields
+Geometry type: POINT
+Dimension:     XYZ
+Bounding box:  xmin: 103.6824 ymin: 1.248403 xmax: 103.9897 ymax: 1.462134
+z_range:       zmin: 0 zmax: 0
+Geodetic CRS:  WGS 84</code></pre>
 </div>
-<div class="listing-author">
-Fan Syong Yue
 </div>
-</a>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>sg_sf <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="at">dsn =</span> <span class="st">"data"</span>, <span class="at">layer =</span> <span class="st">"CostalOutline"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `CostalOutline' from data source 
+  `/home/syoongy/Documents/code/SMU/is415/IS415-GAA/In-class_Ex/In-class_Ex03/data' 
+  using driver `ESRI Shapefile'
+Simple feature collection with 60 features and 4 fields
+Geometry type: POLYGON
+Dimension:     XY
+Bounding box:  xmin: 2663.926 ymin: 16357.98 xmax: 56047.79 ymax: 50244.03
+Projected CRS: SVY21</code></pre>
 </div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>acled_sf <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/Myanmar/ACLED_Myanmar.csv"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"longitude"</span>, <span class="st">"latitude"</span>),</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">crs=</span><span class="dv">4326</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_transform</span>(<span class="at">crs =</span> <span class="dv">32647</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">event_date =</span> <span class="fu">dmy</span>(event_date))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 55574 Columns: 31
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (20): event_id_cnty, event_date, disorder_type, event_type, sub_event_ty...
+dbl (11): year, time_precision, inter1, inter2, interaction, iso, latitude, ...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="listing-no-matching d-none">
-No matching items
 </div>
+<section id="working-with-st_union" class="level2">
+<h2 class="anchored" data-anchor-id="working-with-st_union">Working with <code>st_union()</code></h2>
+<p>We want to derive the coastal outline sf tibble data.frame</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>sg_sf <span class="ot">&lt;-</span> mpsz_sf <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_union</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
-
+</section>
 </section>
 
 </main> <!-- /main -->

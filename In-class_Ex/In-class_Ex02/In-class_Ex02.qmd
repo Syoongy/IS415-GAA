@@ -61,25 +61,32 @@ mpsz19_kml <- st_read("data/MasterPlan2019SubzoneBoundaryNoSeaKML.kml")
 ```
 
 # Handling Coordinate Systems
+
 We want to transform our `mpsz19_shp` variable to use the EGS 3414 coordinate system instead of its original WGS 84
+
 ```{r}
 mpsz19_shp_3414 <- st_transform(mpsz19_shp, crs = 3414)
 st_crs(mpsz19_shp_3414)
 ```
 
 We now want to import and transform our Preschool data into the same EGS 3414 coordinate system
+
 ```{r}
 preschool_kml_3414 <- st_read("data/PreSchoolsLocation.kml") %>%
   st_transform(crs = 3414)
 st_crs(preschool_kml_3414)
 ```
+
 # Working with Population Data
+
 We first need to import the population data into a data frame
+
 ```{r}
 popdata <- read_csv("data/respopagesextod2023.csv")
 ```
 
 We now want to break the data down into their planning area, subzone and age group
+
 ```{r}
 popdata2023 <- popdata %>%
   group_by(PA, SZ, AG) %>%
@@ -89,8 +96,11 @@ popdata2023 <- popdata %>%
 
 colnames(popdata2023)
 ```
+
 ## Data processing
+
 We now want to process and split the data
+
 ```{r}
 popdata2023 <- popdata2023 %>%
   mutate(`YOUNG` = rowSums(.[3:6]) + rowSums(.[14])) %>%
@@ -100,7 +110,9 @@ popdata2023 <- popdata2023 %>%
   mutate(`DEPENDENCY` = (`YOUNG` + `AGED`)/`ECONOMY ACTIVE`) %>%
   select(`PA`, `SZ`, `YOUNG`, `ECONOMY ACTIVE`, `AGED`, `TOTAL`, `DEPENDENCY`)
 ```
+
 Now we can join `popdata2023` and `mpsz19_shp_3414`
+
 ```{r}
 popdata2023 <- popdata2023 %>%
   mutate_at(.vars = vars(PA, SZ), 
@@ -112,6 +124,7 @@ mpsz_pop2023 <- left_join(mpsz19_shp_3414, popdata2023,
                           by = c("SUBZONE_N" = "SZ"))
 glimpse(mpsz_pop2023)
 ```
+
 ```{r}
 pop2023_mpsz <- left_join(popdata2023, mpsz19_shp_3414,
                           by = c("SZ" = "SUBZONE_N"))

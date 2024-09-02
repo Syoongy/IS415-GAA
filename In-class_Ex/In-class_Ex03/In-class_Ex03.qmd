@@ -1,0 +1,65 @@
+---
+title: "In-class Exercise 3"
+author: "Fan Syong Yue"
+date: 08/26/24
+date-modified: "last-modified"
+execute:
+  eval: true
+  echo: true
+  freeze: true
+---
+
+# Packages
+
+As `maptools` was removed from the CRAN repository, we can only install it through an archived link.
+
+```{r}
+#| eval: false
+install.packages("maptools", repos = "https://packagemanager.posit.co/cran/2023-10-13")
+```
+
+
+We can now load the modules required
+
+```{r}
+pacman::p_load(tmap, sf, raster, spatstat, maptools, sp, tidyverse)
+```
+
+# Data Wrangling
+we will be using the following datasets:
+
+-   [Master Plan 2014 Subzone Boundary Data](https://beta.data.gov.sg/datasets/d_d14da225fccf921049ab64238ff473d9/view)
+-   [Childcare Services](https://data.gov.sg/collections/2015/view) (GeoJSON)
+-   CostalOutline from SLA
+
+We first use `st_read()` to import all our into variables `mpsz_sf`,`childcare_sf`, `sg_sf`
+
+```{r}
+mpsz_sf <- st_read(dsn = "data", layer = "MP14_SUBZONE_WEB_PL")
+```
+
+```{r}
+childcare_sf <- st_read("data/child-care-services-geojson.geojson") %>%
+  st_transform( crs = 3414)
+```
+
+```{r}
+sg_sf <- st_read(dsn = "data", layer = "CostalOutline")
+```
+
+```{r}
+acled_sf <- read_csv("data/Myanmar/ACLED_Myanmar.csv") %>%
+  st_as_sf(coords = c(
+    "longitude", "latitude"),
+    crs=4326) %>%
+  st_transform(crs = 32647) %>%
+  mutate(event_date = dmy(event_date))
+```
+## Working with `st_union()`
+We want to derive the coastal outline sf tibble data.frame
+
+```{r}
+sg_sf <- mpsz_sf %>%
+  st_union()
+```
+
