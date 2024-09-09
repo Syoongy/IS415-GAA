@@ -1,0 +1,10 @@
+---
+title: "Take-home Exercise 1"
+author: "Fan Syong Yue"
+date: 09/09/24
+date-modified: "last-modified"
+execute:
+  eval: true
+  echo: true
+  freeze: true
+---
