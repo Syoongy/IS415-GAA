@@ -119,7 +119,7 @@ we will be computing STKDE by using ``
 We first want to only select the month from the `fire_sf` variable
 ```{r}
 fire_month <- fire_sf %>%
-  select(Month_num)
+  dplyr::select(Month_num)
 ```
 ### Creating ppp
 We now want to convert this into `ppp`
@@ -162,7 +162,7 @@ for (i in tims) {
 We first want to only select the month from the `fire_sf` variable
 ```{r}
 fire_yday <- fire_sf %>%
-  select(DayofYear)
+  dplyr::select(DayofYear)
 ```
 ### Creating ppp
 We now want to convert this into `ppp`
@@ -183,5 +183,5 @@ kde_yday <- spattemp.density(
 summary(kde_yday)
 ```
 ```{r}
-length((stkde))
+length((st_kde))
 ```
