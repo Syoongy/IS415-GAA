@@ -8,3 +8,49 @@ execute:
   echo: true
   freeze: true
 ---
+
+# Packages
+
+We will be using the following packages:
+
+-   sf
+-   tmap
+-   tidyverse
+
+```{r}
+pacman::p_load(sf, tmap, tidyverse)
+```
+
+# Data
+## Import
+We first want to load in the conflict data ranging from 2021-2024
+
+```{r}
+conflict2124_sf <- read_csv("data/2021-01-01-2024-06-30-Myanmar.csv") %>%
+  st_as_sf(coords = c("longitude", "latitude"),
+           crs = 4326)
+```
+
+We also want to import our shapefile of administrative area 1
+
+```{r}
+madm1_sf <- st_read(dsn = "data/geospatial", layer = "mmr_polbnda2_adm1_250k_mimu_1") 
+```
+
+## Wrangling
+
+We first want to rename our states from `myanmaradm1` to have the same naming scheme as `conflict2124`
+```{r}
+madm1_sf$ST <- gsub("\\s*\\(([^)]+)\\)", "-\\1", madm1_sf$ST)
+```
+
+We also want to break down the date time of the data into quarters
+```{r}
+tm_shape(madm1_sf) +
+  tm_polygons() +
+  tm_shape(conflict2124_sf) +
+  tm_dots() +
+  tm_facets(by="year",
+              free.coords = FALSE,
+              drop.units = TRUE)
+```
