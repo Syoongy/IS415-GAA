@@ -1,0 +1,17 @@
+{
+  "hash": "96999953c5867594056bad147a5be37d",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Take-home Exercise 1\"\nauthor: \"Fan Syong Yue\"\ndate: 09/09/24\ndate-modified: \"last-modified\"\nexecute:\n  eval: true\n  echo: true\n  freeze: true\n---\n\n\n# Packages\n\nWe will be using the following packages:\n\n-   sf\n-   tmap\n-   tidyverse\n\n\n::: {.cell}\n\n```{.r .cell-code}\npacman::p_load(sf, tmap, tidyverse)\n```\n:::\n\n\n# Data\n## Import\nWe first want to load in the conflict data ranging from 2021-2024\n\n\n::: {.cell}\n\n```{.r .cell-code}\nconflict2124_sf <- read_csv(\"data/2021-01-01-2024-06-30-Myanmar.csv\") %>%\n  st_as_sf(coords = c(\"longitude\", \"latitude\"),\n           crs = 4326)\n```\n\n::: {.cell-output .cell-output-stderr}\n\n```\nRows: 51553 Columns: 31\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (20): event_id_cnty, event_date, disorder_type, event_type, sub_event_ty...\ndbl (11): year, time_precision, inter1, inter2, interaction, iso, latitude, ...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n```\n\n\n:::\n:::\n\n\nWe also want to import our shapefile of administrative area 1\n\n\n::: {.cell}\n\n```{.r .cell-code}\nmadm1_sf <- st_read(dsn = \"data/geospatial\", layer = \"mmr_polbnda2_adm1_250k_mimu_1\") \n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\nReading layer `mmr_polbnda2_adm1_250k_mimu_1' from data source \n  `/home/syoongy/Documents/code/SMU/is415/IS415-GAA/Take-home_EX/Take-home_Ex01/data/geospatial' \n  using driver `ESRI Shapefile'\nSimple feature collection with 18 features and 6 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: 92.1721 ymin: 9.696844 xmax: 101.17 ymax: 28.54554\nGeodetic CRS:  WGS 84\n```\n\n\n:::\n:::\n\n\n## Wrangling\n\nWe first want to rename our states from `myanmaradm1` to have the same naming scheme as `conflict2124`\n\n::: {.cell}\n\n```{.r .cell-code}\nmadm1_sf$ST <- gsub(\"\\\\s*\\\\(([^)]+)\\\\)\", \"-\\\\1\", madm1_sf$ST)\n```\n:::\n\n\nWe also want to break down the date time of the data into quarters\n\n::: {.cell}\n\n```{.r .cell-code}\ntm_shape(madm1_sf) +\n  tm_polygons() +\n  tm_shape(conflict2124_sf) +\n  tm_dots() +\n  tm_facets(by=\"year\",\n              free.coords = FALSE,\n              drop.units = TRUE)\n```\n\n::: {.cell-output-display}\n![](Take-home_Ex01_files/figure-html/unnamed-chunk-5-1.png){width=672}\n:::\n:::",
+    "supporting": [
+      "Take-home_Ex01_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,155 @@
+---
+title: "In-class Exercise 5"
+author: "Fan Syong Yue"
+date: 17/09/24
+date-modified: "last-modified"
+execute:
+  eval: true
+  echo: true
+  freeze: true
+---
+
+# Data
+
+We will be using 2 data sets for this exercise
+
+-   Hunan county boundary layer. This is a geospatial data set in ESRI shapefile format.
+-   Hunan_2012.csv: This csv file contains selected Hunan’s local development indicators in 2012.
+
+# Packages
+
+We will be using the following packages:
+
+-   sf
+-   spdep
+-   tmap
+-   tidyverse
+-   knitr
+-   GWmodel
+
+```{r}
+pacman::p_load(sf, spdep, tmap, tidyverse, knitr, GWmodel)
+```
+
+# Data
+
+
+```{r}
+#| eval: false
+hunan  <- st_read(dsn = "data/geospatial", layer = "Hunan")
+```
+
+```{r}
+#| eval: false
+hunan2012 <- read_csv("data/aspatial/Hunan_2012.csv")
+```
+
+## Joining the Data
+
+We want to combine the data to update the `hunan` SpatialPolygonsDataFrame with the attribute fields of `hunan2012`
+
+```{r}
+#| eval: false
+hunan_sf <- left_join(hunan,hunan2012)%>%
+  select(1:3, 7, 15, 16, 31, 32)
+```
+
+We want to save the data that we have selected
+```{r}
+#| eval: false
+write_rds(hunan_sf, "data/rds/hunan_sf.rds")
+```
+
+We can now check and reimport the data into `hunan_sf`
+
+```{r}
+hunan_sf <- read_rds("data/rds/hunan_sf.rds")
+```
+
+## Converting to SpatialPolygonDataFrame
+```{r}
+hunan_sp <- as_Spatial(hunan_sf)
+```
+
+# Geographically Weighted Summary Statistics
+## Adaptive bandwith
+
+### Cross Validation
+```{r}
+bw_CV <- bw.gwr(GDPPC ~ 1,
+                 data = hunan_sp,
+                 adaptive = TRUE,
+                 kernel = "bisquare",
+                 longlat = T)
+```
+### AIC
+```{r}
+bw_AIC <- bw.gwr(GDPPC ~ 1,
+                 data = hunan_sp,
+                 approach = "AIC",
+                 adaptive = TRUE,
+                 kernel = "bisquare",
+                 longlat = T)
+```
+
+### Computing
+```{r}
+gwstat <- gwss(data = hunan_sp,
+               vars = "GDPPC",
+               bw = bw_AIC,
+               adaptive = TRUE,
+               kernel = "bisquare",
+               longlat = T)
+```
+
+### Preparing output data
+We want to extract the SDF data table from the gwss object and convert it into a data.frame by using `as.data.frame()`
+```{r}
+gwstat_df <- as.data.frame(gwstat$SDF)
+```
+
+We now want to append the derived data onto the `hunan_sf` data.frame. We will use `cbind()` to achieve this
+```{r}
+hunan_gstat <- cbind(hunan_sf, gwstat_df)
+```
+### Visualisation
+We want to display the geographically weighted mean
+```{r}
+tm_shape(hunan_gstat) +
+  tm_fill("GDPPC_LM",
+          n = 5,
+          style = "quantile") +
+  tm_borders(alpha = 0.5) +
+  tm_layout(main.title = "Distribution of geograhpically weighted mean",
+            main.title.position = "center",
+            main.title.size = 2.0,
+            legend.text.size = 1.2,
+            legend.height = 1.50,
+            legend.width = 1.50,
+            frame = TRUE)
+```
+
+
+
+## Fixed Bandwith
+
+### Cross Validation
+
+```{r}
+bw_fixed_CV <- bw.gwr(GDPPC ~ 1,
+                 data = hunan_sp,
+                 adaptive = FALSE,
+                 kernel = "bisquare",
+                 longlat = T)
+```
+
+### AIC
+```{r}
+bw_fixed_AIC <- bw.gwr(GDPPC ~ 1,
+                 data = hunan_sp,
+                 approach = "AIC",
+                 adaptive = FALSE,
+                 kernel = "bisquare",
+                 longlat = T)
+```
+
