@@ -1,5 +1,5 @@
 ---
-title: "Take-home Exercise 1"
+title: "Take-home Exercise 1: Armed Conflict in Myanmar"
 author: "Fan Syong Yue"
 date: 09/09/24
 date-modified: "last-modified"
@@ -9,6 +9,20 @@ execute:
   freeze: true
 ---
 
+# Introduction
+
+Millions of people have their lives shattered by armed conflict – wars – every year.
+
+Armed conflict has been on the rise since about 2012, after a decline in the 1990s and early 2000s. First came conflicts in Libya, Syria and Yemen, triggered by the 2011 Arab uprisings. Libya’s instability spilled south, helping set off a protracted crisis in the Sahel region. A fresh wave of major combat followed: the 2020 Azerbaijani-Armenian war over the Nagorno-Karabakh enclave, horrific fighting in Ethiopia’s northern Tigray region that began weeks later, the conflict prompted by the Myanmar army’s 2021 power grab and Russia’s 2022 assault on Ukraine. Add to those 2023’s devastation in Sudan and Gaza. Around the globe, more people are dying in fighting, being forced from their homes or in need of life-saving aid than in decades.
+
+Source: [10 Conflicts to Watch in 2024](https://www.crisisgroup.org/global/10-conflicts-watch-2024)
+
+In this article, we are going to be primarily focusing on the ongoing Myanmar Civil War which started in 2021. This civil war comes after Myanmar's long history of insurgencies post independence from British Rule. It had escalated significantly after the 2021 coup d'état on 1 February 2021 which saw the **Tatmadaw** (Myanmar's Military) overthrow the ruling party at the time.
+
+# Objective
+
+We want to apply spatial point patterns analysis methods to discover the spatial and spatio-temporal distribution of armed conflict in Myanmar.
+
 # Packages
 
 We will be using the following packages:
@@ -16,12 +30,24 @@ We will be using the following packages:
 -   sf
 -   tmap
 -   tidyverse
+-   sp
+-   raster
+-   spatstat
+-   sparr
 
 ```{r}
-pacman::p_load(sf, tmap, tidyverse)
+pacman::p_load(sf, tmap, tidyverse, sp, raster, spatstat, sparr)
 ```
 
 # Data
+
+To achieve our objective, we will be using the following datasets
+
+-   Armed conflict data of Myanmar between 2021-2024 from [Armed Conflict Location & Event Data (ACLED)](https://acleddata.com/)
+
+-   [Geospatial data](http://geonode.themimu.info/layers/?limit=100&offset=0) on [Myanmar Information Management Unit, MIMU](http://www.themimu.info/)
+
+-   [OpenStreetMap](https://download.geofabrik.de/asia/myanmar.html) of Myanmar
 
 ## Import
 
@@ -30,24 +56,54 @@ We first want to load in the conflict data ranging from 2021-2024
 ```{r}
 conflict2124_sf <- read_csv("data/2021-01-01-2024-06-30-Myanmar.csv") %>%
   st_as_sf(coords = c("longitude", "latitude"),
-           crs = 4326)
+           crs = 4326) %>%
+  st_transform(crs = 32647)
 ```
 
 We also want to import our shapefile of administrative area 1
 
 ```{r}
-madm1_sf <- st_read(dsn = "data/geospatial", layer = "mmr_polbnda2_adm1_250k_mimu_1") 
+madm1_sf <- st_read(dsn = "data/geospatial", layer = "mmr_polbnda2_adm1_250k_mimu_1") %>%
+  st_transform(crs = 32647)
+```
+
+Finally, we have the data from OpenStreetMap where we will focus on roads
+```{r}
+osm_roads_sf <- st_read("data/geospatial/myanmar-latest-free.shp",
+                      layer="gis_osm_roads_free_1") %>%
+  st_transform(crs = 32647)
 ```
 
 ## Wrangling
 
+### Conflict Data
+We also want to add a column called `quarter` on our `conflict2124_sf` dataset to help when breaking down the data into yearly quarters. We will achieve this through the `quarter()` function from `lubridate`.
+
+```{r}
+conflict2124_sf <- conflict2124_sf %>% 
+  mutate(event_date = dmy(event_date),quarter = quarter(event_date))
+```
+### Administrative Area 1
 We first want to rename our states from `myanmaradm1` to have the same naming scheme as `conflict2124`
 
 ```{r}
 madm1_sf$ST <- gsub("\\s*\\(([^)]+)\\)", "-\\1", madm1_sf$ST)
 ```
+### OpenStreetMap
+With the OSM dataset being so large, we want to cut down on the dataset to only data that would be useful for our exploration. Let's first look at the different types of roads available from our dataset by finding the unique values in the `fclass` column
 
-We also want to normalise
+```{r}
+unique(osm_roads_sf$fclass)
+```
+
+We can now cut out the road types that are irrelevant to us
+
+```{r}
+roads_to_keep <- c("primary", "secondary", "residential", "trunk_link", "primary_link", "tertiary", "footway", "trunk", "living_street", "secondary_link", "tertiary_link", "pedestrian")
+
+osm_roads_sf <- osm_roads_sf %>%
+  filter(fclass %in%  roads_to_keep)
+```
 
 ```{r}
 tm_shape(madm1_sf) +
