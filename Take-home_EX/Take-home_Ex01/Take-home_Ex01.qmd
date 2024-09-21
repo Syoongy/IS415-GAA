@@ -96,15 +96,60 @@ With the OSM dataset being so large, we want to cut down on the dataset to only 
 unique(osm_roads_sf$fclass)
 ```
 
-We can now cut out the road types that are irrelevant to us
+We can now cut out the road types that are irrelevant to us and also remove unnecessary columns
 
 ```{r}
-roads_to_keep <- c("primary", "secondary", "residential", "trunk_link", "primary_link", "tertiary", "footway", "trunk", "living_street", "secondary_link", "tertiary_link", "pedestrian")
+roads_to_keep <- c("primary", "secondary", "tertiary", "trunk", "unclassified", 
+                   "track", "military", "footway", "bridge", "border")
+
 
 osm_roads_sf <- osm_roads_sf %>%
-  filter(fclass %in%  roads_to_keep)
+  filter(fclass %in%  roads_to_keep) %>%
+  dplyr::select("osm_id", "fclass", "geometry")
 ```
 
+```{r}
+summary(osm_roads_sf)
+```
+
+### Joining Geospatial Data
+
+We now want to combine both our geospatial datasets and also convert multiline strings into linestrings through `st_intersection()` and `st_line_merge()` from `sf`
+```{r}
+#| eval: false
+myanmar_merged <- st_intersection(osm_roads_sf, madm1_sf)
+
+# Separate LINESTRING and MULTILINESTRING geometries
+linestrings <- myanmar_merged %>%
+  filter(st_geometry_type(.) == "LINESTRING")
+
+multilinestrings <- myanmar_merged %>%
+  filter(st_geometry_type(.) == "MULTILINESTRING")
+
+# Apply st_linemerge() to MULTILINESTRING geometries
+merged_multilinestrings <- multilinestrings %>%
+  st_line_merge()
+
+# Combine the LINESTRING geometries with the merged MULTILINESTRING geometries
+myanmar_merged <- rbind(linestrings, merged_multilinestrings)
+```
+
+
+```{r}
+#| eval: false
+summary(myanmar_merged)
+```
+Let's now save this data
+
+
+```{r}
+#| eval: false
+write_rds(myanmar_merged, "data/rds/myanmar_merged.rds")
+```
+
+```{r}
+myanmar_merged <- read_rds("data/rds/myanmar_merged.rds")
+```
 ```{r}
 tm_shape(madm1_sf) +
   tm_polygons() +
