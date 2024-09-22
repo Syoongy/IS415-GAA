@@ -114,26 +114,11 @@ summary(osm_roads_sf)
 
 ### Joining Geospatial Data
 
-We now want to combine both our geospatial datasets and also convert multiline strings into linestrings through `st_intersection()` and `st_line_merge()` from `sf`
+We now want to combine both our geospatial datasets
 ```{r}
 #| eval: false
 myanmar_merged <- st_intersection(osm_roads_sf, madm1_sf)
-
-# Separate LINESTRING and MULTILINESTRING geometries
-linestrings <- myanmar_merged %>%
-  filter(st_geometry_type(.) == "LINESTRING")
-
-multilinestrings <- myanmar_merged %>%
-  filter(st_geometry_type(.) == "MULTILINESTRING")
-
-# Apply st_linemerge() to MULTILINESTRING geometries
-merged_multilinestrings <- multilinestrings %>%
-  st_line_merge()
-
-# Combine the LINESTRING geometries with the merged MULTILINESTRING geometries
-myanmar_merged <- rbind(linestrings, merged_multilinestrings)
 ```
-
 
 ```{r}
 #| eval: false
@@ -148,8 +133,19 @@ write_rds(myanmar_merged, "data/rds/myanmar_merged.rds")
 ```
 
 ```{r}
-myanmar_merged <- read_rds("data/rds/myanmar_merged.rds")
+myanmar_merged_sf <- read_rds("data/rds/myanmar_merged.rds") %>%
+  st_as_sf(coords = c("longitude", "latitude"), crs = 32647)
 ```
+
+```{r}
+summary(myanmar_merged_sf)
+```
+
+Finally, let's turn this into 
+
+### Visualisation
+
+We can first view the basemap of myanmar and its conflicts data combined through the use of `tmap` methods split year on year
 ```{r}
 tm_shape(madm1_sf) +
   tm_polygons() +
@@ -159,3 +155,327 @@ tm_shape(madm1_sf) +
               free.coords = FALSE,
               drop.units = TRUE)
 ```
+
+At a glance, we can see intense conflicts in years 2021 and 2022 which slowly decreased over time in years 2023 and 2024. This lines up with the timeline in which the military overthrew the ruling government which would liekly lead to higher rates of conflict. As time went on, these conflicts would decrease as the military would be actively taking down any opposition forces. As we do not have the full year of 2024, we are unable to determine a further decrease.
+
+### PPP
+As we will be looking at KDE data, we want to convert our conflict data into `PPP` objects
+
+
+```{r}
+conflict2124_ppp <- conflict2124_sf %>% {as.ppp(st_coordinates(.), st_bbox(.))}
+```
+```{r}
+summary(conflict2124_ppp)
+```
+
+Let's first create an object to store all our split data called `conflict2124_ppp_list` and add in the years we want to look at
+
+```{r}
+conflict2124_ppp_list <- list(
+  "2021" = list(
+    "Q1" = list(),
+    "Q2" = list(),
+    "Q3" = list(),
+    "Q4" = list()
+  ),
+  "2022" = list(
+    "Q1" = list(),
+    "Q2" = list(),
+    "Q3" = list(),
+    "Q4" = list()
+  ),
+  "2023" = list(
+    "Q1" = list(),
+    "Q2" = list(),
+    "Q3" = list(),
+    "Q4" = list()
+  ),
+  "2024" = list(
+    "Q1" = list(),
+    "Q2" = list(),
+    "Q3" = list(),
+    "Q4" = list()
+  )
+)
+```
+We now want to assign our filtered quarter data into each of the years
+
+```{r}
+for (targetyear in 2021:2024) {
+  for (targetquarter in 1:4) {
+    quarter_name <- paste0("Q", targetquarter)
+    filtered_data <- conflict2124_sf %>%
+      filter(year == as.character(targetyear) & quarter == as.character(targetquarter))
+    
+    if (nrow(filtered_data) > 0) {
+      conflict2124_ppp_list[[as.character(targetyear)]][[quarter_name]] <- as.ppp(st_coordinates(filtered_data), st_bbox(filtered_data))
+    }
+  }
+}
+```
+
+
+#### Deduplication
+As we get a warning of duplicated points, we should aim to remove as many as possible. Let's first find out how many duplicated points we have through the use of `sum()` and `multiplicity()`.
+```{r}
+sum(multiplicity(conflict2124_ppp) > 1)
+```
+
+Let's now remove these points using `rjitter()` to shift our points slightly.
+```{r}
+conflict2124_ppp <- rjitter(conflict2124_ppp, 
+                             retry=TRUE, 
+                             nsim=1, 
+                             drop=TRUE)
+```
+
+We can now use `any()` and `duplicated()` to check if there are still duplicated points
+
+```{r}
+any(duplicated(conflict2124_ppp))
+```
+
+We want to repeat this with the values in our ppp_list too
+
+```{r}
+for (year in names(conflict2124_ppp_list)) {
+  for (quarter in names(conflict2124_ppp_list[[year]])) {
+    ppp_obj <- conflict2124_ppp_list[[year]][[quarter]]
+    if (class(ppp_obj) == "ppp") {
+      # Apply rjitter() to the ppp_obj
+      jittered_ppp <- rjitter(ppp_obj, retry = TRUE, nsim = 1, drop = TRUE)
+      
+      # Assign the jittered ppp object back to the list
+      conflict2124_ppp_list[[year]][[quarter]] <- jittered_ppp
+      print(any(duplicated(conflict2124_ppp_list[[year]][[quarter]])))
+    }
+  }
+}
+```
+
+### Owin
+We also want to create an `owin` object to ensure that all points we are looking at are within the Myanmar boundary.
+```{r}
+madm1_owin <- as.owin(madm1_sf)
+```
+
+```{r}
+plot(madm1_owin)
+```
+
+Now let's combine this with our conflict data
+
+```{r}
+conflict2124_ppp_list <- lapply(conflict2124_ppp_list, function(year_data_list) {
+  lapply(year_data_list, function(quarter_data) {
+    if (class(quarter_data) == "ppp")
+      quarter_data[madm1_owin]
+  })
+})
+```
+
+```{r}
+plot(conflict2124_ppp_list$"2024"$Q1)
+```
+
+```{r}
+plot(conflict2124_ppp_list$"2024"$Q2)
+```
+
+# Quarterly KDE
+Now let's view the quarterly KDE for our data. However, we first need to rescale our data to use KM.
+
+```{r}
+conflict2124_ppp_list.km <- lapply(conflict2124_ppp_list, function(year_data_list) {
+  lapply(year_data_list, function(quarter_data) {
+    if (class(quarter_data) == "ppp")
+      rescale.ppp(quarter_data, 1000, "km")
+  })
+})
+```
+We now want to find the ideal bandwith to use for our data
+
+## Automatic Bandwith
+Let's first compare using the bandwith functions of `diggle`, `CvL`, `ppl`, `scott`, 
+
+::: panel-tabset
+### bw.diggle
+
+```{r}
+conflict.bw <- density(conflict2124_ppp_list.km$"2021"$Q1,
+             sigma=bw.diggle, 
+             edge=TRUE, 
+             kernel="gaussian")
+plot(conflict.bw)
+```
+### bw.CvL
+
+```{r}
+conflict.bw <- density(conflict2124_ppp_list.km$"2021"$Q1,
+             sigma=bw.CvL, 
+             edge=TRUE, 
+             kernel="gaussian")
+plot(conflict.bw)
+```
+
+### bw.ppl
+
+```{r}
+conflict.bw <- density(conflict2124_ppp_list.km$"2021"$Q1,
+             sigma=bw.ppl, 
+             edge=TRUE, 
+             kernel="gaussian")
+plot(conflict.bw)
+```
+
+### bw.scott
+
+```{r}
+conflict.bw <- density(conflict2124_ppp_list.km$"2021"$Q1,
+             sigma=bw.scott, 
+             edge=TRUE, 
+             kernel="gaussian")
+plot(conflict.bw)
+```
+:::
+
+## Manual Bandwith
+We can also look at how our KDE will look with some manual values
+
+::: panel-tabset
+### Signma 10
+```{r}
+conflict.bw <- density(conflict2124_ppp_list.km$"2021"$Q1,
+             sigma=10, 
+             edge=TRUE, 
+             kernel="gaussian")
+plot(conflict.bw)
+```
+### Signma 20
+```{r}
+conflict.bw <- density(conflict2124_ppp_list.km$"2021"$Q1,
+             sigma=20, 
+             edge=TRUE, 
+             kernel="gaussian")
+plot(conflict.bw)
+```
+### Signma 30
+```{r}
+conflict.bw <- density(conflict2124_ppp_list.km$"2021"$Q1,
+             sigma=30, 
+             edge=TRUE, 
+             kernel="gaussian")
+plot(conflict.bw)
+```
+:::
+
+When looking at the results, `scott` looks to give the best results. So for the next portions we will be using that.
+
+::: panel-tabset
+### 2021
+
+```{r}
+#| fig-width: 20
+#| fig-height: 18
+par(mfrow=c(2,2))
+plot(density(conflict2124_ppp_list.km$"2021"$Q1, 
+             sigma=bw.scott, 
+             edge=TRUE, 
+             kernel="gaussian"), 
+     main="2021 Q1")
+plot(density(conflict2124_ppp_list.km$"2021"$Q2, 
+             sigma=bw.scott, 
+             edge=TRUE, 
+             kernel="gaussian"), 
+     main="2021 Q2")
+plot(density(conflict2124_ppp_list.km$"2021"$Q3, 
+             sigma=bw.scott, 
+             edge=TRUE, 
+             kernel="gaussian"), 
+     main="2021 Q3")
+plot(density(conflict2124_ppp_list.km$"2021"$Q4, 
+             sigma=bw.scott, 
+             edge=TRUE, 
+             kernel="gaussian"), 
+     main="2021 Q4")
+```
+
+
+### 2022
+
+```{r}
+#| fig-width: 20
+#| fig-height: 18
+par(mfrow=c(2,2))
+plot(density(conflict2124_ppp_list.km$"2022"$Q1, 
+             sigma=bw.scott, 
+             edge=TRUE, 
+             kernel="gaussian"), 
+     main="2022 Q1")
+plot(density(conflict2124_ppp_list.km$"2022"$Q2, 
+             sigma=bw.scott, 
+             edge=TRUE, 
+             kernel="gaussian"), 
+     main="2022 Q2")
+plot(density(conflict2124_ppp_list.km$"2022"$Q3, 
+             sigma=bw.scott, 
+             edge=TRUE, 
+             kernel="gaussian"), 
+     main="2022 Q3")
+plot(density(conflict2124_ppp_list.km$"2022"$Q4, 
+             sigma=bw.scott, 
+             edge=TRUE, 
+             kernel="gaussian"), 
+     main="2022 Q4")
+```
+
+
+### 2023
+
+```{r}
+#| fig-width: 20
+#| fig-height: 18
+par(mfrow=c(2,2))
+plot(density(conflict2124_ppp_list.km$"2023"$Q1, 
+             sigma=bw.scott, 
+             edge=TRUE, 
+             kernel="gaussian"), 
+     main="2023 Q1")
+plot(density(conflict2124_ppp_list.km$"2023"$Q2, 
+             sigma=bw.scott, 
+             edge=TRUE, 
+             kernel="gaussian"), 
+     main="2023 Q2")
+plot(density(conflict2124_ppp_list.km$"2023"$Q3, 
+             sigma=bw.scott, 
+             edge=TRUE, 
+             kernel="gaussian"), 
+     main="2023 Q3")
+plot(density(conflict2124_ppp_list.km$"2023"$Q4, 
+             sigma=bw.scott, 
+             edge=TRUE, 
+             kernel="gaussian"), 
+     main="2023 Q4")
+```
+
+
+### 2024
+
+```{r}
+#| fig-width: 20
+#| fig-height: 18
+par(mfrow=c(2,2))
+plot(density(conflict2124_ppp_list.km$"2024"$Q1, 
+             sigma=bw.scott, 
+             edge=TRUE, 
+             kernel="gaussian"), 
+     main="2024 Q1")
+plot(density(conflict2124_ppp_list.km$"2024"$Q2, 
+             sigma=bw.scott, 
+             edge=TRUE, 
+             kernel="gaussian"), 
+     main="2024 Q2")
+```
+:::
+
