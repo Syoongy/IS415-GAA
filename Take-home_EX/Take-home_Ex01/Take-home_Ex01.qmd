@@ -67,10 +67,10 @@ madm1_sf <- st_read(dsn = "data/geospatial", layer = "mmr_polbnda2_adm1_250k_mim
   st_transform(crs = 32647)
 ```
 
-Finally, we have the data from OpenStreetMap where we will focus on roads
+Finally, we have the data from OpenStreetMap where we will focus on places
 ```{r}
-osm_roads_sf <- st_read("data/geospatial/myanmar-latest-free.shp",
-                      layer="gis_osm_roads_free_1") %>%
+osm_sf <- st_read("data/geospatial/myanmar-latest-free.shp",
+                      layer="gis_osm_places_a_free_1") %>%
   st_transform(crs = 32647)
 ```
 
@@ -90,26 +90,25 @@ We first want to rename our states from `myanmaradm1` to have the same naming sc
 madm1_sf$ST <- gsub("\\s*\\(([^)]+)\\)", "-\\1", madm1_sf$ST)
 ```
 ### OpenStreetMap
-With the OSM dataset being so large, we want to cut down on the dataset to only data that would be useful for our exploration. Let's first look at the different types of roads available from our dataset by finding the unique values in the `fclass` column
+With the OSM dataset being so large, we want to cut down on the dataset to only data that would be useful for our exploration. Let's first look at the different types of places available from our dataset by finding the unique values in the `fclass` column
 
 ```{r}
-unique(osm_roads_sf$fclass)
+unique(osm_sf$fclass)
 ```
 
-We can now cut out the road types that are irrelevant to us and also remove unnecessary columns
+We can now cut out the place types that are irrelevant to us and also remove unnecessary columns
 
 ```{r}
-roads_to_keep <- c("primary", "secondary", "tertiary", "trunk", "unclassified", 
-                   "track", "military", "footway", "bridge", "border")
+places_to_keep <- c("village", "town", "city")
 
 
-osm_roads_sf <- osm_roads_sf %>%
-  filter(fclass %in%  roads_to_keep) %>%
-  dplyr::select("osm_id", "fclass", "geometry")
+osm_sf <- osm_sf %>%
+  filter(fclass %in%  places_to_keep) %>%
+  dplyr::select("osm_id", "fclass")
 ```
 
 ```{r}
-summary(osm_roads_sf)
+summary(osm_sf)
 ```
 
 ### Joining Geospatial Data
@@ -117,7 +116,7 @@ summary(osm_roads_sf)
 We now want to combine both our geospatial datasets
 ```{r}
 #| eval: false
-myanmar_merged <- st_intersection(osm_roads_sf, madm1_sf)
+myanmar_merged <- st_intersection(osm_sf, madm1_sf)
 ```
 
 ```{r}
@@ -239,16 +238,16 @@ any(duplicated(conflict2124_ppp))
 We want to repeat this with the values in our ppp_list too
 
 ```{r}
-for (year in names(conflict2124_ppp_list)) {
-  for (quarter in names(conflict2124_ppp_list[[year]])) {
-    ppp_obj <- conflict2124_ppp_list[[year]][[quarter]]
+for (targetyear in names(conflict2124_ppp_list)) {
+  for (targetquarter in names(conflict2124_ppp_list[[targetyear]])) {
+    ppp_obj <- conflict2124_ppp_list[[as.character(targetyear)]][[targetquarter]]
     if (class(ppp_obj) == "ppp") {
       # Apply rjitter() to the ppp_obj
       jittered_ppp <- rjitter(ppp_obj, retry = TRUE, nsim = 1, drop = TRUE)
       
       # Assign the jittered ppp object back to the list
-      conflict2124_ppp_list[[year]][[quarter]] <- jittered_ppp
-      print(any(duplicated(conflict2124_ppp_list[[year]][[quarter]])))
+      conflict2124_ppp_list[[as.character(targetyear)]][[targetquarter]] <- jittered_ppp
+      print(any(duplicated(conflict2124_ppp_list[[as.character(targetyear)]][[targetquarter]])))
     }
   }
 }
@@ -465,7 +464,7 @@ plot(density(conflict2124_ppp_list.km$"2023"$Q4,
 ```{r}
 #| fig-width: 20
 #| fig-height: 18
-par(mfrow=c(2,2))
+par(mfrow=c(1,2))
 plot(density(conflict2124_ppp_list.km$"2024"$Q1, 
              sigma=bw.scott, 
              edge=TRUE, 
@@ -479,3 +478,669 @@ plot(density(conflict2124_ppp_list.km$"2024"$Q2,
 ```
 :::
 
+# Second-order Spatial Point Patterns Analysis
+## Scope
+I would like to scope down to the Sagaing Region as it has been a hotspot for clashes between the military and armed resistance groups.
+
+We first need to retrieve our Sagaing data as an `sf` object
+```{r}
+sagaing_sf <- madm1_sf %>%
+  filter(ST == "Sagaing")
+```
+
+We can now create an owin object using this
+```{r}
+sagaing_owin <- as.owin(sagaing_sf)
+```
+```{r}
+plot(sagaing_owin)
+```
+
+## PPP
+We want to now retrieve PPP objects for the different types of conflicts based on each year. This will help us see the change over time regarding the different types of conflicts.
+
+Let's first create a list to store this data. This will contain 4 different categories of battles, explosion/remote violence, strategic developments, violence against civilians.
+```{r}
+conflict_sagaing_ppp_list <- list(
+  "2021" = list(
+    "Battles" = list(),
+    "Explosions/Remote violence" = list(),
+    "Strategic developments" = list(),
+    "Violence against civilians" = list()
+  ),
+  "2022" = list(
+    "Battles" = list(),
+    "Explosions/Remote violence" = list(),
+    "Strategic developments" = list(),
+    "Violence against civilians" = list()
+  ),
+  "2023" = list(
+    "Battles" = list(),
+    "Explosions/Remote violence" = list(),
+    "Strategic developments" = list(),
+    "Violence against civilians" = list()
+  ),
+  "2024" = list(
+    "Battles" = list(),
+    "Explosions/Remote violence" = list(),
+    "Strategic developments" = list(),
+    "Violence against civilians" = list()
+  )
+)
+```
+
+Let's now assign the data
+```{r}
+for (targetyear in 2021:2024) {
+  for (targetevent in names(conflict_sagaing_ppp_list[[as.character(targetyear)]])) {
+    filtered_data <- conflict2124_sf %>%
+      filter(year == as.character(targetyear) & event_type == targetevent)
+    
+    if (nrow(filtered_data) > 0) {
+      conflict_sagaing_ppp_list[[as.character(targetyear)]][[targetevent]] <- as.ppp(st_coordinates(filtered_data), st_bbox(filtered_data))
+    }
+  }
+}
+```
+### Deduplication
+
+```{r}
+for (targetyear in names(conflict_sagaing_ppp_list)) {
+  for (targetevent in names(conflict_sagaing_ppp_list[[targetyear]])) {
+    ppp_obj <- conflict_sagaing_ppp_list[[as.character(targetyear)]][[targetevent]]
+    if (class(ppp_obj) == "ppp") {
+      # Apply rjitter() to the ppp_obj
+      jittered_ppp <- rjitter(ppp_obj, retry = TRUE, nsim = 1, drop = TRUE)
+      
+      # Assign the jittered ppp object back to the list
+      conflict_sagaing_ppp_list[[as.character(targetyear)]][[targetevent]] <- jittered_ppp
+      print(any(duplicated(conflict_sagaing_ppp_list[[as.character(targetyear)]][[targetevent]])))
+    }
+  }
+}
+```
+
+## Sagaing Conflict Data
+Now that we have removed the duplicates, we can now scope down our data further to only look at the armed conflict in Sagaing
+
+```{r}
+conflict_sagaing_ppp_list <- lapply(conflict_sagaing_ppp_list, function(year_data_list) {
+  lapply(year_data_list, function(event_data) {
+    if (class(event_data) == "ppp")
+      event_data[sagaing_owin]
+  })
+})
+```
+
+## G-Function
+The **G function** measures the distribution of the distances from an arbitrary even to its nearest event.
+
+### Battles
+
+::: panel-tabset
+
+#### 2021
+
+```{r}
+G_battles_2021 <- Gest(conflict_sagaing_ppp_list$"2021"$Battles, correction = "border")
+plot(G_battles_2021, xlim=c(0,500))
+```
+
+#### 2022
+
+```{r}
+G_battles_2022 <- Gest(conflict_sagaing_ppp_list$"2022"$Battles, correction = "border")
+plot(G_battles_2022, xlim=c(0,500))
+```
+
+#### 2023
+
+```{r}
+G_battles_2023 <- Gest(conflict_sagaing_ppp_list$"2023"$Battles, correction = "border")
+plot(G_battles_2023, xlim=c(0,500))
+```
+
+#### 2024
+
+```{r}
+G_battles_2024 <- Gest(conflict_sagaing_ppp_list$"2024"$Battles, correction = "border")
+plot(G_battles_2024, xlim=c(0,500))
+```
+:::
+
+### Explosion/Remote Violence
+::: panel-tabset
+#### 2021
+
+```{r}
+G_explosives_2021 <- Gest(conflict_sagaing_ppp_list$"2021"$`Explosions/Remote violence`, correction = "border")
+plot(G_explosives_2021, xlim=c(0,500))
+```
+
+#### 2022
+
+```{r}
+G_explosives_2022 <- Gest(conflict_sagaing_ppp_list$"2022"$`Explosions/Remote violence`, correction = "border")
+plot(G_explosives_2022, xlim=c(0,500))
+```
+
+#### 2023
+
+```{r}
+G_explosives_2023 <- Gest(conflict_sagaing_ppp_list$"2023"$`Explosions/Remote violence`, correction = "border")
+plot(G_explosives_2023, xlim=c(0,500))
+```
+
+#### 2024
+
+```{r}
+G_explosives_2024 <- Gest(conflict_sagaing_ppp_list$"2024"$`Explosions/Remote violence`, correction = "border")
+plot(G_explosives_2024, xlim=c(0,500))
+```
+:::
+
+### Strategic Developments
+::: panel-tabset
+#### 2021
+
+```{r}
+G_sd_2021 <- Gest(conflict_sagaing_ppp_list$"2021"$`Strategic developments`, correction = "border")
+plot(G_sd_2021, xlim=c(0,500))
+```
+
+#### 2022
+
+```{r}
+G_sd_2022 <- Gest(conflict_sagaing_ppp_list$"2022"$`Strategic developments`, correction = "border")
+plot(G_sd_2022, xlim=c(0,500))
+```
+
+#### 2023
+
+```{r}
+G_sd_2023 <- Gest(conflict_sagaing_ppp_list$"2023"$`Strategic developments`, correction = "border")
+plot(G_sd_2023, xlim=c(0,500))
+```
+
+#### 2024
+
+```{r}
+G_sd_2024 <- Gest(conflict_sagaing_ppp_list$"2024"$`Strategic developments`, correction = "border")
+plot(G_sd_2024, xlim=c(0,500))
+```
+:::
+
+### Violence against civilians
+::: panel-tabset
+#### 2021
+
+```{r}
+G_VaC_2021 <- Gest(conflict_sagaing_ppp_list$"2021"$`Violence against civilians`, correction = "border")
+plot(G_VaC_2021, xlim=c(0,500))
+```
+
+#### 2022
+
+```{r}
+G_VaC_2022 <- Gest(conflict_sagaing_ppp_list$"2022"$`Violence against civilians`, correction = "border")
+plot(G_VaC_2022, xlim=c(0,500))
+```
+
+#### 2023
+
+```{r}
+G_VaC_2023 <- Gest(conflict_sagaing_ppp_list$"2023"$`Violence against civilians`, correction = "border")
+plot(G_VaC_2023, xlim=c(0,500))
+```
+
+#### 2024
+
+```{r}
+G_VaC_2024 <- Gest(conflict_sagaing_ppp_list$"2024"$`Violence against civilians`, correction = "border")
+plot(G_VaC_2024, xlim=c(0,500))
+```
+:::
+
+## Complete Spatial Randomness Test
+
+To see if the the different event types are cluster or randomly dispersed. The hypothesis and test are as follows:
+
+Ho = The distribution of a certain event at Sagaing region are randomly distributed.
+
+H1 = The distribution of a certain event at Sagaing region are not randomly distributed.
+
+The null hypothesis will be rejected if p-value is smaller than alpha value of 0.001.
+
+### Battles
+
+::: panel-tabset
+#### 2021
+
+```{r}
+set.seed(448)
+G_battles_2021.csr <- envelope(conflict_sagaing_ppp_list$"2021"$Battles, Gest, nsim = 99)
+plot(G_battles_2021.csr)
+```
+
+### 2022
+
+```{r}
+set.seed(448)
+G_battles_2022.csr <- envelope(conflict_sagaing_ppp_list$"2022"$Battles, Gest, nsim = 99)
+plot(G_battles_2022.csr)
+```
+
+### 2023
+
+```{r}
+set.seed(448)
+G_battles_2023.csr <- envelope(conflict_sagaing_ppp_list$"2023"$Battles, Gest, nsim = 99)
+plot(G_battles_2023.csr)
+```
+
+### 2024
+
+```{r}
+set.seed(448)
+G_battles_2024.csr <- envelope(conflict_sagaing_ppp_list$"2024"$Battles, Gest, nsim = 99)
+plot(G_battles_2024.csr)
+```
+:::
+
+With all the results across the years being above the envelope, we can conclude that conflicts relating to battle are highly clustered within the Sagaing region
+
+### Explosion/Remote violence
+
+::: panel-tabset
+#### 2021
+
+```{r}
+set.seed(448)
+G_explosives_2021.csr <- envelope(conflict_sagaing_ppp_list$"2021"$`Explosions/Remote violence`, Gest, nsim = 99)
+plot(G_explosives_2021.csr)
+```
+
+#### 2022
+
+```{r}
+set.seed(448)
+G_explosives_2022.csr <- envelope(conflict_sagaing_ppp_list$"2022"$`Explosions/Remote violence`, Gest, nsim = 99)
+plot(G_explosives_2022.csr)
+```
+
+#### 2023
+
+```{r}
+set.seed(448)
+G_explosives_2023.csr <- envelope(conflict_sagaing_ppp_list$"2023"$`Explosions/Remote violence`, Gest, nsim = 99)
+plot(G_explosives_2023.csr)
+```
+
+#### 2024
+
+```{r}
+set.seed(448)
+G_explosives_2024.csr <- envelope(conflict_sagaing_ppp_list$"2024"$`Explosions/Remote violence`, Gest, nsim = 99)
+plot(G_explosives_2024.csr)
+```
+:::
+
+We see a smilar story with explosives where across the years all values are above the envelope which means these events are clustered.
+
+### Strategic Developments
+
+::: panel-tabset
+#### 2021
+
+```{r}
+set.seed(448)
+G_sd_2021.csr <- envelope(conflict_sagaing_ppp_list$"2021"$`Strategic developments`, Gest, nsim = 99)
+plot(G_sd_2021.csr)
+```
+
+#### 2022
+
+```{r}
+set.seed(448)
+G_sd_2022.csr <- envelope(conflict_sagaing_ppp_list$"2022"$`Strategic developments`, Gest, nsim = 99)
+plot(G_sd_2022.csr)
+```
+
+#### 2023
+
+```{r}
+set.seed(448)
+G_sd_2023.csr <- envelope(conflict_sagaing_ppp_list$"2023"$`Strategic developments`, Gest, nsim = 99)
+plot(G_sd_2023.csr)
+```
+
+#### 2024
+
+```{r}
+set.seed(448)
+G_sd_2024.csr <- envelope(conflict_sagaing_ppp_list$"2024"$`Strategic developments`, Gest, nsim = 99)
+plot(G_sd_2024.csr)
+```
+:::
+
+Again, we see a similar trend with strategic developments where they are clustered across all years.
+### Violence against civilians
+
+::: panel-tabset
+#### 2021
+
+```{r}
+set.seed(448)
+G_VaC_2021.csr <- envelope(conflict_sagaing_ppp_list$"2021"$`Violence against civilians`, Gest, nsim = 99)
+plot(G_VaC_2021.csr)
+```
+
+#### 2022
+
+```{r}
+set.seed(448)
+G_VaC_2022.csr <- envelope(conflict_sagaing_ppp_list$"2022"$`Violence against civilians`, Gest, nsim = 99)
+plot(G_VaC_2022.csr)
+```
+
+#### 2023
+
+```{r}
+set.seed(448)
+G_VaC_2023.csr <- envelope(conflict_sagaing_ppp_list$"2023"$`Violence against civilians`, Gest, nsim = 99)
+plot(G_VaC_2023.csr)
+```
+
+#### 2024
+
+```{r}
+set.seed(448)
+G_VaC_2024.csr <- envelope(conflict_sagaing_ppp_list$"2024"$`Violence against civilians`, Gest, nsim = 99)
+plot(G_VaC_2024.csr)
+```
+:::
+
+By this point, it is safe to conclude that all events within this region are highly clustered. This likely indicates that the region itself is a hotspot for these events
+## KDE on OpenStreetMap
+
+```{r}
+test_density <- density(conflict_sagaing_ppp_list$"2022"$Battles, 
+             sigma=bw.scott, 
+             edge=TRUE, 
+             kernel="gaussian")
+```
+
+```{r}
+density_raster <- raster(test_density)
+projection(density_raster) <- CRS("+init=EPSG:32647")
+```
+
+```{r}
+tm_shape(density_raster) +
+  tm_raster() +
+  tm_shape(myanmar_merged_sf %>% filter(ST == "Sagaing")) +
+  tm_dots()
+```
+
+## Insights
+In the Sagaing region, conflicts are commonplace with all types of conflicts ranging from violence to explosives being constant and clustered throughout the years. We can see most of the conflicts near the bottom of Sagaing and are towards the center of Myanmar which is also where a lot of conflicts within our data are clustered.
+
+# STKDE
+For this, we will need to retrieve only the `quarter` column from each year
+
+We first create a list
+```{r}
+stkde_list_ppp = list(
+  "2021" = NULL,
+  "2022" = NULL,
+  "2023" = NULL,
+  "2024" = NULL
+)
+```
+
+And now we fill the data
+
+```{r}
+for (targetyear in 2021:2024) {
+    filtered_data <- conflict2124_sf %>%
+      filter(year == as.character(targetyear)) %>%
+      dplyr::select(quarter)
+    stkde_list_ppp[[as.character(targetyear)]] <-  as.ppp(filtered_data)
+}
+```
+
+## Deduplication
+
+```{r}
+stkde_list_ppp <- lapply(stkde_list_ppp, function(year_data) {
+  rjitter(year_data, 
+           retry=TRUE, 
+           nsim=1, 
+           drop=TRUE)
+})
+```
+## Combined Data
+
+Now let's combine our data with the `madm1_owin` object
+
+```{r}
+stkde_list_ppp <- lapply(stkde_list_ppp, function(year_data) {
+  year_data[madm1_owin]
+})
+```
+
+```{r}
+for(targetyear in names(stkde_list_ppp)) {
+  plot(stkde_list_ppp[[as.character(targetyear)]], main = as.character(targetyear))
+}
+```
+
+## Plotting
+Now we can finally plot the STKDE using `spattemp.density()`
+
+::: panel-tabset
+### 2021
+
+```{r}
+conflict_kde_2021 <- spattemp.density(stkde_list_ppp$"2021")
+summary(conflict_kde_2021)
+```
+
+### 2022
+
+```{r}
+conflict_kde_2022 <- spattemp.density(stkde_list_ppp$"2022")
+summary(conflict_kde_2022)
+```
+
+### 2023
+
+```{r}
+conflict_kde_2023 <- spattemp.density(stkde_list_ppp$"2023")
+summary(conflict_kde_2023)
+```
+
+### 2024
+
+```{r}
+conflict_kde_2024 <- spattemp.density(stkde_list_ppp$"2024")
+summary(conflict_kde_2024)
+```
+:::
+
+Let's finally plot the STKDE graphs
+
+::: panel-tabset
+### 2021
+
+```{r}
+tims <- c(1,2,3,4)
+
+par(mfrow=c(1,4), cex.main = 1.5)
+for(i in tims){
+  plot(conflict_kde_2021, i, 
+       fix.range=TRUE,
+       override.par=FALSE,
+       main=paste("STKDE Q",i))
+}
+```
+
+### 2022
+
+```{r}
+par(mfrow=c(1,4), cex.main = 1.5)
+for(i in tims){
+  plot(conflict_kde_2022, i, 
+       override.par=FALSE, 
+       fix.range=TRUE, 
+       main=paste("STKDE Q",i))
+}
+```
+
+### 2023
+
+```{r}
+par(mfrow=c(1,4),cex.main = 1.5)
+
+for(i in tims){
+  plot(conflict_kde_2023, i, 
+       override.par=FALSE, 
+       fix.range=TRUE, 
+       main=paste("STKDE Q",i))
+}
+```
+
+### 2024
+
+```{r}
+tims_2 <- c(1,2)
+
+par(mfrow=c(1,2), cex.main = 1.2)
+for(i in tims_2){
+  plot(conflict_kde_2024, i, 
+       override.par=FALSE, 
+       fix.range=TRUE,
+       main=paste("STKDE Q",i))
+}
+```
+:::
+
+## 2nd Order STKDE
+
+For this, we will be focusing again on the conflicts in the Sagaing region in 2024
+```{r}
+conflict_sagaing_2024_ppp_list <- list(
+    "Battles" = NULL,
+    "Explosions/Remote violence" = NULL,
+    "Strategic developments" = NULL,
+    "Violence against civilians" = NULL
+  
+)
+```
+
+
+Let's now assign the data
+```{r}
+for (targetevent in names(conflict_sagaing_2024_ppp_list)) {
+  filtered_data <- conflict2124_sf %>%
+    filter(year == "2024" & event_type == targetevent)
+  
+  if (nrow(filtered_data) > 0) {
+    conflict_sagaing_2024_ppp_list[[targetevent]] <- as.ppp(filtered_data)
+  }
+}
+```
+
+We once again deduplicate
+```{r}
+conflict_sagaing_2024_ppp_list <- lapply(conflict_sagaing_2024_ppp_list, function(event) {
+  rjitter(event, 
+           retry=TRUE, 
+           nsim=1, 
+           drop=TRUE)
+})
+```
+
+And scope it down to Sagaing
+
+```{r}
+conflict_sagaing_2024_ppp_list <- lapply(conflict_sagaing_2024_ppp_list, function(event) {
+  event[sagaing_owin]
+})
+```
+::: panel-tabset
+### Battle
+
+```{r}
+K_battle = Kest(conflict_sagaing_2024_ppp_list$Battles, correction = "Ripley")
+plot(K_battle, . -r ~ r, ylab= "K(d)-r", xlab = "d(m)")
+```
+
+### Explosion/Remote violence
+
+```{r}
+K_explosion = Kest(conflict_sagaing_2024_ppp_list$`Explosions/Remote violence`, correction = "Ripley")
+plot(K_explosion, . -r ~ r, ylab= "K(d)-r", xlab = "d(m)")
+```
+
+### Strategic Development
+
+```{r}
+K_Strat = Kest(conflict_sagaing_2024_ppp_list$`Strategic developments`, correction = "Ripley")
+plot(K_Strat, . -r ~ r, ylab= "K(d)-r", xlab = "d(m)")
+```
+
+### Violence against civilians
+
+```{r}
+K_violence = Kest(conflict_sagaing_2024_ppp_list$`Violence against civilians`, correction = "Ripley")
+plot(K_violence, . -r ~ r, ylab= "K(d)-r", xlab = "d(m)")
+```
+:::
+
+Finally let's run the CSR simulation and plot it. If its
+
+-   Above the envelop: significant cluster pattern
+
+-   Below the envelop: significant regular
+
+-   Inside the envelop: CSR
+
+::: panel-tabset
+### Battles
+
+```{r}
+set.seed(448)
+K_battle.csr <- envelope(conflict_sagaing_2024_ppp_list$Battles, Kest, nsim = 99, rank = 1, glocal=TRUE)
+plot(K_battle.csr, . - r ~ r, xlab="d", ylab="K(d)-r")
+```
+
+### Explosion/Remote violence
+
+```{r}
+set.seed(448)
+K_explosion.csr <- envelope(conflict_sagaing_2024_ppp_list$`Explosions/Remote violence`, Kest, nsim = 99, rank = 1, glocal=TRUE)
+plot(K_explosion.csr, . - r ~ r, xlab="d", ylab="K(d)-r")
+```
+
+### Strategic Development
+
+```{r}
+set.seed(448)
+K_Strat.csr <- envelope(conflict_sagaing_2024_ppp_list$`Strategic developments`, Kest, nsim = 99, rank = 1, glocal=TRUE)
+plot(K_Strat.csr, . - r ~ r, xlab="d", ylab="K(d)-r")
+```
+
+### Violence against civilians
+
+```{r}
+set.seed(448)
+K_violence.csr <- envelope(conflict_sagaing_2024_ppp_list$`Violence against civilians`, Kest, nsim = 99, rank = 1, glocal=TRUE)
+plot(K_violence.csr, . - r ~ r, xlab="d", ylab="K(d)-r")
+```
+:::
+
+Likewise it does show that the conflicts in 2024 are all generally clustered as it is above the envelope
+
+## Insights
+Our STKDE results confirm our initial KDE results in detailing clustered conflict event happening within Sagaing. Central Myanmar is also once again shown to be filled with conflicts.
