@@ -1,0 +1,900 @@
+---
+title: "Take-home Exercise 3"
+author: "Fan Syong Yue"
+date: 11/02/24
+date-modified: "last-modified"
+execute:
+  eval: true
+  echo: true
+  freeze: true
+---
+
+# Overview and Objectives
+
+In this take-home my aim is to evaluate the necessary R packages necessary to perform Exploratory Data Analysis (EDA).
+
+This is to be done on the data which is the different types of crimes in Malaysia on the district level which we would layer with income inequality of Malaysia.
+
+This also serves to prototype the Shiny application UI and choosing the right type of components
+
+# Packages
+
+-   **sf** provides a standardised way to work with spatial vector data (points, lines, polygons)
+
+-   **spdep** focuses on spatial econometrics and spatial statistics
+
+-   **tmap** create thematic maps
+
+-   **tidyverse** for easy data manipulation and some visualisation
+
+-   **knitr** facilitates the integration of R code and documentation in reproducible research reports
+
+```{r}
+pacman::p_load(sf, sfdep, tmap, tidyverse, knitr)
+```
+
+# Data
+
+-   **Income Inequality Data:** Household income inequality by district (<https://data.gov.my/data-catalogue/hh_inequality_district>)
+
+-   **Annual Principal Labour Force Statistics by District:** Annual principal labour force statistics including unemployment and participation rates (<https://data.gov.my/data-catalogue/lfs_district>)
+
+-   **Crime Data:** Crime rates by district (<https://data.gov.my/data-catalogue/crime_district>)
+
+-   **Malaysia - Subnational Administrative Boundaries: (**<https://data.humdata.org/dataset/cod-ab-mys?>)
+
+## Importing the Data
+
+Before the UI prototyping can be done let's see what type of data we are dealing with so that we can better plan for the UI components to be used
+
+Let's import the crime, labour and income inequality datasets
+
+```{r}
+crime <- read_csv("data/aspatial/crime_district.csv")
+income <- read_csv("data/aspatial/hh_inequality_district.csv")
+labour <- read_csv("data/aspatial/lfs_district.csv")
+```
+
+Now let's look at the possible variables that we can use from each of these datasets
+
+```{r}
+crime
+```
+
+From here we can identify some of the variables that we can use, that the user can interact with ***district, category, type, date, crimes***
+
+```{r}
+income
+```
+
+Likewise for income we have ***district, date, gini***
+
+```{r}
+labour
+```
+
+For labour we have ***district, date, lf, lf_employed, lf_unemployed, lf_outside, p_rate, u_rate, ep_ration***
+
+## Wrangling
+
+Looking at the crime csv file there are rows with "all" or "All" as the data. This seems to be a summary of the different crimes or summary for the different districts for the different years. So let's remove the them
+
+```{r}
+excluded_column <- "date"
+crime <- crime[!apply(crime[, !names(crime) %in% excluded_column] == "all", 1, any), ]
+crime <- crime[!apply(crime[, !names(crime) %in% excluded_column] == "All", 1, any), ]
+```
+
+Let's also add a column called year to the different csv files, to that it would be easier to split up the data into the different years
+
+```{r}
+crime <- crime %>%
+              mutate(year = year(date))
+
+income <- income %>%
+              mutate(year = year(date))
+
+labour <- labour %>%
+              mutate(year = year(date))
+```
+
+Let's load Malaysia shape file and transform the crs into EPSG:3168
+
+```{r}
+msia_sf <- read_sf(dsn = "data/geospatial/mys_adm_unhcr_20210211_shp", 
+                 layer = "mys_admbnda_adm2_unhcr_20210211") %>%
+  st_as_sf(coords =c(
+    "longitude", "latitude"),
+           crs = 4326) %>%
+  st_transform(crs = 3168)
+```
+
+```{r}
+st_crs(msia_sf)
+```
+
+### Hole in boundary file
+
+Next check if there are any holes with the boundary file
+
+```{r}
+u_msia <- st_union(msia_sf)
+plot(u_msia)
+```
+
+### Missing data
+
+Let's do a check if there are any missing values in the crime data
+
+```{r}
+na <- crime %>%
+  summarise(na_district = sum(is.na(district)),
+            na_category = sum(is.na(category)),
+            na_type = sum(is.na(type)),
+            na_date = sum(is.na(date)),
+            na_crimes = sum(is.na(crimes))
+            )
+print(na)
+```
+
+Let's also do a check for the income inequality data
+
+```{r}
+na <- income %>%
+  summarise(na_district = sum(is.na(district)),
+            na_date = sum(is.na(date)),
+            na_gini = sum(is.na(gini))
+            )
+print(na)
+```
+
+And also for the labour data
+
+```{r}
+na <- labour %>%
+  summarise(na_district = sum(is.na(district)),
+            na_date = sum(is.na(date)),
+            na_lf = sum(is.na(lf)),
+            na_lf_unemployed = sum(is.na(lf_unemployed)),
+            na_u_rate = sum(is.na(u_rate)),
+            )
+print(na)
+```
+
+### Left Join
+
+#### Mismatch Districts
+
+Having check everything else, let's check whether is there any issues with ***msia_sf*** and ***crime***
+
+```{r}
+#| eval: false
+combined_data <- bind_cols(crime = sort(unique(crime$district)), msia_sf = sort(unique(msia_sf$ADM2_EN)))
+
+# Create a new column to compare the values
+combined_data <- combined_data %>%
+  mutate(same_values = crime == msia_sf) %>% filter(same_values == FALSE)
+
+# View the result
+combined_data
+```
+
+This would generate an error regarding difference in the number of data, in the ***crime*** there are 159 districts while in ***msia_sf*** there are 144 districts.
+
+Let's run another code to see the difference
+
+```{r}
+crime_unique <- data.frame(district = sort(unique(crime$district)))
+msia_unique <- data.frame(ADM2_EN = sort(unique(msia_sf$ADM2_EN)))
+
+# Find rows in crime_unique that don't have a match in msia_unique
+unmatched_crime <- anti_join(crime_unique, msia_unique, by = c("district" = "ADM2_EN"))
+
+# Find rows in msia_unique that don't have a match in crime_unique
+unmatched_msia <- anti_join(msia_unique, crime_unique, by = c("ADM2_EN" = "district"))
+
+# Combine results to see all mismatches
+
+unmatched_crime
+unmatched_msia
+```
+
+From here we can actually see which data is missing in which file
+
+Let's see all the unique districts in the sf file
+
+```{r}
+sort(unique(msia_sf$ADM2_EN))
+```
+
+From here there is no easy way to fix this but to google the districts mentioned in crime and try to map it as close as close to the district in the sf file
+
+```{r}
+crime <- crime %>%
+  mutate(district = recode(district,
+                           # Johor Bahru mappings
+                           "Iskandar Puteri" = "Johor Bahru",
+                           "Nusajaya" = "Johor Bahru",
+                           "Johor Bahru Selatan" = "Johor Bahru",
+                           "Johor Bahru Utara" = "Johor Bahru",
+                           "Seri Alam" = "Johor Bahru",
+                           
+                           # Bandar Baharu correction
+                           "Bandar Bharu" = "Bandar Baharu",
+                           
+                           # WP Kuala Lumpur mappings
+                           "Brickfields" = "WP. Kuala Lumpur",
+                           "Cheras" = "WP. Kuala Lumpur",
+                           "Dang Wangi" = "WP. Kuala Lumpur",
+                           "Sentul" = "WP. Kuala Lumpur",
+                           "Wangsa Maju" = "WP. Kuala Lumpur",
+                           
+                           # Seremban correction
+                           "Nilai" = "Seremban",
+                           
+                           # Seberang Perai corrections
+                           "Seberang Perai Selatan" = "S.P.Selatan",
+                           "Seberang Perai Tengah" = "S.P. Tengah",
+                           "Seberang Perai Utara" = "S.P. Utara",
+                           
+                           # Cameron Highlands correction
+                           "Cameron Highland" = "Cameron Highlands",
+                           
+                           # Lipis correction
+                           "Kuala Lipis" = "Lipis",
+                           
+                           # Kinta mappings
+                           "Batu Gajah" = "Kinta",
+                           "Ipoh" = "Kinta",
+                           
+                           # Ulu Perak mappings
+                           "Gerik" = "Ulu Perak",
+                           "Pengkalan Hulu" = "Ulu Perak",
+      
+                           
+                           # Manjung correction
+                           "Manjung" = "Manjung (Dinding)",
+                           
+                           # Larut Dan Matang mappings
+                           "Selama" = "Larut Dan Matang",
+                           "Taiping" = "Larut Dan Matang",
+                           
+                           # Kuala Kangsar correction
+                           "Sungai Siput" = "Kuala Kangsar",
+                           
+                           # Batang Padang mappings
+                           "Tanjong Malim" = "Batang Padang",
+                           "Tapah" = "Batang Padang",
+                           
+                           # Perlis mappings
+                           "Arau" = "Perlis",
+                           "Kangar" = "Perlis",
+                           "Padang Besar" = "Perlis",
+                           
+                           # Kinabatangan correction
+                           "Kota Kinabatangan" = "Kinabatangan",
+                           
+                           # Samarahan correction
+                           "Kota Samarahan" = "Samarahan",
+                           
+                           # Mukah correction
+                           "Matu Daro" = "Mukah",
+                           
+                           # Kuching correction
+                           "Padawan" = "Kuching",
+                           
+                           # Gombak correction
+                           "Ampang Jaya" = "Gombak",
+                           
+                           # Ulu Langat correction
+                           "Kajang" = "Ulu Langat",
+                           
+                           # Ulu Selangor correction
+                           "Hulu Selangor" = "Ulu Selangor",
+                           
+                           # Klang mappings
+                           "Klang Selatan" = "Klang",
+                           "Klang Utara" = "Klang",
+                           
+                           # Petaling mappings
+                           "Petaling Jaya" = "Petaling",
+                           "Serdang" = "Petaling",
+                           "Sg. Buloh" = "Petaling",
+                           "Shah Alam" = "Petaling",
+                           "Subang Jaya" = "Petaling",
+                           "Sungai Buloh" = "Petaling",
+                           
+                           # Default to keep original name if no match
+                           .default = district))
+```
+
+let's check again to see if we have altered the data correctly
+
+```{r}
+crime_unique <- data.frame(district = sort(unique(crime$district)))
+
+# Find rows in crime_unique that don't have a match in msia_unique
+unmatched_crime <- anti_join(crime_unique, msia_unique, by = c("district" = "ADM2_EN"))
+
+unmatched_crime
+```
+
+As we plan to overlay with the labour data, let's do checks for that as well
+
+```{r}
+labour_unique <- data.frame(district = sort(unique(labour$district)))
+msia_unique <- data.frame(ADM2_EN = sort(unique(msia_sf$ADM2_EN)))
+
+# Find rows in crime_unique that don't have a match in msia_unique
+unmatched_labour <- anti_join(labour_unique, msia_unique, by = c("district" = "ADM2_EN"))
+
+# Find rows in msia_unique that don't have a match in crime_unique
+unmatched_msia <- anti_join(msia_unique, labour_unique, by = c("ADM2_EN" = "district"))
+
+# Combine results to see all mismatches
+
+unmatched_labour
+unmatched_msia
+```
+
+Let's change the districts in *labour* like what we did for *crime*
+
+```{r}
+labour <- labour %>%
+  mutate(district = recode(district,
+                           "Kulai" = "Kulaijaya",
+                           # Seberang Perai corrections
+                           "Seberang Perai Selatan" = "S.P.Selatan",
+                           "Seberang Perai Tengah" = "S.P. Tengah",
+                           "Seberang Perai Utara" = "S.P. Utara",
+                           
+                           # Ulu Perak mappings
+                           "Hulu Perak" = "Ulu Perak",
+                           
+                           # Manjung correction
+                           "Manjung" = "Manjung (Dinding)",
+                           
+                           "Maradong" = "Meradong",
+                           "Tangkak" = "Ledang",
+                           
+                           # Default to keep original name if no match
+                           .default = district))
+```
+
+Let's check if there are still any issues with the district for *labour*
+
+```{r}
+labour_unique <- data.frame(district = sort(unique(labour$district)))
+msia_unique <- data.frame(ADM2_EN = sort(unique(msia_sf$ADM2_EN)))
+
+# Find rows in crime_unique that don't have a match in msia_unique
+unmatched_labour <- anti_join(labour_unique, msia_unique, by = c("district" = "ADM2_EN"))
+
+unmatched_labour
+```
+
+Let's combine our labour data with our crimes data
+
+```{r}
+crime_labour <- crime %>%
+        filter(year >= 2019 & year <= 2022) %>%
+        left_join(labour, by = c("district","year")) %>%
+        select(1:4,6,7,10,12,14,15)
+```
+
+Let's check for any empty rows before *left_join*
+
+```{r}
+na <- crime_labour %>%
+  summarise(na_district = sum(is.na(district)),
+            na_category = sum(is.na(category)),
+            na_type = sum(is.na(type)),
+            na_crimes = sum(is.na(crimes)),
+            na_year = sum(is.na(year)),
+            na_lf = sum(is.na(lf)),
+            na_lf_unemployed = sum(is.na(lf_unemployed)),
+            na_u_rate = sum(is.na(u_rate)),
+            na_p_rate = sum(is.na(u_rate)),
+            )
+print(na)
+```
+
+There are NA values so let's remove them
+
+```{r}
+crime_labour <- na.omit(crime_labour)
+```
+
+Do another check
+
+```{r}
+na <- crime_labour %>%
+  summarise(na_district = sum(is.na(district)),
+            na_category = sum(is.na(category)),
+            na_type = sum(is.na(type)),
+            na_crimes = sum(is.na(crimes)),
+            na_year = sum(is.na(year)),
+            na_lf = sum(is.na(lf)),
+            na_lf_unemployed = sum(is.na(lf_unemployed)),
+            na_u_rate = sum(is.na(u_rate)),
+            )
+print(na)
+```
+
+Finally we combine it with our *msia_sf*
+
+```{r}
+msia <- left_join(msia_sf,crime_labour, by = c("ADM2_EN" = "district")) %>%
+        select(1,6,16:24)
+
+msia
+```
+
+### NA Values
+
+Looking at this we could see some additional rows have been added. Let's see if there are any NA values
+
+```{r}
+na <- msia %>%
+  summarise(na_district = sum(is.na(ADM2_EN)),
+            na_category = sum(is.na(category)),
+            na_type = sum(is.na(type)),
+            na_crimes = sum(is.na(crimes)),
+            na_year = sum(is.na(year)),
+            na_lf = sum(is.na(lf)),
+            na_lf_unemployed = sum(is.na(lf_unemployed)),
+            na_u_rate = sum(is.na(u_rate)),
+            na_p_rate = sum(is.na(p_rate)),
+            )
+print(na)
+```
+
+Let's remove the NA rows
+
+```{r}
+msia <- na.omit(msia)
+```
+
+Do another check
+
+```{r}
+na <- msia %>%
+  summarise(na_district = sum(is.na(ADM2_EN)),
+            na_category = sum(is.na(category)),
+            na_type = sum(is.na(type)),
+            na_crimes = sum(is.na(crimes)),
+            na_year = sum(is.na(year)),
+            na_lf = sum(is.na(lf)),
+            na_lf_unemployed = sum(is.na(lf_unemployed)),
+            na_u_rate = sum(is.na(u_rate)),
+            )
+print(na)
+```
+
+Let's check for duplicates as well
+
+```{r}
+duplicates <- msia %>%
+    group_by(ADM2_EN, year, category, type, crimes, u_rate, p_rate) %>%
+    filter(n() > 1)
+if(nrow(duplicates) > 0) {
+    print(duplicates)
+}
+```
+
+# UI Design
+
+For a shiny application in this course we work with three main components **`headerPanel`**, **`sidebarPanel`**, and **`mainPanel`**.
+
+-   **Header Panel** : This is the topmost part of the UI where we can put a description of the application or have a navbar where you can navigate different pages. Each page leads to other group members work/part in this project
+
+-   **Sidebar Panel**: This panel would mainly consist of the input controls that the user can play around with to change the map output in the **Main Panel.**
+
+-   **Main Panel** : This is the primary area of the application and it typically contains outputs. The main panel displays the output (like maps, plots, tables, etc.) based on the input given in the sidebar panel.
+
+![](images/clipboard-2485122679.png)
+
+## Header Panel
+
+For this we would like to put **navbarPage()** which shiny provides. This is so as to keep our project organised and it would be easier to navigate through the different pages that we would have
+
+![](images/clipboard-3890883561.png)
+
+## Side Panel
+
+For this part it would be the input controls and given the potential variables the the data type we have identified: ***district, category, type, date, crimes, gini.***
+
+Some of the potential input controls that could be used are:
+
+-   Select boxes
+
+-   Checkboxes
+
+-   Radio buttons
+
+-   Sliders
+
+Something that our side panel that could look like given the variables that we are given:
+
+![](images/clipboard-1163880820.png)
+
+## Main Panel
+
+This main panel would consist of just the main map based on the values selected by the user.
+
+This would also be roughly how our shiny application would look like with the different layouts
+
+# Exploratory Data Analysis (EDA)
+
+We first want to split the data by years available
+
+```{r}
+split_msia <- split(msia, msia$year)
+```
+
+## Data Summary
+We can look at the overall summaries for values such as `u_rate`, `p_rate` and `crimes` for each year
+
+::: panel-tabset
+### 2019
+```{r}
+summary(split_msia$"2019" %>% select(6,10,11))
+```
+
+### 2020
+```{r}
+summary(split_msia$"2020" %>% select(6,10,11))
+```
+### 2021
+```{r}
+summary(split_msia$"2021" %>% select(6,10,11))
+```
+### 2022
+```{r}
+summary(split_msia$"2022" %>% select(6,10,11))
+```
+:::
+
+## Statistical graphics
+
+We can plot the distribution of the variables by using appropriate Exploratory Data Analysis (EDA).
+
+### Histogram
+
+Histogram is useful to identify the overall distribution of the data values (i.e. left skew, right skew or normal distribution)
+
+#### Crimes
+::: panel-tabset
+##### 2019
+```{r}
+ggplot(data=split_msia$"2019", 
+       aes(x=`crimes`)) +
+  geom_histogram(bins=20, 
+                 color="black", 
+                 fill="light blue")
+```
+
+##### 2020
+```{r}
+ggplot(data=split_msia$"2020", 
+       aes(x=`crimes`)) +
+  geom_histogram(bins=20, 
+                 color="black", 
+                 fill="light blue")
+```
+
+##### 2021
+```{r}
+ggplot(data=split_msia$"2021", 
+       aes(x=`crimes`)) +
+  geom_histogram(bins=20, 
+                 color="black", 
+                 fill="light blue")
+```
+
+##### 2022
+```{r}
+ggplot(data=split_msia$"2022", 
+       aes(x=`crimes`)) +
+  geom_histogram(bins=20, 
+                 color="black", 
+                 fill="light blue")
+```
+:::
+#### U Rate
+This is the ratio of unemployed to labour force size
+
+::: panel-tabset
+##### 2019
+```{r}
+ggplot(data=split_msia$"2019", 
+       aes(x=`u_rate`)) +
+  geom_histogram(bins=20, 
+                 color="black", 
+                 fill="light blue")
+```
+
+##### 2020
+```{r}
+ggplot(data=split_msia$"2020", 
+       aes(x=`u_rate`)) +
+  geom_histogram(bins=20, 
+                 color="black", 
+                 fill="light blue")
+```
+
+##### 2021
+```{r}
+ggplot(data=split_msia$"2021", 
+       aes(x=`u_rate`)) +
+  geom_histogram(bins=20, 
+                 color="black", 
+                 fill="light blue")
+```
+
+##### 2022
+```{r}
+ggplot(data=split_msia$"2022", 
+       aes(x=`u_rate`)) +
+  geom_histogram(bins=20, 
+                 color="black", 
+                 fill="light blue")
+```
+:::
+
+
+#### P Rate
+This is the ratio of the labour force size to the working-age (15-64) population
+
+::: panel-tabset
+##### 2019
+```{r}
+ggplot(data=split_msia$"2019", 
+       aes(x=`p_rate`)) +
+  geom_histogram(bins=20, 
+                 color="black", 
+                 fill="light blue")
+```
+
+##### 2020
+```{r}
+ggplot(data=split_msia$"2020", 
+       aes(x=`p_rate`)) +
+  geom_histogram(bins=20, 
+                 color="black", 
+                 fill="light blue")
+```
+
+##### 2021
+```{r}
+ggplot(data=split_msia$"2021", 
+       aes(x=`p_rate`)) +
+  geom_histogram(bins=20, 
+                 color="black", 
+                 fill="light blue")
+```
+
+##### 2022
+```{r}
+ggplot(data=split_msia$"2022", 
+       aes(x=`p_rate`)) +
+  geom_histogram(bins=20, 
+                 color="black", 
+                 fill="light blue")
+```
+:::
+
+### Boxplot
+We can use boxplots to determine if there are any outliers for data
+
+#### Crimes
+::: panel-tabset
+##### 2019
+
+```{r}
+ggplot(data=split_msia$"2019", 
+       aes(x=`crimes`)) +
+  geom_boxplot(bins=20, 
+                 color="black", 
+                 fill="light blue")
+```
+
+
+##### 2020
+
+```{r}
+ggplot(data=split_msia$"2020", 
+       aes(x=`crimes`)) +
+  geom_boxplot(bins=20, 
+                 color="black", 
+                 fill="light blue")
+```
+
+##### 2021
+
+```{r}
+ggplot(data=split_msia$"2021", 
+       aes(x=`crimes`)) +
+  geom_boxplot(bins=20, 
+                 color="black", 
+                 fill="light blue")
+```
+
+##### 2022
+
+```{r}
+ggplot(data=split_msia$"2022", 
+       aes(x=`crimes`)) +
+  geom_boxplot(bins=20, 
+                 color="black", 
+                 fill="light blue")
+```
+
+:::
+
+#### U Rate
+This is the ratio of unemployed to labour force size
+
+::: panel-tabset
+##### 2019
+
+```{r}
+ggplot(data=split_msia$"2019", 
+       aes(x=`u_rate`)) +
+  geom_boxplot(bins=20, 
+                 color="black", 
+                 fill="light blue")
+```
+
+
+##### 2020
+
+```{r}
+ggplot(data=split_msia$"2020", 
+       aes(x=`u_rate`)) +
+  geom_boxplot(bins=20, 
+                 color="black", 
+                 fill="light blue")
+```
+
+##### 2021
+
+```{r}
+ggplot(data=split_msia$"2021", 
+       aes(x=`u_rate`)) +
+  geom_boxplot(bins=20, 
+                 color="black", 
+                 fill="light blue")
+```
+
+##### 2022
+
+```{r}
+ggplot(data=split_msia$"2022", 
+       aes(x=`u_rate`)) +
+  geom_boxplot(bins=20, 
+                 color="black", 
+                 fill="light blue")
+```
+
+:::
+
+
+
+#### P Rate
+This is the ratio of the labour force size to the working-age (15-64) population
+
+::: panel-tabset
+##### 2019
+
+```{r}
+ggplot(data=split_msia$"2019", 
+       aes(x=`p_rate`)) +
+  geom_boxplot(bins=20, 
+                 color="black", 
+                 fill="light blue")
+```
+
+
+##### 2020
+
+```{r}
+ggplot(data=split_msia$"2020", 
+       aes(x=`p_rate`)) +
+  geom_boxplot(bins=20, 
+                 color="black", 
+                 fill="light blue")
+```
+
+##### 2021
+
+```{r}
+ggplot(data=split_msia$"2021", 
+       aes(x=`p_rate`)) +
+  geom_boxplot(bins=20, 
+                 color="black", 
+                 fill="light blue")
+```
+
+##### 2022
+
+```{r}
+ggplot(data=split_msia$"2022", 
+       aes(x=`p_rate`)) +
+  geom_boxplot(bins=20, 
+                 color="black", 
+                 fill="light blue")
+```
+
+:::
+
+## Choropleth map
+We can use choropleth maps to showcase the distribution rates in a more visual form to find potential hotspots.
+
+### Crimes
+::: panel-tabset
+#### 2019
+```{r}
+qtm(split_msia$"2019", "crimes")
+```
+
+#### 2020
+```{r}
+qtm(split_msia$"2020", "crimes")
+```
+#### 2021
+```{r}
+qtm(split_msia$"2021", "crimes")
+```
+#### 2022
+```{r}
+qtm(split_msia$"2022", "crimes")
+```
+:::
+
+We can see from the maps that crimes are generally more concentrated around the more populated areas of malaysia such as Johor Bahru and Selangor
+
+
+### U Rate
+::: panel-tabset
+#### 2019
+```{r}
+qtm(split_msia$"2019", "u_rate")
+```
+
+#### 2020
+```{r}
+qtm(split_msia$"2020", "u_rate")
+```
+#### 2021
+```{r}
+qtm(split_msia$"2021", "u_rate")
+```
+#### 2022
+```{r}
+qtm(split_msia$"2022", "u_rate")
+```
+:::
+
+### P Rate
+::: panel-tabset
+#### 2019
+```{r}
+qtm(split_msia$"2019", "p_rate")
+```
+
+#### 2020
+```{r}
+qtm(split_msia$"2020", "p_rate")
+```
+#### 2021
+```{r}
+qtm(split_msia$"2021", "p_rate")
+```
+#### 2022
+```{r}
+qtm(split_msia$"2022", "p_rate")
+```
+:::
+
+We can see that `year`, `p_rate`, `u_rate` and `crimes` are possible values for users to select for the project Shiny Application.

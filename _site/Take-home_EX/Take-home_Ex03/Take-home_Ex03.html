@@ -1,0 +1,2340 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Fan Syong Yue">
+<meta name="dcterms.date" content="2024-11-02">
+
+<title>Take-home Exercise 3: Armed Conflict in Myanmar – IS415-GAA</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">IS415-GAA</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hands-on-exercise" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Hands-on Exercise</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-hands-on-exercise">    
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html">
+ <span class="dropdown-text">Hands-on Exercise 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html">
+ <span class="dropdown-text">Hands-on Exercise 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex03/Hands-on_Ex03.html">
+ <span class="dropdown-text">Hands-on Exercise 3</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex05/Hands-on_Ex05.html">
+ <span class="dropdown-text">Hands-on Exercise 5</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex06/Hands-on_Ex06.html">
+ <span class="dropdown-text">Hands-on Exercise 6</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex07/Hands-on_Ex07.html">
+ <span class="dropdown-text">Hands-on Exercise 7</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex08/Hands-on_Ex08.html">
+ <span class="dropdown-text">Hands-on Exercise 8</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-in-class-exercise" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">In-class Exercise</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-in-class-exercise">    
+        <li>
+    <a class="dropdown-item" href="../../In-class_Ex/In-class_Ex01/In-class_Ex01.html">
+ <span class="dropdown-text">In-class Exercise 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../In-class_Ex/In-class_Ex02/In-class_Ex02.html">
+ <span class="dropdown-text">In-class Exercise 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../In-class_Ex/In-class_Ex03/In-class_Ex03.html">
+ <span class="dropdown-text">In-class Exercise 3</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../In-class_Ex/In-class_Ex04/In-class_Ex04.html">
+ <span class="dropdown-text">In-class Exercise 4</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../In-class_Ex/In-class_Ex05/In-class_Ex05.html">
+ <span class="dropdown-text">In-class Exercise 5</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../In-class_Ex/In-class_Ex06/In-class_Ex06.html">
+ <span class="dropdown-text">In-class Exercise 6</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../In-class_Ex/In-class_Ex09/In-class_Ex09.html">
+ <span class="dropdown-text">In-class Exercise 9</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-take-home-exercise" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Take-home Exercise</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-take-home-exercise">    
+        <li>
+    <a class="dropdown-item" href="../../Take-home_EX/Take-home_Ex01/Take-home_Ex01.html">
+ <span class="dropdown-text">Take-home Exercise 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Take-home_EX/Take-home_Ex02/Take-home_Ex02.html">
+ <span class="dropdown-text">Take-home Exercise 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Take-home_EX/Take-home_Ex03/Take-home_Ex03.html">
+ <span class="dropdown-text">Take-home Exercise 3</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview-and-objectives" id="toc-overview-and-objectives" class="nav-link active" data-scroll-target="#overview-and-objectives">Overview and Objectives</a></li>
+  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a>
+  <ul class="collapse">
+  <li><a href="#importing-the-data" id="toc-importing-the-data" class="nav-link" data-scroll-target="#importing-the-data">Importing the Data</a></li>
+  <li><a href="#wrangling" id="toc-wrangling" class="nav-link" data-scroll-target="#wrangling">Wrangling</a>
+  <ul class="collapse">
+  <li><a href="#hole-in-boundary-file" id="toc-hole-in-boundary-file" class="nav-link" data-scroll-target="#hole-in-boundary-file">Hole in boundary file</a></li>
+  <li><a href="#missing-data" id="toc-missing-data" class="nav-link" data-scroll-target="#missing-data">Missing data</a></li>
+  <li><a href="#left-join" id="toc-left-join" class="nav-link" data-scroll-target="#left-join">Left Join</a></li>
+  <li><a href="#na-values" id="toc-na-values" class="nav-link" data-scroll-target="#na-values">NA Values</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#ui-design" id="toc-ui-design" class="nav-link" data-scroll-target="#ui-design">UI Design</a>
+  <ul class="collapse">
+  <li><a href="#header-panel" id="toc-header-panel" class="nav-link" data-scroll-target="#header-panel">Header Panel</a></li>
+  <li><a href="#side-panel" id="toc-side-panel" class="nav-link" data-scroll-target="#side-panel">Side Panel</a></li>
+  <li><a href="#main-panel" id="toc-main-panel" class="nav-link" data-scroll-target="#main-panel">Main Panel</a></li>
+  </ul></li>
+  <li><a href="#exploratory-data-analysis-eda" id="toc-exploratory-data-analysis-eda" class="nav-link" data-scroll-target="#exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)</a>
+  <ul class="collapse">
+  <li><a href="#data-summary" id="toc-data-summary" class="nav-link" data-scroll-target="#data-summary">Data Summary</a></li>
+  <li><a href="#statistical-graphics" id="toc-statistical-graphics" class="nav-link" data-scroll-target="#statistical-graphics">Statistical graphics</a>
+  <ul class="collapse">
+  <li><a href="#histogram" id="toc-histogram" class="nav-link" data-scroll-target="#histogram">Histogram</a></li>
+  <li><a href="#boxplot" id="toc-boxplot" class="nav-link" data-scroll-target="#boxplot">Boxplot</a></li>
+  </ul></li>
+  <li><a href="#choropleth-map" id="toc-choropleth-map" class="nav-link" data-scroll-target="#choropleth-map">Choropleth map</a>
+  <ul class="collapse">
+  <li><a href="#crimes-2" id="toc-crimes-2" class="nav-link" data-scroll-target="#crimes-2">Crimes</a></li>
+  <li><a href="#u-rate-2" id="toc-u-rate-2" class="nav-link" data-scroll-target="#u-rate-2">U Rate</a></li>
+  <li><a href="#p-rate-2" id="toc-p-rate-2" class="nav-link" data-scroll-target="#p-rate-2">P Rate</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Take-home Exercise 3: Armed Conflict in Myanmar</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Fan Syong Yue </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 2, 2024</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">November 3, 2024</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="overview-and-objectives" class="level1">
+<h1>Overview and Objectives</h1>
+<p>In this take-home my aim is to evaluate the necessary R packages necessary to perform Exploratory Data Analysis (EDA).</p>
+<p>This is to be done on the data which is the different types of crimes in Malaysia on the district level which we would layer with income inequality of Malaysia.</p>
+<p>This also serves to prototype the Shiny application UI and choosing the right type of components</p>
+</section>
+<section id="packages" class="level1">
+<h1>Packages</h1>
+<ul>
+<li><p><strong>sf</strong> provides a standardised way to work with spatial vector data (points, lines, polygons)</p></li>
+<li><p><strong>spdep</strong> focuses on spatial econometrics and spatial statistics</p></li>
+<li><p><strong>tmap</strong> create thematic maps</p></li>
+<li><p><strong>tidyverse</strong> for easy data manipulation and some visualisation</p></li>
+<li><p><strong>knitr</strong> facilitates the integration of R code and documentation in reproducible research reports</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(sf, sfdep, tmap, tidyverse, knitr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="data" class="level1">
+<h1>Data</h1>
+<ul>
+<li><p><strong>Income Inequality Data:</strong> Household income inequality by district (<a href="https://data.gov.my/data-catalogue/hh_inequality_district" class="uri">https://data.gov.my/data-catalogue/hh_inequality_district</a>)</p></li>
+<li><p><strong>Annual Principal Labour Force Statistics by District:</strong> Annual principal labour force statistics including unemployment and participation rates (<a href="https://data.gov.my/data-catalogue/lfs_district" class="uri">https://data.gov.my/data-catalogue/lfs_district</a>)</p></li>
+<li><p><strong>Crime Data:</strong> Crime rates by district (<a href="https://data.gov.my/data-catalogue/crime_district" class="uri">https://data.gov.my/data-catalogue/crime_district</a>)</p></li>
+<li><p><strong>Malaysia - Subnational Administrative Boundaries: (</strong><a href="https://data.humdata.org/dataset/cod-ab-mys?" class="uri">https://data.humdata.org/dataset/cod-ab-mys?</a>)</p></li>
+</ul>
+<section id="importing-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="importing-the-data">Importing the Data</h2>
+<p>Before the UI prototyping can be done let’s see what type of data we are dealing with so that we can better plan for the UI components to be used</p>
+<p>Let’s import the crime, labour and income inequality datasets</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>crime <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/aspatial/crime_district.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 19152 Columns: 6
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (4): state, district, category, type
+dbl  (1): crimes
+date (1): date
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>income <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/aspatial/hh_inequality_district.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 318 Columns: 4
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (2): state, district
+dbl  (1): gini
+date (1): date
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>labour <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/aspatial/lfs_district.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 560 Columns: 10
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (2): state, district
+dbl  (7): lf, lf_employed, lf_unemployed, lf_outside, p_rate, u_rate, ep_ratio
+date (1): date
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<p>Now let’s look at the possible variables that we can use from each of these datasets</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>crime</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 19,152 × 6
+   state    district category type           date       crimes
+   &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;          &lt;date&gt;      &lt;dbl&gt;
+ 1 Malaysia All      assault  all            2016-01-01  22327
+ 2 Malaysia All      assault  all            2017-01-01  21366
+ 3 Malaysia All      assault  all            2018-01-01  16902
+ 4 Malaysia All      assault  all            2019-01-01  16489
+ 5 Malaysia All      assault  all            2020-01-01  13279
+ 6 Malaysia All      assault  all            2021-01-01  11495
+ 7 Malaysia All      assault  all            2022-01-01  10348
+ 8 Malaysia All      assault  all            2023-01-01  10453
+ 9 Malaysia All      assault  causing_injury 2016-01-01   5531
+10 Malaysia All      assault  causing_injury 2017-01-01   5024
+# ℹ 19,142 more rows</code></pre>
+</div>
+</div>
+<p>From here we can identify some of the variables that we can use, that the user can interact with <strong><em>district, category, type, date, crimes</em></strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>income</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 318 × 4
+   state district    date        gini
+   &lt;chr&gt; &lt;chr&gt;       &lt;date&gt;     &lt;dbl&gt;
+ 1 Johor Batu Pahat  2019-01-01 0.295
+ 2 Johor Batu Pahat  2022-01-01 0.338
+ 3 Johor Johor Bahru 2019-01-01 0.388
+ 4 Johor Johor Bahru 2022-01-01 0.359
+ 5 Johor Kluang      2019-01-01 0.333
+ 6 Johor Kluang      2022-01-01 0.354
+ 7 Johor Kota Tinggi 2019-01-01 0.361
+ 8 Johor Kota Tinggi 2022-01-01 0.343
+ 9 Johor Kulai       2019-01-01 0.324
+10 Johor Kulai       2022-01-01 0.337
+# ℹ 308 more rows</code></pre>
+</div>
+</div>
+<p>Likewise for income we have <strong><em>district, date, gini</em></strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>labour</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 560 × 10
+   state district   date          lf lf_employed lf_unemployed lf_outside p_rate
+   &lt;chr&gt; &lt;chr&gt;      &lt;date&gt;     &lt;dbl&gt;       &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;  &lt;dbl&gt;
+ 1 Johor Batu Pahat 2019-01-01  214.        210.           3.7       90.4   70.3
+ 2 Johor Batu Pahat 2020-01-01  219.        214.           4.7       92.2   70.4
+ 3 Johor Batu Pahat 2021-01-01  216         211            5         97.1   69  
+ 4 Johor Batu Pahat 2022-01-01  221.        217.           4         94.6   70  
+ 5 Johor Johor Bah… 2019-01-01  792.        768.          24.6      294.    73  
+ 6 Johor Johor Bah… 2020-01-01  804.        771.          32.5      297.    73  
+ 7 Johor Johor Bah… 2021-01-01  806.        772.          34.1      298.    73  
+ 8 Johor Johor Bah… 2022-01-01  830.        799           30.5      293.    73.9
+ 9 Johor Kluang     2019-01-01  166.        160.           5.6       66.9   71.3
+10 Johor Kluang     2020-01-01  168.        161.           7.1       67.4   71.4
+# ℹ 550 more rows
+# ℹ 2 more variables: u_rate &lt;dbl&gt;, ep_ratio &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>For labour we have <strong><em>district, date, lf, lf_employed, lf_unemployed, lf_outside, p_rate, u_rate, ep_ration</em></strong></p>
+</section>
+<section id="wrangling" class="level2">
+<h2 class="anchored" data-anchor-id="wrangling">Wrangling</h2>
+<p>Looking at the crime csv file there are rows with “all” or “All” as the data. This seems to be a summary of the different crimes or summary for the different districts for the different years. So let’s remove the them</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>excluded_column <span class="ot">&lt;-</span> <span class="st">"date"</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>crime <span class="ot">&lt;-</span> crime[<span class="sc">!</span><span class="fu">apply</span>(crime[, <span class="sc">!</span><span class="fu">names</span>(crime) <span class="sc">%in%</span> excluded_column] <span class="sc">==</span> <span class="st">"all"</span>, <span class="dv">1</span>, any), ]</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>crime <span class="ot">&lt;-</span> crime[<span class="sc">!</span><span class="fu">apply</span>(crime[, <span class="sc">!</span><span class="fu">names</span>(crime) <span class="sc">%in%</span> excluded_column] <span class="sc">==</span> <span class="st">"All"</span>, <span class="dv">1</span>, any), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s also add a column called year to the different csv files, to that it would be easier to split up the data into the different years</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>crime <span class="ot">&lt;-</span> crime <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>              <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">year</span>(date))</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>income <span class="ot">&lt;-</span> income <span class="sc">%&gt;%</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>              <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">year</span>(date))</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>labour <span class="ot">&lt;-</span> labour <span class="sc">%&gt;%</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>              <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">year</span>(date))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s load Malaysia shape file and transform the crs into EPSG:3168</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>msia_sf <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="at">dsn =</span> <span class="st">"data/geospatial/mys_adm_unhcr_20210211_shp"</span>, </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">layer =</span> <span class="st">"mys_admbnda_adm2_unhcr_20210211"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span><span class="fu">c</span>(</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"longitude"</span>, <span class="st">"latitude"</span>),</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">crs =</span> <span class="dv">4326</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_transform</span>(<span class="at">crs =</span> <span class="dv">3168</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(msia_sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Coordinate Reference System:
+  User input: EPSG:3168 
+  wkt:
+PROJCRS["Kertau (RSO) / RSO Malaya (m)",
+    BASEGEOGCRS["Kertau (RSO)",
+        DATUM["Kertau (RSO)",
+            ELLIPSOID["Everest 1830 (RSO 1969)",6377295.664,300.8017,
+                LENGTHUNIT["metre",1]]],
+        PRIMEM["Greenwich",0,
+            ANGLEUNIT["degree",0.0174532925199433]],
+        ID["EPSG",4751]],
+    CONVERSION["Rectified Skew Orthomorphic Malaya Grid (metre)",
+        METHOD["Hotine Oblique Mercator (variant A)",
+            ID["EPSG",9812]],
+        PARAMETER["Latitude of projection centre",4,
+            ANGLEUNIT["degree",0.0174532925199433],
+            ID["EPSG",8811]],
+        PARAMETER["Longitude of projection centre",102.25,
+            ANGLEUNIT["degree",0.0174532925199433],
+            ID["EPSG",8812]],
+        PARAMETER["Azimuth of initial line",323.0257905,
+            ANGLEUNIT["degree",0.0174532925199433],
+            ID["EPSG",8813]],
+        PARAMETER["Angle from Rectified to Skew Grid",323.130102361111,
+            ANGLEUNIT["degree",0.0174532925199433],
+            ID["EPSG",8814]],
+        PARAMETER["Scale factor on initial line",0.99984,
+            SCALEUNIT["unity",1],
+            ID["EPSG",8815]],
+        PARAMETER["False easting",804670.24,
+            LENGTHUNIT["metre",1],
+            ID["EPSG",8806]],
+        PARAMETER["False northing",0,
+            LENGTHUNIT["metre",1],
+            ID["EPSG",8807]]],
+    CS[Cartesian,2],
+        AXIS["(E)",east,
+            ORDER[1],
+            LENGTHUNIT["metre",1]],
+        AXIS["(N)",north,
+            ORDER[2],
+            LENGTHUNIT["metre",1]],
+    USAGE[
+        SCOPE["Engineering survey, topographic mapping."],
+        AREA["Malaysia - West Malaysia onshore."],
+        BBOX[1.21,99.59,6.72,104.6]],
+    ID["EPSG",3168]]</code></pre>
+</div>
+</div>
+<section id="hole-in-boundary-file" class="level3">
+<h3 class="anchored" data-anchor-id="hole-in-boundary-file">Hole in boundary file</h3>
+<p>Next check if there are any holes with the boundary file</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>u_msia <span class="ot">&lt;-</span> <span class="fu">st_union</span>(msia_sf)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(u_msia)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="missing-data" class="level3">
+<h3 class="anchored" data-anchor-id="missing-data">Missing data</h3>
+<p>Let’s do a check if there are any missing values in the crime data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>na <span class="ot">&lt;-</span> crime <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">na_district =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(district)),</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_category =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(category)),</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_type =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(type)),</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_date =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(date)),</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_crimes =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(crimes))</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(na)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 5
+  na_district na_category na_type na_date na_crimes
+        &lt;int&gt;       &lt;int&gt;   &lt;int&gt;   &lt;int&gt;     &lt;int&gt;
+1           0           0       0       0         0</code></pre>
+</div>
+</div>
+<p>Let’s also do a check for the income inequality data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>na <span class="ot">&lt;-</span> income <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">na_district =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(district)),</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_date =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(date)),</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_gini =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(gini))</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(na)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  na_district na_date na_gini
+        &lt;int&gt;   &lt;int&gt;   &lt;int&gt;
+1           0       0       0</code></pre>
+</div>
+</div>
+<p>And also for the labour data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>na <span class="ot">&lt;-</span> labour <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">na_district =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(district)),</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_date =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(date)),</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_lf =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(lf)),</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_lf_unemployed =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(lf_unemployed)),</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_u_rate =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(u_rate)),</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(na)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 5
+  na_district na_date na_lf na_lf_unemployed na_u_rate
+        &lt;int&gt;   &lt;int&gt; &lt;int&gt;            &lt;int&gt;     &lt;int&gt;
+1           0       0     0                0         0</code></pre>
+</div>
+</div>
+</section>
+<section id="left-join" class="level3">
+<h3 class="anchored" data-anchor-id="left-join">Left Join</h3>
+<section id="mismatch-districts" class="level4">
+<h4 class="anchored" data-anchor-id="mismatch-districts">Mismatch Districts</h4>
+<p>Having check everything else, let’s check whether is there any issues with <strong><em>msia_sf</em></strong> and <strong><em>crime</em></strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>combined_data <span class="ot">&lt;-</span> <span class="fu">bind_cols</span>(<span class="at">crime =</span> <span class="fu">sort</span>(<span class="fu">unique</span>(crime<span class="sc">$</span>district)), <span class="at">msia_sf =</span> <span class="fu">sort</span>(<span class="fu">unique</span>(msia_sf<span class="sc">$</span>ADM2_EN)))</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new column to compare the values</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>combined_data <span class="ot">&lt;-</span> combined_data <span class="sc">%&gt;%</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">same_values =</span> crime <span class="sc">==</span> msia_sf) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(same_values <span class="sc">==</span> <span class="cn">FALSE</span>)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View the result</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>combined_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This would generate an error regarding difference in the number of data, in the <strong><em>crime</em></strong> there are 159 districts while in <strong><em>msia_sf</em></strong> there are 144 districts.</p>
+<p>Let’s run another code to see the difference</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>crime_unique <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">district =</span> <span class="fu">sort</span>(<span class="fu">unique</span>(crime<span class="sc">$</span>district)))</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>msia_unique <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">ADM2_EN =</span> <span class="fu">sort</span>(<span class="fu">unique</span>(msia_sf<span class="sc">$</span>ADM2_EN)))</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Find rows in crime_unique that don't have a match in msia_unique</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>unmatched_crime <span class="ot">&lt;-</span> <span class="fu">anti_join</span>(crime_unique, msia_unique, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"district"</span> <span class="ot">=</span> <span class="st">"ADM2_EN"</span>))</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Find rows in msia_unique that don't have a match in crime_unique</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>unmatched_msia <span class="ot">&lt;-</span> <span class="fu">anti_join</span>(msia_unique, crime_unique, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"ADM2_EN"</span> <span class="ot">=</span> <span class="st">"district"</span>))</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine results to see all mismatches</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>unmatched_crime</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 district
+1             Ampang Jaya
+2                    Arau
+3            Bandar Bharu
+4              Batu Gajah
+5             Brickfields
+6        Cameron Highland
+7                  Cheras
+8              Dang Wangi
+9                   Gerik
+10          Hulu Selangor
+11                   Ipoh
+12        Iskandar Puteri
+13    Johor Bahru Selatan
+14      Johor Bahru Utara
+15                 Kajang
+16                 Kangar
+17          Klang Selatan
+18            Klang Utara
+19      Kota Kinabatangan
+20         Kota Samarahan
+21            Kuala Lipis
+22                Manjung
+23              Matu Daro
+24                  Nilai
+25               Nusajaya
+26           Padang Besar
+27                Padawan
+28         Pengkalan Hulu
+29          Petaling Jaya
+30 Seberang Perai Selatan
+31  Seberang Perai Tengah
+32   Seberang Perai Utara
+33                 Selama
+34                 Sentul
+35                Serdang
+36              Seri Alam
+37              Sg. Buloh
+38              Shah Alam
+39            Subang Jaya
+40           Sungai Buloh
+41           Sungai Siput
+42                Taiping
+43          Tanjong Malim
+44                  Tapah
+45            Wangsa Maju</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>unmatched_msia</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             ADM2_EN
+1            Asajaya
+2      Batang Padang
+3               Daro
+4        Johor Bahru
+5       Kinabatangan
+6              Kinta
+7              Klang
+8        Kuala Penyu
+9   Larut Dan Matang
+10             Lipis
+11 Manjung (Dinding)
+12              Matu
+13           Nabawan
+14             Pakan
+15            Perlis
+16          Petaling
+17             Pitas
+18        Pokok Sena
+19           Putatan
+20       S.P. Tengah
+21        S.P. Utara
+22       S.P.Selatan
+23         Samarahan
+24          Selangau
+25          Tambunan
+26            Tongod
+27        Ulu Langat
+28         Ulu Perak
+29      Ulu Selangor
+30  WP. Kuala Lumpur</code></pre>
+</div>
+</div>
+<p>From here we can actually see which data is missing in which file</p>
+<p>Let’s see all the unique districts in the sf file</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">unique</span>(msia_sf<span class="sc">$</span>ADM2_EN))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] "Alor Gajah"        "Asajaya"           "Bachok"           
+  [4] "Baling"            "Bandar Baharu"     "Barat Daya"       
+  [7] "Batang Padang"     "Batu Pahat"        "Bau"              
+ [10] "Beaufort"          "Belaga"            "Beluran"          
+ [13] "Bentong"           "Bera"              "Besut"            
+ [16] "Betong"            "Bintulu"           "Cameron Highlands"
+ [19] "Dalat"             "Daro"              "Dungun"           
+ [22] "Gombak"            "Gua Musang"        "Hilir Perak"      
+ [25] "Hulu Terengganu"   "Jasin"             "Jelebu"           
+ [28] "Jeli"              "Jempol"            "Jerantut"         
+ [31] "Johor Bahru"       "Julau"             "Kampar"           
+ [34] "Kanowit"           "Kapit"             "Kemaman"          
+ [37] "Keningau"          "Kerian"            "Kinabatangan"     
+ [40] "Kinta"             "Klang"             "Kluang"           
+ [43] "Kota Belud"        "Kota Bharu"        "Kota Kinabalu"    
+ [46] "Kota Marudu"       "Kota Setar"        "Kota Tinggi"      
+ [49] "Kuala Kangsar"     "Kuala Krai"        "Kuala Langat"     
+ [52] "Kuala Muda"        "Kuala Penyu"       "Kuala Pilah"      
+ [55] "Kuala Selangor"    "Kuala Terengganu"  "Kuantan"          
+ [58] "Kubang Pasu"       "Kuching"           "Kudat"            
+ [61] "Kulaijaya"         "Kulim"             "Kunak"            
+ [64] "Lahad Datu"        "Langkawi"          "Larut Dan Matang" 
+ [67] "Lawas"             "Ledang"            "Limbang"          
+ [70] "Lipis"             "Lubok Antu"        "Lundu"            
+ [73] "Machang"           "Manjung (Dinding)" "Maran"            
+ [76] "Marang"            "Marudi"            "Matu"             
+ [79] "Melaka Tengah"     "Meradong"          "Mersing"          
+ [82] "Miri"              "Muar"              "Mukah"            
+ [85] "Nabawan"           "Padang Terap"      "Pakan"            
+ [88] "Papar"             "Pasir Mas"         "Pasir Puteh"      
+ [91] "Pekan"             "Penampang"         "Pendang"          
+ [94] "Perak Tengah"      "Perlis"            "Petaling"         
+ [97] "Pitas"             "Pokok Sena"        "Pontian"          
+[100] "Port Dickson"      "Putatan"           "Ranau"            
+[103] "Raub"              "Rembau"            "Rompin"           
+[106] "S.P. Tengah"       "S.P. Utara"        "S.P.Selatan"      
+[109] "Sabak Bernam"      "Samarahan"         "Sandakan"         
+[112] "Saratok"           "Sarikei"           "Segamat"          
+[115] "Selangau"          "Semporna"          "Sepang"           
+[118] "Seremban"          "Serian"            "Setiu"            
+[121] "Sibu"              "Sik"               "Simunjan"         
+[124] "Sipitang"          "Song"              "Sri Aman"         
+[127] "Tambunan"          "Tampin"            "Tanah Merah"      
+[130] "Tatau"             "Tawau"             "Temerloh"         
+[133] "Tenom"             "Timur Laut"        "Tongod"           
+[136] "Tuaran"            "Tumpat"            "Ulu Langat"       
+[139] "Ulu Perak"         "Ulu Selangor"      "W.P. Labuan"      
+[142] "W.P. Putrajaya"    "WP. Kuala Lumpur"  "Yan"              </code></pre>
+</div>
+</div>
+<p>From here there is no easy way to fix this but to google the districts mentioned in crime and try to map it as close as close to the district in the sf file</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>crime <span class="ot">&lt;-</span> crime <span class="sc">%&gt;%</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">district =</span> <span class="fu">recode</span>(district,</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># Johor Bahru mappings</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Iskandar Puteri"</span> <span class="ot">=</span> <span class="st">"Johor Bahru"</span>,</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Nusajaya"</span> <span class="ot">=</span> <span class="st">"Johor Bahru"</span>,</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Johor Bahru Selatan"</span> <span class="ot">=</span> <span class="st">"Johor Bahru"</span>,</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Johor Bahru Utara"</span> <span class="ot">=</span> <span class="st">"Johor Bahru"</span>,</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Seri Alam"</span> <span class="ot">=</span> <span class="st">"Johor Bahru"</span>,</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>                           </span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># Bandar Baharu correction</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Bandar Bharu"</span> <span class="ot">=</span> <span class="st">"Bandar Baharu"</span>,</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>                           </span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># WP Kuala Lumpur mappings</span></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Brickfields"</span> <span class="ot">=</span> <span class="st">"WP. Kuala Lumpur"</span>,</span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Cheras"</span> <span class="ot">=</span> <span class="st">"WP. Kuala Lumpur"</span>,</span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Dang Wangi"</span> <span class="ot">=</span> <span class="st">"WP. Kuala Lumpur"</span>,</span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Sentul"</span> <span class="ot">=</span> <span class="st">"WP. Kuala Lumpur"</span>,</span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Wangsa Maju"</span> <span class="ot">=</span> <span class="st">"WP. Kuala Lumpur"</span>,</span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>                           </span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># Seremban correction</span></span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Nilai"</span> <span class="ot">=</span> <span class="st">"Seremban"</span>,</span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a>                           </span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># Seberang Perai corrections</span></span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Seberang Perai Selatan"</span> <span class="ot">=</span> <span class="st">"S.P.Selatan"</span>,</span>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Seberang Perai Tengah"</span> <span class="ot">=</span> <span class="st">"S.P. Tengah"</span>,</span>
+<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Seberang Perai Utara"</span> <span class="ot">=</span> <span class="st">"S.P. Utara"</span>,</span>
+<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a>                           </span>
+<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># Cameron Highlands correction</span></span>
+<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Cameron Highland"</span> <span class="ot">=</span> <span class="st">"Cameron Highlands"</span>,</span>
+<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a>                           </span>
+<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># Lipis correction</span></span>
+<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Kuala Lipis"</span> <span class="ot">=</span> <span class="st">"Lipis"</span>,</span>
+<span id="cb33-33"><a href="#cb33-33" aria-hidden="true" tabindex="-1"></a>                           </span>
+<span id="cb33-34"><a href="#cb33-34" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># Kinta mappings</span></span>
+<span id="cb33-35"><a href="#cb33-35" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Batu Gajah"</span> <span class="ot">=</span> <span class="st">"Kinta"</span>,</span>
+<span id="cb33-36"><a href="#cb33-36" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Ipoh"</span> <span class="ot">=</span> <span class="st">"Kinta"</span>,</span>
+<span id="cb33-37"><a href="#cb33-37" aria-hidden="true" tabindex="-1"></a>                           </span>
+<span id="cb33-38"><a href="#cb33-38" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># Ulu Perak mappings</span></span>
+<span id="cb33-39"><a href="#cb33-39" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Gerik"</span> <span class="ot">=</span> <span class="st">"Ulu Perak"</span>,</span>
+<span id="cb33-40"><a href="#cb33-40" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Pengkalan Hulu"</span> <span class="ot">=</span> <span class="st">"Ulu Perak"</span>,</span>
+<span id="cb33-41"><a href="#cb33-41" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb33-42"><a href="#cb33-42" aria-hidden="true" tabindex="-1"></a>                           </span>
+<span id="cb33-43"><a href="#cb33-43" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># Manjung correction</span></span>
+<span id="cb33-44"><a href="#cb33-44" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Manjung"</span> <span class="ot">=</span> <span class="st">"Manjung (Dinding)"</span>,</span>
+<span id="cb33-45"><a href="#cb33-45" aria-hidden="true" tabindex="-1"></a>                           </span>
+<span id="cb33-46"><a href="#cb33-46" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># Larut Dan Matang mappings</span></span>
+<span id="cb33-47"><a href="#cb33-47" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Selama"</span> <span class="ot">=</span> <span class="st">"Larut Dan Matang"</span>,</span>
+<span id="cb33-48"><a href="#cb33-48" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Taiping"</span> <span class="ot">=</span> <span class="st">"Larut Dan Matang"</span>,</span>
+<span id="cb33-49"><a href="#cb33-49" aria-hidden="true" tabindex="-1"></a>                           </span>
+<span id="cb33-50"><a href="#cb33-50" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># Kuala Kangsar correction</span></span>
+<span id="cb33-51"><a href="#cb33-51" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Sungai Siput"</span> <span class="ot">=</span> <span class="st">"Kuala Kangsar"</span>,</span>
+<span id="cb33-52"><a href="#cb33-52" aria-hidden="true" tabindex="-1"></a>                           </span>
+<span id="cb33-53"><a href="#cb33-53" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># Batang Padang mappings</span></span>
+<span id="cb33-54"><a href="#cb33-54" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Tanjong Malim"</span> <span class="ot">=</span> <span class="st">"Batang Padang"</span>,</span>
+<span id="cb33-55"><a href="#cb33-55" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Tapah"</span> <span class="ot">=</span> <span class="st">"Batang Padang"</span>,</span>
+<span id="cb33-56"><a href="#cb33-56" aria-hidden="true" tabindex="-1"></a>                           </span>
+<span id="cb33-57"><a href="#cb33-57" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># Perlis mappings</span></span>
+<span id="cb33-58"><a href="#cb33-58" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Arau"</span> <span class="ot">=</span> <span class="st">"Perlis"</span>,</span>
+<span id="cb33-59"><a href="#cb33-59" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Kangar"</span> <span class="ot">=</span> <span class="st">"Perlis"</span>,</span>
+<span id="cb33-60"><a href="#cb33-60" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Padang Besar"</span> <span class="ot">=</span> <span class="st">"Perlis"</span>,</span>
+<span id="cb33-61"><a href="#cb33-61" aria-hidden="true" tabindex="-1"></a>                           </span>
+<span id="cb33-62"><a href="#cb33-62" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># Kinabatangan correction</span></span>
+<span id="cb33-63"><a href="#cb33-63" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Kota Kinabatangan"</span> <span class="ot">=</span> <span class="st">"Kinabatangan"</span>,</span>
+<span id="cb33-64"><a href="#cb33-64" aria-hidden="true" tabindex="-1"></a>                           </span>
+<span id="cb33-65"><a href="#cb33-65" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># Samarahan correction</span></span>
+<span id="cb33-66"><a href="#cb33-66" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Kota Samarahan"</span> <span class="ot">=</span> <span class="st">"Samarahan"</span>,</span>
+<span id="cb33-67"><a href="#cb33-67" aria-hidden="true" tabindex="-1"></a>                           </span>
+<span id="cb33-68"><a href="#cb33-68" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># Mukah correction</span></span>
+<span id="cb33-69"><a href="#cb33-69" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Matu Daro"</span> <span class="ot">=</span> <span class="st">"Mukah"</span>,</span>
+<span id="cb33-70"><a href="#cb33-70" aria-hidden="true" tabindex="-1"></a>                           </span>
+<span id="cb33-71"><a href="#cb33-71" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># Kuching correction</span></span>
+<span id="cb33-72"><a href="#cb33-72" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Padawan"</span> <span class="ot">=</span> <span class="st">"Kuching"</span>,</span>
+<span id="cb33-73"><a href="#cb33-73" aria-hidden="true" tabindex="-1"></a>                           </span>
+<span id="cb33-74"><a href="#cb33-74" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># Gombak correction</span></span>
+<span id="cb33-75"><a href="#cb33-75" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Ampang Jaya"</span> <span class="ot">=</span> <span class="st">"Gombak"</span>,</span>
+<span id="cb33-76"><a href="#cb33-76" aria-hidden="true" tabindex="-1"></a>                           </span>
+<span id="cb33-77"><a href="#cb33-77" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># Ulu Langat correction</span></span>
+<span id="cb33-78"><a href="#cb33-78" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Kajang"</span> <span class="ot">=</span> <span class="st">"Ulu Langat"</span>,</span>
+<span id="cb33-79"><a href="#cb33-79" aria-hidden="true" tabindex="-1"></a>                           </span>
+<span id="cb33-80"><a href="#cb33-80" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># Ulu Selangor correction</span></span>
+<span id="cb33-81"><a href="#cb33-81" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Hulu Selangor"</span> <span class="ot">=</span> <span class="st">"Ulu Selangor"</span>,</span>
+<span id="cb33-82"><a href="#cb33-82" aria-hidden="true" tabindex="-1"></a>                           </span>
+<span id="cb33-83"><a href="#cb33-83" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># Klang mappings</span></span>
+<span id="cb33-84"><a href="#cb33-84" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Klang Selatan"</span> <span class="ot">=</span> <span class="st">"Klang"</span>,</span>
+<span id="cb33-85"><a href="#cb33-85" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Klang Utara"</span> <span class="ot">=</span> <span class="st">"Klang"</span>,</span>
+<span id="cb33-86"><a href="#cb33-86" aria-hidden="true" tabindex="-1"></a>                           </span>
+<span id="cb33-87"><a href="#cb33-87" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># Petaling mappings</span></span>
+<span id="cb33-88"><a href="#cb33-88" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Petaling Jaya"</span> <span class="ot">=</span> <span class="st">"Petaling"</span>,</span>
+<span id="cb33-89"><a href="#cb33-89" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Serdang"</span> <span class="ot">=</span> <span class="st">"Petaling"</span>,</span>
+<span id="cb33-90"><a href="#cb33-90" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Sg. Buloh"</span> <span class="ot">=</span> <span class="st">"Petaling"</span>,</span>
+<span id="cb33-91"><a href="#cb33-91" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Shah Alam"</span> <span class="ot">=</span> <span class="st">"Petaling"</span>,</span>
+<span id="cb33-92"><a href="#cb33-92" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Subang Jaya"</span> <span class="ot">=</span> <span class="st">"Petaling"</span>,</span>
+<span id="cb33-93"><a href="#cb33-93" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Sungai Buloh"</span> <span class="ot">=</span> <span class="st">"Petaling"</span>,</span>
+<span id="cb33-94"><a href="#cb33-94" aria-hidden="true" tabindex="-1"></a>                           </span>
+<span id="cb33-95"><a href="#cb33-95" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># Default to keep original name if no match</span></span>
+<span id="cb33-96"><a href="#cb33-96" aria-hidden="true" tabindex="-1"></a>                           <span class="at">.default =</span> district))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>let’s check again to see if we have altered the data correctly</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>crime_unique <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">district =</span> <span class="fu">sort</span>(<span class="fu">unique</span>(crime<span class="sc">$</span>district)))</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Find rows in crime_unique that don't have a match in msia_unique</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>unmatched_crime <span class="ot">&lt;-</span> <span class="fu">anti_join</span>(crime_unique, msia_unique, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"district"</span> <span class="ot">=</span> <span class="st">"ADM2_EN"</span>))</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>unmatched_crime</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] district
+&lt;0 rows&gt; (or 0-length row.names)</code></pre>
+</div>
+</div>
+<p>As we plan to overlay with the labour data, let’s do checks for that as well</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>labour_unique <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">district =</span> <span class="fu">sort</span>(<span class="fu">unique</span>(labour<span class="sc">$</span>district)))</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>msia_unique <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">ADM2_EN =</span> <span class="fu">sort</span>(<span class="fu">unique</span>(msia_sf<span class="sc">$</span>ADM2_EN)))</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Find rows in crime_unique that don't have a match in msia_unique</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>unmatched_labour <span class="ot">&lt;-</span> <span class="fu">anti_join</span>(labour_unique, msia_unique, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"district"</span> <span class="ot">=</span> <span class="st">"ADM2_EN"</span>))</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Find rows in msia_unique that don't have a match in crime_unique</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>unmatched_msia <span class="ot">&lt;-</span> <span class="fu">anti_join</span>(msia_unique, labour_unique, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"ADM2_EN"</span> <span class="ot">=</span> <span class="st">"district"</span>))</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine results to see all mismatches</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>unmatched_labour</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                district
+1             Hulu Perak
+2                  Kulai
+3                Manjung
+4               Maradong
+5 Seberang Perai Selatan
+6  Seberang Perai Tengah
+7   Seberang Perai Utara
+8                Tangkak</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>unmatched_msia</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             ADM2_EN
+1          Kulaijaya
+2             Ledang
+3  Manjung (Dinding)
+4           Meradong
+5             Perlis
+6        S.P. Tengah
+7         S.P. Utara
+8        S.P.Selatan
+9          Ulu Perak
+10       W.P. Labuan
+11    W.P. Putrajaya
+12  WP. Kuala Lumpur</code></pre>
+</div>
+</div>
+<p>Let’s change the districts in <em>labour</em> like what we did for <em>crime</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>labour <span class="ot">&lt;-</span> labour <span class="sc">%&gt;%</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">district =</span> <span class="fu">recode</span>(district,</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Kulai"</span> <span class="ot">=</span> <span class="st">"Kulaijaya"</span>,</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># Seberang Perai corrections</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Seberang Perai Selatan"</span> <span class="ot">=</span> <span class="st">"S.P.Selatan"</span>,</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Seberang Perai Tengah"</span> <span class="ot">=</span> <span class="st">"S.P. Tengah"</span>,</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Seberang Perai Utara"</span> <span class="ot">=</span> <span class="st">"S.P. Utara"</span>,</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>                           </span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># Ulu Perak mappings</span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Hulu Perak"</span> <span class="ot">=</span> <span class="st">"Ulu Perak"</span>,</span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>                           </span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># Manjung correction</span></span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Manjung"</span> <span class="ot">=</span> <span class="st">"Manjung (Dinding)"</span>,</span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>                           </span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Maradong"</span> <span class="ot">=</span> <span class="st">"Meradong"</span>,</span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Tangkak"</span> <span class="ot">=</span> <span class="st">"Ledang"</span>,</span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>                           </span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># Default to keep original name if no match</span></span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a>                           <span class="at">.default =</span> district))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s check if there are still any issues with the district for <em>labour</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>labour_unique <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">district =</span> <span class="fu">sort</span>(<span class="fu">unique</span>(labour<span class="sc">$</span>district)))</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>msia_unique <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">ADM2_EN =</span> <span class="fu">sort</span>(<span class="fu">unique</span>(msia_sf<span class="sc">$</span>ADM2_EN)))</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Find rows in crime_unique that don't have a match in msia_unique</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>unmatched_labour <span class="ot">&lt;-</span> <span class="fu">anti_join</span>(labour_unique, msia_unique, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"district"</span> <span class="ot">=</span> <span class="st">"ADM2_EN"</span>))</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>unmatched_labour</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] district
+&lt;0 rows&gt; (or 0-length row.names)</code></pre>
+</div>
+</div>
+<p>Let’s combine our labour data with our crimes data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>crime_labour <span class="ot">&lt;-</span> crime <span class="sc">%&gt;%</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(year <span class="sc">&gt;=</span> <span class="dv">2019</span> <span class="sc">&amp;</span> year <span class="sc">&lt;=</span> <span class="dv">2022</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">left_join</span>(labour, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"district"</span>,<span class="st">"year"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">14</span>,<span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s check for any empty rows before <em>left_join</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>na <span class="ot">&lt;-</span> crime_labour <span class="sc">%&gt;%</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">na_district =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(district)),</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_category =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(category)),</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_type =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(type)),</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_crimes =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(crimes)),</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_year =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(year)),</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_lf =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(lf)),</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_lf_unemployed =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(lf_unemployed)),</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_u_rate =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(u_rate)),</span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_p_rate =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(u_rate)),</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(na)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 9
+  na_district na_category na_type na_crimes na_year na_lf na_lf_unemployed
+        &lt;int&gt;       &lt;int&gt;   &lt;int&gt;     &lt;int&gt;   &lt;int&gt; &lt;int&gt;            &lt;int&gt;
+1           0           0       0         0       0   480              480
+# ℹ 2 more variables: na_u_rate &lt;int&gt;, na_p_rate &lt;int&gt;</code></pre>
+</div>
+</div>
+<p>There are NA values so let’s remove them</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>crime_labour <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(crime_labour)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Do another check</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>na <span class="ot">&lt;-</span> crime_labour <span class="sc">%&gt;%</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">na_district =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(district)),</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_category =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(category)),</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_type =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(type)),</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_crimes =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(crimes)),</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_year =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(year)),</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_lf =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(lf)),</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_lf_unemployed =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(lf_unemployed)),</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_u_rate =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(u_rate)),</span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(na)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 8
+  na_district na_category na_type na_crimes na_year na_lf na_lf_unemployed
+        &lt;int&gt;       &lt;int&gt;   &lt;int&gt;     &lt;int&gt;   &lt;int&gt; &lt;int&gt;            &lt;int&gt;
+1           0           0       0         0       0     0                0
+# ℹ 1 more variable: na_u_rate &lt;int&gt;</code></pre>
+</div>
+</div>
+<p>Finally we combine it with our <em>msia_sf</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>msia <span class="ot">&lt;-</span> <span class="fu">left_join</span>(msia_sf,crime_labour, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"ADM2_EN"</span> <span class="ot">=</span> <span class="st">"district"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">16</span><span class="sc">:</span><span class="dv">24</span>)</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>msia</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 7024 features and 11 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: 184853.1 ymin: 94420.8 xmax: 2380932 ymax: 829136
+Projected CRS: Kertau (RSO) / RSO Malaya (m)
+# A tibble: 7,024 × 12
+   ADM2_EN    ADM1_EN state.x category type     crimes  year    lf lf_unemployed
+   &lt;chr&gt;      &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;
+ 1 Batu Pahat Johor   Johor   assault  causing…     41  2019  214.           3.7
+ 2 Batu Pahat Johor   Johor   assault  causing…     43  2020  219.           4.7
+ 3 Batu Pahat Johor   Johor   assault  causing…     22  2021  216            5  
+ 4 Batu Pahat Johor   Johor   assault  causing…     19  2022  221.           4  
+ 5 Batu Pahat Johor   Johor   assault  murder        3  2019  214.           3.7
+ 6 Batu Pahat Johor   Johor   assault  murder        3  2020  219.           4.7
+ 7 Batu Pahat Johor   Johor   assault  murder        0  2021  216            5  
+ 8 Batu Pahat Johor   Johor   assault  murder        3  2022  221.           4  
+ 9 Batu Pahat Johor   Johor   assault  rape         29  2019  214.           3.7
+10 Batu Pahat Johor   Johor   assault  rape         16  2020  219.           4.7
+# ℹ 7,014 more rows
+# ℹ 3 more variables: p_rate &lt;dbl&gt;, u_rate &lt;dbl&gt;, geometry &lt;MULTIPOLYGON [m]&gt;</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="na-values" class="level3">
+<h3 class="anchored" data-anchor-id="na-values">NA Values</h3>
+<p>Looking at this we could see some additional rows have been added. Let’s see if there are any NA values</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>na <span class="ot">&lt;-</span> msia <span class="sc">%&gt;%</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">na_district =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(ADM2_EN)),</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_category =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(category)),</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_type =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(type)),</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_crimes =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(crimes)),</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_year =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(year)),</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_lf =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(lf)),</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_lf_unemployed =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(lf_unemployed)),</span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_u_rate =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(u_rate)),</span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_p_rate =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(p_rate)),</span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(na)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 1 feature and 9 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: 184853.1 ymin: 94420.8 xmax: 2380932 ymax: 829136
+Projected CRS: Kertau (RSO) / RSO Malaya (m)
+# A tibble: 1 × 10
+  na_district na_category na_type na_crimes na_year na_lf na_lf_unemployed
+        &lt;int&gt;       &lt;int&gt;   &lt;int&gt;     &lt;int&gt;   &lt;int&gt; &lt;int&gt;            &lt;int&gt;
+1           0          16      16        16      16    16               16
+# ℹ 3 more variables: na_u_rate &lt;int&gt;, na_p_rate &lt;int&gt;,
+#   geometry &lt;MULTIPOLYGON [m]&gt;</code></pre>
+</div>
+</div>
+<p>Let’s remove the NA rows</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>msia <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(msia)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Do another check</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>na <span class="ot">&lt;-</span> msia <span class="sc">%&gt;%</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">na_district =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(ADM2_EN)),</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_category =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(category)),</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_type =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(type)),</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_crimes =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(crimes)),</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_year =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(year)),</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_lf =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(lf)),</span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_lf_unemployed =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(lf_unemployed)),</span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">na_u_rate =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(u_rate)),</span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(na)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 1 feature and 8 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: 184853.1 ymin: 94420.8 xmax: 2380932 ymax: 829136
+Projected CRS: Kertau (RSO) / RSO Malaya (m)
+# A tibble: 1 × 9
+  na_district na_category na_type na_crimes na_year na_lf na_lf_unemployed
+        &lt;int&gt;       &lt;int&gt;   &lt;int&gt;     &lt;int&gt;   &lt;int&gt; &lt;int&gt;            &lt;int&gt;
+1           0           0       0         0       0     0                0
+# ℹ 2 more variables: na_u_rate &lt;int&gt;, geometry &lt;MULTIPOLYGON [m]&gt;</code></pre>
+</div>
+</div>
+<p>Let’s check for duplicates as well</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>duplicates <span class="ot">&lt;-</span> msia <span class="sc">%&gt;%</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(ADM2_EN, year, category, type, crimes, u_rate, p_rate) <span class="sc">%&gt;%</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">&gt;</span> <span class="dv">1</span>)</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">nrow</span>(duplicates) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(duplicates)</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 288 features and 11 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: 284518.8 ymin: 116154.7 xmax: 1641930 ymax: 656488.5
+Projected CRS: Kertau (RSO) / RSO Malaya (m)
+# A tibble: 288 × 12
+# Groups:   ADM2_EN, year, category, type, crimes, u_rate, p_rate [125]
+   ADM2_EN     ADM1_EN state.x category type    crimes  year    lf lf_unemployed
+ * &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;
+ 1 Johor Bahru Johor   Johor   assault  murder       3  2020  804.          32.5
+ 2 Johor Bahru Johor   Johor   assault  murder       3  2022  830.          30.5
+ 3 Johor Bahru Johor   Johor   assault  robber…      0  2019  792.          24.6
+ 4 Johor Bahru Johor   Johor   assault  robber…      0  2020  804.          32.5
+ 5 Johor Bahru Johor   Johor   assault  robber…      0  2022  830.          30.5
+ 6 Johor Bahru Johor   Johor   assault  robber…      0  2019  792.          24.6
+ 7 Johor Bahru Johor   Johor   assault  robber…      0  2020  804.          32.5
+ 8 Johor Bahru Johor   Johor   assault  robber…      0  2021  806.          34.1
+ 9 Johor Bahru Johor   Johor   assault  robber…      0  2022  830.          30.5
+10 Johor Bahru Johor   Johor   property theft_…      5  2022  830.          30.5
+# ℹ 278 more rows
+# ℹ 3 more variables: p_rate &lt;dbl&gt;, u_rate &lt;dbl&gt;, geometry &lt;MULTIPOLYGON [m]&gt;</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="ui-design" class="level1">
+<h1>UI Design</h1>
+<p>For a shiny application in this course we work with three main components <strong><code>headerPanel</code></strong>, <strong><code>sidebarPanel</code></strong>, and <strong><code>mainPanel</code></strong>.</p>
+<ul>
+<li><p><strong>Header Panel</strong> : This is the topmost part of the UI where we can put a description of the application or have a navbar where you can navigate different pages. Each page leads to other group members work/part in this project</p></li>
+<li><p><strong>Sidebar Panel</strong>: This panel would mainly consist of the input controls that the user can play around with to change the map output in the <strong>Main Panel.</strong></p></li>
+<li><p><strong>Main Panel</strong> : This is the primary area of the application and it typically contains outputs. The main panel displays the output (like maps, plots, tables, etc.) based on the input given in the sidebar panel.</p></li>
+</ul>
+<p><img src="images/clipboard-2485122679.png" class="img-fluid"></p>
+<section id="header-panel" class="level2">
+<h2 class="anchored" data-anchor-id="header-panel">Header Panel</h2>
+<p>For this we would like to put <strong>navbarPage()</strong> which shiny provides. This is so as to keep our project organised and it would be easier to navigate through the different pages that we would have</p>
+<p><img src="images/clipboard-3890883561.png" class="img-fluid"></p>
+</section>
+<section id="side-panel" class="level2">
+<h2 class="anchored" data-anchor-id="side-panel">Side Panel</h2>
+<p>For this part it would be the input controls and given the potential variables the the data type we have identified: <strong><em>district, category, type, date, crimes, gini.</em></strong></p>
+<p>Some of the potential input controls that could be used are:</p>
+<ul>
+<li><p>Select boxes</p></li>
+<li><p>Checkboxes</p></li>
+<li><p>Radio buttons</p></li>
+<li><p>Sliders</p></li>
+</ul>
+<p>Something that our side panel that could look like given the variables that we are given:</p>
+<p><img src="images/clipboard-1163880820.png" class="img-fluid"></p>
+</section>
+<section id="main-panel" class="level2">
+<h2 class="anchored" data-anchor-id="main-panel">Main Panel</h2>
+<p>This main panel would consist of just the main map based on the values selected by the user.</p>
+<p>This would also be roughly how our shiny application would look like with the different layouts</p>
+</section>
+</section>
+<section id="exploratory-data-analysis-eda" class="level1">
+<h1>Exploratory Data Analysis (EDA)</h1>
+<p>We first want to split the data by years available</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>split_msia <span class="ot">&lt;-</span> <span class="fu">split</span>(msia, msia<span class="sc">$</span>year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="data-summary" class="level2">
+<h2 class="anchored" data-anchor-id="data-summary">Data Summary</h2>
+<p>We can look at the overall summaries for values such as <code>u_rate</code>, <code>p_rate</code> and <code>crimes</code> for each year</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">2019</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">2020</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">2021</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">2022</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(split_msia<span class="sc">$</span><span class="st">"2019"</span> <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">6</span>,<span class="dv">10</span>,<span class="dv">11</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     crimes           p_rate          u_rate               geometry   
+ Min.   :  0.00   Min.   :55.90   Min.   :0.800   MULTIPOLYGON :1752  
+ 1st Qu.:  0.00   1st Qu.:64.10   1st Qu.:2.800   epsg:3168    :   0  
+ Median :  6.00   Median :67.05   Median :3.100   +proj=omer...:   0  
+ Mean   : 40.81   Mean   :67.08   Mean   :3.398                       
+ 3rd Qu.: 33.00   3rd Qu.:70.40   3rd Qu.:3.700                       
+ Max.   :837.00   Max.   :77.40   Max.   :6.700                       </code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(split_msia<span class="sc">$</span><span class="st">"2020"</span> <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">6</span>,<span class="dv">10</span>,<span class="dv">11</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     crimes           p_rate          u_rate               geometry   
+ Min.   :  0.00   Min.   :54.80   Min.   :1.600   MULTIPOLYGON :1752  
+ 1st Qu.:  0.00   1st Qu.:63.90   1st Qu.:3.500   epsg:3168    :   0  
+ Median :  5.00   Median :66.70   Median :4.000   +proj=omer...:   0  
+ Mean   : 32.33   Mean   :66.82   Mean   :4.504                       
+ 3rd Qu.: 27.00   3rd Qu.:70.40   3rd Qu.:5.200                       
+ Max.   :684.00   Max.   :76.90   Max.   :9.900                       </code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(split_msia<span class="sc">$</span><span class="st">"2021"</span> <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">6</span>,<span class="dv">10</span>,<span class="dv">11</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     crimes           p_rate          u_rate                geometry   
+ Min.   :  0.00   Min.   :54.10   Min.   : 1.300   MULTIPOLYGON :1752  
+ 1st Qu.:  0.00   1st Qu.:62.60   1st Qu.: 3.600   epsg:3168    :   0  
+ Median :  4.00   Median :66.30   Median : 4.300   +proj=omer...:   0  
+ Mean   : 26.38   Mean   :66.46   Mean   : 4.705                       
+ 3rd Qu.: 22.00   3rd Qu.:70.00   3rd Qu.: 5.500                       
+ Max.   :672.00   Max.   :77.90   Max.   :10.000                       </code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(split_msia<span class="sc">$</span><span class="st">"2022"</span> <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">6</span>,<span class="dv">10</span>,<span class="dv">11</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     crimes           p_rate          u_rate               geometry   
+ Min.   :  0.00   Min.   :54.30   Min.   :1.200   MULTIPOLYGON :1752  
+ 1st Qu.:  0.00   1st Qu.:63.40   1st Qu.:2.800   epsg:3168    :   0  
+ Median :  5.00   Median :66.95   Median :3.700   +proj=omer...:   0  
+ Mean   : 25.91   Mean   :67.07   Mean   :4.032                       
+ 3rd Qu.: 22.00   3rd Qu.:70.60   3rd Qu.:4.700                       
+ Max.   :585.00   Max.   :78.60   Max.   :9.500                       </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="statistical-graphics" class="level2">
+<h2 class="anchored" data-anchor-id="statistical-graphics">Statistical graphics</h2>
+<p>We can plot the distribution of the variables by using appropriate Exploratory Data Analysis (EDA).</p>
+<section id="histogram" class="level3">
+<h3 class="anchored" data-anchor-id="histogram">Histogram</h3>
+<p>Histogram is useful to identify the overall distribution of the data values (i.e.&nbsp;left skew, right skew or normal distribution)</p>
+<section id="crimes" class="level4">
+<h4 class="anchored" data-anchor-id="crimes">Crimes</h4>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">2019</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">2020</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">2021</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-4" role="tab" aria-controls="tabset-2-4" aria-selected="false">2022</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>split_msia<span class="sc">$</span><span class="st">"2019"</span>, </span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">crimes</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">20</span>, </span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color=</span><span class="st">"black"</span>, </span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill=</span><span class="st">"light blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>split_msia<span class="sc">$</span><span class="st">"2020"</span>, </span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">crimes</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">20</span>, </span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color=</span><span class="st">"black"</span>, </span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill=</span><span class="st">"light blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>split_msia<span class="sc">$</span><span class="st">"2021"</span>, </span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">crimes</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">20</span>, </span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color=</span><span class="st">"black"</span>, </span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill=</span><span class="st">"light blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-4-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>split_msia<span class="sc">$</span><span class="st">"2022"</span>, </span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">crimes</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">20</span>, </span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color=</span><span class="st">"black"</span>, </span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill=</span><span class="st">"light blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="u-rate" class="level4">
+<h4 class="anchored" data-anchor-id="u-rate">U Rate</h4>
+<p>This is the ratio of unemployed to labour force size</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">2019</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">2020</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">2021</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-4" role="tab" aria-controls="tabset-3-4" aria-selected="false">2022</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>split_msia<span class="sc">$</span><span class="st">"2019"</span>, </span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">u_rate</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">20</span>, </span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color=</span><span class="st">"black"</span>, </span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill=</span><span class="st">"light blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-40-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>split_msia<span class="sc">$</span><span class="st">"2020"</span>, </span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">u_rate</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">20</span>, </span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color=</span><span class="st">"black"</span>, </span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill=</span><span class="st">"light blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-41-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>split_msia<span class="sc">$</span><span class="st">"2021"</span>, </span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">u_rate</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">20</span>, </span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color=</span><span class="st">"black"</span>, </span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill=</span><span class="st">"light blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-4-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>split_msia<span class="sc">$</span><span class="st">"2022"</span>, </span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">u_rate</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">20</span>, </span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color=</span><span class="st">"black"</span>, </span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill=</span><span class="st">"light blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-43-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="p-rate" class="level4">
+<h4 class="anchored" data-anchor-id="p-rate">P Rate</h4>
+<p>This is the ratio of the labour force size to the working-age (15-64) population</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">2019</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">2020</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false">2021</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-4" role="tab" aria-controls="tabset-4-4" aria-selected="false">2022</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>split_msia<span class="sc">$</span><span class="st">"2019"</span>, </span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">p_rate</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">20</span>, </span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color=</span><span class="st">"black"</span>, </span>
+<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill=</span><span class="st">"light blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>split_msia<span class="sc">$</span><span class="st">"2020"</span>, </span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">p_rate</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">20</span>, </span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color=</span><span class="st">"black"</span>, </span>
+<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill=</span><span class="st">"light blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-45-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>split_msia<span class="sc">$</span><span class="st">"2021"</span>, </span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">p_rate</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">20</span>, </span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color=</span><span class="st">"black"</span>, </span>
+<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill=</span><span class="st">"light blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-46-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-4-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-4-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>split_msia<span class="sc">$</span><span class="st">"2022"</span>, </span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">p_rate</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">20</span>, </span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color=</span><span class="st">"black"</span>, </span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill=</span><span class="st">"light blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-47-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="boxplot" class="level3">
+<h3 class="anchored" data-anchor-id="boxplot">Boxplot</h3>
+<p>We can use boxplots to determine if there are any outliers for data</p>
+<section id="crimes-1" class="level4">
+<h4 class="anchored" data-anchor-id="crimes-1">Crimes</h4>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">2019</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">2020</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-3" role="tab" aria-controls="tabset-5-3" aria-selected="false">2021</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-4" role="tab" aria-controls="tabset-5-4" aria-selected="false">2022</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>split_msia<span class="sc">$</span><span class="st">"2019"</span>, </span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">crimes</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">bins=</span><span class="dv">20</span>, </span>
+<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color=</span><span class="st">"black"</span>, </span>
+<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill=</span><span class="st">"light blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_boxplot(bins = 20, color = "black", fill = "light blue"):
+Ignoring unknown parameters: `bins`</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-48-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>split_msia<span class="sc">$</span><span class="st">"2020"</span>, </span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">crimes</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">bins=</span><span class="dv">20</span>, </span>
+<span id="cb81-4"><a href="#cb81-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color=</span><span class="st">"black"</span>, </span>
+<span id="cb81-5"><a href="#cb81-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill=</span><span class="st">"light blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_boxplot(bins = 20, color = "black", fill = "light blue"):
+Ignoring unknown parameters: `bins`</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-49-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-5-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-3-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>split_msia<span class="sc">$</span><span class="st">"2021"</span>, </span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">crimes</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">bins=</span><span class="dv">20</span>, </span>
+<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color=</span><span class="st">"black"</span>, </span>
+<span id="cb83-5"><a href="#cb83-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill=</span><span class="st">"light blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_boxplot(bins = 20, color = "black", fill = "light blue"):
+Ignoring unknown parameters: `bins`</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-50-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-5-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-4-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>split_msia<span class="sc">$</span><span class="st">"2022"</span>, </span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">crimes</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">bins=</span><span class="dv">20</span>, </span>
+<span id="cb85-4"><a href="#cb85-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color=</span><span class="st">"black"</span>, </span>
+<span id="cb85-5"><a href="#cb85-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill=</span><span class="st">"light blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_boxplot(bins = 20, color = "black", fill = "light blue"):
+Ignoring unknown parameters: `bins`</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-51-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="u-rate-1" class="level4">
+<h4 class="anchored" data-anchor-id="u-rate-1">U Rate</h4>
+<p>This is the ratio of unemployed to labour force size</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">2019</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">2020</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-3" role="tab" aria-controls="tabset-6-3" aria-selected="false">2021</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-4" role="tab" aria-controls="tabset-6-4" aria-selected="false">2022</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>split_msia<span class="sc">$</span><span class="st">"2019"</span>, </span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">u_rate</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">bins=</span><span class="dv">20</span>, </span>
+<span id="cb87-4"><a href="#cb87-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color=</span><span class="st">"black"</span>, </span>
+<span id="cb87-5"><a href="#cb87-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill=</span><span class="st">"light blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_boxplot(bins = 20, color = "black", fill = "light blue"):
+Ignoring unknown parameters: `bins`</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-52-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>split_msia<span class="sc">$</span><span class="st">"2020"</span>, </span>
+<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">u_rate</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">bins=</span><span class="dv">20</span>, </span>
+<span id="cb89-4"><a href="#cb89-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color=</span><span class="st">"black"</span>, </span>
+<span id="cb89-5"><a href="#cb89-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill=</span><span class="st">"light blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_boxplot(bins = 20, color = "black", fill = "light blue"):
+Ignoring unknown parameters: `bins`</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-53-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-6-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-3-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>split_msia<span class="sc">$</span><span class="st">"2021"</span>, </span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">u_rate</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">bins=</span><span class="dv">20</span>, </span>
+<span id="cb91-4"><a href="#cb91-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color=</span><span class="st">"black"</span>, </span>
+<span id="cb91-5"><a href="#cb91-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill=</span><span class="st">"light blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_boxplot(bins = 20, color = "black", fill = "light blue"):
+Ignoring unknown parameters: `bins`</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-54-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-6-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-4-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>split_msia<span class="sc">$</span><span class="st">"2022"</span>, </span>
+<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">u_rate</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">bins=</span><span class="dv">20</span>, </span>
+<span id="cb93-4"><a href="#cb93-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color=</span><span class="st">"black"</span>, </span>
+<span id="cb93-5"><a href="#cb93-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill=</span><span class="st">"light blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_boxplot(bins = 20, color = "black", fill = "light blue"):
+Ignoring unknown parameters: `bins`</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-55-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="p-rate-1" class="level4">
+<h4 class="anchored" data-anchor-id="p-rate-1">P Rate</h4>
+<p>This is the ratio of the labour force size to the working-age (15-64) population</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">2019</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">2020</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-3" role="tab" aria-controls="tabset-7-3" aria-selected="false">2021</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-4" role="tab" aria-controls="tabset-7-4" aria-selected="false">2022</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>split_msia<span class="sc">$</span><span class="st">"2019"</span>, </span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">p_rate</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">bins=</span><span class="dv">20</span>, </span>
+<span id="cb95-4"><a href="#cb95-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color=</span><span class="st">"black"</span>, </span>
+<span id="cb95-5"><a href="#cb95-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill=</span><span class="st">"light blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_boxplot(bins = 20, color = "black", fill = "light blue"):
+Ignoring unknown parameters: `bins`</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-56-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>split_msia<span class="sc">$</span><span class="st">"2020"</span>, </span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">p_rate</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">bins=</span><span class="dv">20</span>, </span>
+<span id="cb97-4"><a href="#cb97-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color=</span><span class="st">"black"</span>, </span>
+<span id="cb97-5"><a href="#cb97-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill=</span><span class="st">"light blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_boxplot(bins = 20, color = "black", fill = "light blue"):
+Ignoring unknown parameters: `bins`</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-57-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-7-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-3-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>split_msia<span class="sc">$</span><span class="st">"2021"</span>, </span>
+<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">p_rate</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">bins=</span><span class="dv">20</span>, </span>
+<span id="cb99-4"><a href="#cb99-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color=</span><span class="st">"black"</span>, </span>
+<span id="cb99-5"><a href="#cb99-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill=</span><span class="st">"light blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_boxplot(bins = 20, color = "black", fill = "light blue"):
+Ignoring unknown parameters: `bins`</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-58-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-7-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-4-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>split_msia<span class="sc">$</span><span class="st">"2022"</span>, </span>
+<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span><span class="st">`</span><span class="at">p_rate</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb101-3"><a href="#cb101-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">bins=</span><span class="dv">20</span>, </span>
+<span id="cb101-4"><a href="#cb101-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color=</span><span class="st">"black"</span>, </span>
+<span id="cb101-5"><a href="#cb101-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill=</span><span class="st">"light blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_boxplot(bins = 20, color = "black", fill = "light blue"):
+Ignoring unknown parameters: `bins`</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-59-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="choropleth-map" class="level2">
+<h2 class="anchored" data-anchor-id="choropleth-map">Choropleth map</h2>
+<p>We can use choropleth maps to showcase the distribution rates in a more visual form to find potential hotspots.</p>
+<section id="crimes-2" class="level3">
+<h3 class="anchored" data-anchor-id="crimes-2">Crimes</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true">2019</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false">2020</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-3" role="tab" aria-controls="tabset-8-3" aria-selected="false">2021</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-4" role="tab" aria-controls="tabset-8-4" aria-selected="false">2022</a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qtm</span>(split_msia<span class="sc">$</span><span class="st">"2019"</span>, <span class="st">"crimes"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-60-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qtm</span>(split_msia<span class="sc">$</span><span class="st">"2020"</span>, <span class="st">"crimes"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-61-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-8-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-3-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qtm</span>(split_msia<span class="sc">$</span><span class="st">"2021"</span>, <span class="st">"crimes"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-62-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-8-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-4-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qtm</span>(split_msia<span class="sc">$</span><span class="st">"2022"</span>, <span class="st">"crimes"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-63-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>We can see from the maps that crimes are generally more concentrated around the more populated areas of malaysia such as Johor Bahru and Selangor</p>
+</section>
+<section id="u-rate-2" class="level3">
+<h3 class="anchored" data-anchor-id="u-rate-2">U Rate</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true">2019</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false">2020</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-3" role="tab" aria-controls="tabset-9-3" aria-selected="false">2021</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-4" role="tab" aria-controls="tabset-9-4" aria-selected="false">2022</a></li></ul>
+<div class="tab-content">
+<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qtm</span>(split_msia<span class="sc">$</span><span class="st">"2019"</span>, <span class="st">"u_rate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-64-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qtm</span>(split_msia<span class="sc">$</span><span class="st">"2020"</span>, <span class="st">"u_rate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-65-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-9-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-3-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qtm</span>(split_msia<span class="sc">$</span><span class="st">"2021"</span>, <span class="st">"u_rate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-66-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-9-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-4-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qtm</span>(split_msia<span class="sc">$</span><span class="st">"2022"</span>, <span class="st">"u_rate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-67-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="p-rate-2" class="level3">
+<h3 class="anchored" data-anchor-id="p-rate-2">P Rate</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true">2019</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false">2020</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-3" role="tab" aria-controls="tabset-10-3" aria-selected="false">2021</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-4" role="tab" aria-controls="tabset-10-4" aria-selected="false">2022</a></li></ul>
+<div class="tab-content">
+<div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qtm</span>(split_msia<span class="sc">$</span><span class="st">"2019"</span>, <span class="st">"p_rate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-68-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qtm</span>(split_msia<span class="sc">$</span><span class="st">"2020"</span>, <span class="st">"p_rate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-69-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-10-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-3-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qtm</span>(split_msia<span class="sc">$</span><span class="st">"2021"</span>, <span class="st">"p_rate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-70-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-10-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-4-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qtm</span>(split_msia<span class="sc">$</span><span class="st">"2022"</span>, <span class="st">"p_rate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-71-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>We can see that <code>year</code>, <code>p_rate</code>, <code>u_rate</code> and <code>crimes</code> are possible values for users to select for the project Shiny Application.</p>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
